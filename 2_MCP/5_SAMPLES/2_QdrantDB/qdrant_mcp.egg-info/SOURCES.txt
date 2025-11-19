@@ -1,0 +1,7 @@
+README.md
+pyproject.toml
+qdrant_mcp.egg-info/PKG-INFO
+qdrant_mcp.egg-info/SOURCES.txt
+qdrant_mcp.egg-info/dependency_links.txt
+qdrant_mcp.egg-info/requires.txt
+qdrant_mcp.egg-info/top_level.txt
