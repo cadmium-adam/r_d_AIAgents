@@ -1,0 +1,167 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "2cf47b7c-2369-47ca-98fe-3155bd290b52",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "name",
+              "value": "Alice"
+            }
+          ],
+          "number": [
+            {
+              "name": "age",
+              "value": 25
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ab1bcbdb-21bb-4deb-aeed-4f550bef2b16",
+      "name": "Set User Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json.age}}",
+              "operation": "largerEqual",
+              "value2": 18
+            }
+          ]
+        }
+      },
+      "id": "d8eb1139-bf4e-488d-be57-ed33dc31d31b",
+      "name": "Check Age >= 18",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "status",
+              "value": "adult"
+            },
+            {
+              "name": "message",
+              "value": "Welcome! You are eligible for full access."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "48951ef2-f972-47eb-94e0-8ad3fdc69170",
+      "name": "Adult Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "status",
+              "value": "minor"
+            },
+            {
+              "name": "message",
+              "value": "Sorry, you must be 18 or older to access this content."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2e9feb58-6cae-49ee-a2eb-7e5b7585a5c6",
+      "name": "Minor Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        0,
+        200
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Set User Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set User Data": {
+      "main": [
+        [
+          {
+            "node": "Check Age >= 18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Age >= 18": {
+      "main": [
+        [
+          {
+            "node": "Adult Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Minor Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "2aa5b158-2e8f-4361-9b7a-51fe5c326aab",
+  "meta": {
+    "instanceId": "56f0fb7864fd4715d6b856fb7d15019871e7c74a4c5f5341afe764a8aa7d9adb"
+  },
+  "id": "i4SdKO87n5hkttP6",
+  "tags": []
+}

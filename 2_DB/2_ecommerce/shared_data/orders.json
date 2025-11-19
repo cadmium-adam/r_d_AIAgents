@@ -1,0 +1,3346 @@
+[
+  {
+    "id": 1,
+    "order_number": "ORD00000001",
+    "user_id": 1,
+    "user_email": "jennifer.everett@yahoo.com",
+    "order_date": "2024-12-24 06:29:48.504735",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 26,
+        "product_name": "PerformanceGear Bicycle",
+        "quantity": 3,
+        "unit_price": 129,
+        "discounted_price": 129,
+        "discount_percentage": 0,
+        "total_price": 387,
+        "sku": "SPO-000026",
+        "category": "Sports"
+      },
+      {
+        "product_id": 14,
+        "product_name": "BrightMinds Novel",
+        "quantity": 1,
+        "unit_price": 56,
+        "discounted_price": 56,
+        "discount_percentage": 0,
+        "total_price": 56,
+        "sku": "BOO-000014",
+        "category": "Books"
+      },
+      {
+        "product_id": 4,
+        "product_name": "SmartLine Speaker",
+        "quantity": 2,
+        "unit_price": 1820,
+        "discounted_price": 1820,
+        "discount_percentage": 0,
+        "total_price": 3640,
+        "sku": "ELE-000004",
+        "category": "Electronics"
+      }
+    ],
+    "totals": {
+      "subtotal": 4083,
+      "tax_amount": 326.64,
+      "shipping_cost": 13.32,
+      "total": 4422.96
+    },
+    "shipping_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "FedEx",
+      "service": "2-Day",
+      "tracking_number": "FED318824870",
+      "estimated_delivery": "2025-08-29",
+      "shipping_cost": 13.32
+    },
+    "payment_info": {
+      "method": "apple_pay",
+      "amount": 4422.96,
+      "currency": "USD",
+      "status": "failed",
+      "transaction_id": "TXN2824535551",
+      "processed_at": "2024-11-05 10:53:55.129530"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2024-12-24 06:29:48.504735",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2024-12-24 21:29:48.504735",
+        "note": "Payment confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2024-12-25 03:29:48.504735",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2024-12-26 03:29:48.504735",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-01-01 03:29:48.504735",
+        "note": "Package delivered"
+      }
+    ],
+    "notes": [
+      "Call before delivery",
+      "Gift wrapping requested"
+    ],
+    "created_at": "2024-12-24 06:29:48.504735",
+    "updated_at": "2025-01-01 03:29:48.504735"
+  },
+  {
+    "id": 2,
+    "order_number": "ORD00000002",
+    "user_id": 1,
+    "user_email": "jennifer.everett@yahoo.com",
+    "order_date": "2025-02-22 15:19:06.260569",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 2,
+        "product_name": "InnovateTech Monitor",
+        "quantity": 3,
+        "unit_price": 178,
+        "discounted_price": 178,
+        "discount_percentage": 0,
+        "total_price": 534,
+        "sku": "ELE-000002",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 1,
+        "product_name": "SmartLine Keyboard",
+        "quantity": 1,
+        "unit_price": 1962,
+        "discounted_price": 1962,
+        "discount_percentage": 0,
+        "total_price": 1962,
+        "sku": "ELE-000001",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 28,
+        "product_name": "ActiveZone Protein Powder Ultra",
+        "quantity": 1,
+        "unit_price": 38.0,
+        "discounted_price": 38.0,
+        "discount_percentage": 0,
+        "total_price": 38.0,
+        "sku": "SPO-000028",
+        "category": "Sports"
+      },
+      {
+        "product_id": 21,
+        "product_name": "ComfortZone Bedding",
+        "quantity": 1,
+        "unit_price": 186,
+        "discounted_price": 186,
+        "discount_percentage": 0,
+        "total_price": 186,
+        "sku": "HOM-000021",
+        "category": "Home & Garden"
+      },
+      {
+        "product_id": 9,
+        "product_name": "TrendSetter Pants",
+        "quantity": 2,
+        "unit_price": 158,
+        "discounted_price": 158,
+        "discount_percentage": 0,
+        "total_price": 316,
+        "sku": "CLO-000009",
+        "category": "Clothing"
+      }
+    ],
+    "totals": {
+      "subtotal": 3036.0,
+      "tax_amount": 242.88,
+      "shipping_cost": 17.65,
+      "total": 3296.53
+    },
+    "shipping_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "DHL",
+      "service": "2-Day",
+      "tracking_number": "DHL477005720",
+      "estimated_delivery": "2025-08-31",
+      "shipping_cost": 17.65
+    },
+    "payment_info": {
+      "method": "debit_card",
+      "amount": 3296.53,
+      "currency": "USD",
+      "status": "failed",
+      "transaction_id": "TXN5003722550",
+      "processed_at": "2025-05-09 05:27:43.412075"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-02-22 15:19:06.260569",
+        "note": "Payment pending"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-02-23 02:19:06.260569",
+        "note": "Order confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-02-23 13:19:06.260569",
+        "note": "Preparing items"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-02-25 13:19:06.260569",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-02-28 13:19:06.260569",
+        "note": "Order completed"
+      }
+    ],
+    "notes": [
+      "Customer requested expedited shipping",
+      "Call before delivery"
+    ],
+    "created_at": "2025-02-22 15:19:06.260569",
+    "updated_at": "2025-02-28 13:19:06.260569"
+  },
+  {
+    "id": 3,
+    "order_number": "ORD00000003",
+    "user_id": 1,
+    "user_email": "jennifer.everett@yahoo.com",
+    "order_date": "2024-11-03 17:02:20.946933",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 25,
+        "product_name": "ActiveZone Protein Powder",
+        "quantity": 2,
+        "unit_price": 186,
+        "discounted_price": 186,
+        "discount_percentage": 0,
+        "total_price": 372,
+        "sku": "SPO-000025",
+        "category": "Sports"
+      },
+      {
+        "product_id": 28,
+        "product_name": "ActiveZone Protein Powder Ultra",
+        "quantity": 3,
+        "unit_price": 38.0,
+        "discounted_price": 38.0,
+        "discount_percentage": 0,
+        "total_price": 114.0,
+        "sku": "SPO-000028",
+        "category": "Sports"
+      }
+    ],
+    "totals": {
+      "subtotal": 486.0,
+      "tax_amount": 38.88,
+      "shipping_cost": 25.94,
+      "total": 550.82
+    },
+    "shipping_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "DHL",
+      "service": "Next Day",
+      "tracking_number": "DHL657862104",
+      "estimated_delivery": "2025-08-26",
+      "shipping_cost": 25.94
+    },
+    "payment_info": {
+      "method": "google_pay",
+      "amount": 550.82,
+      "currency": "USD",
+      "status": "failed",
+      "transaction_id": "TXN1872275348",
+      "processed_at": "2024-11-25 23:00:07.785073"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2024-11-03 17:02:20.946933",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2024-11-03 23:02:20.946933",
+        "note": "Payment confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2024-11-04 11:02:20.946933",
+        "note": "Items collected"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2024-11-05 11:02:20.946933",
+        "note": "Package in transit"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2024-11-11 11:02:20.946933",
+        "note": "Package delivered"
+      }
+    ],
+    "notes": [],
+    "created_at": "2024-11-03 17:02:20.946933",
+    "updated_at": "2024-11-11 11:02:20.946933"
+  },
+  {
+    "id": 4,
+    "order_number": "ORD00000004",
+    "user_id": 1,
+    "user_email": "jennifer.everett@yahoo.com",
+    "order_date": "2025-05-19 19:11:14.654442",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 9,
+        "product_name": "TrendSetter Pants",
+        "quantity": 2,
+        "unit_price": 158,
+        "discounted_price": 158,
+        "discount_percentage": 0,
+        "total_price": 316,
+        "sku": "CLO-000009",
+        "category": "Clothing"
+      },
+      {
+        "product_id": 12,
+        "product_name": "StreetWear T-Shirt X",
+        "quantity": 2,
+        "unit_price": 192,
+        "discounted_price": 192,
+        "discount_percentage": 0,
+        "total_price": 384,
+        "sku": "CLO-000012",
+        "category": "Clothing"
+      },
+      {
+        "product_id": 17,
+        "product_name": "KnowledgeHub Textbook",
+        "quantity": 1,
+        "unit_price": 46.5,
+        "discounted_price": 46.5,
+        "discount_percentage": 0,
+        "total_price": 46.5,
+        "sku": "BOO-000017",
+        "category": "Books"
+      },
+      {
+        "product_id": 24,
+        "product_name": "PracticalLiving Kitchen Utensils",
+        "quantity": 2,
+        "unit_price": 394,
+        "discounted_price": 323.08,
+        "discount_percentage": 0.18,
+        "total_price": 646.16,
+        "sku": "HOM-000024",
+        "category": "Home & Garden"
+      },
+      {
+        "product_id": 4,
+        "product_name": "SmartLine Speaker",
+        "quantity": 2,
+        "unit_price": 1820,
+        "discounted_price": 1492.4,
+        "discount_percentage": 0.18,
+        "total_price": 2984.8,
+        "sku": "ELE-000004",
+        "category": "Electronics"
+      }
+    ],
+    "totals": {
+      "subtotal": 4377.46,
+      "tax_amount": 350.2,
+      "shipping_cost": 7.9,
+      "total": 4735.56
+    },
+    "shipping_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "UPS",
+      "service": "Next Day",
+      "tracking_number": "UPS319513287",
+      "estimated_delivery": "2025-09-04",
+      "shipping_cost": 7.9
+    },
+    "payment_info": {
+      "method": "apple_pay",
+      "amount": 4735.56,
+      "currency": "USD",
+      "status": "failed",
+      "transaction_id": "TXN4522451331",
+      "processed_at": "2025-01-13 21:28:53.846974"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-05-19 19:11:14.654442",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-05-20 15:11:14.654442",
+        "note": "Payment confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-05-20 18:11:14.654442",
+        "note": "Preparing items"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-05-22 18:11:14.654442",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-05-24 18:11:14.654442",
+        "note": "Package delivered"
+      }
+    ],
+    "notes": [],
+    "created_at": "2025-05-19 19:11:14.654442",
+    "updated_at": "2025-05-24 18:11:14.654442"
+  },
+  {
+    "id": 5,
+    "order_number": "ORD00000005",
+    "user_id": 1,
+    "user_email": "jennifer.everett@yahoo.com",
+    "order_date": "2025-07-24 22:57:47.144904",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 19,
+        "product_name": "HomeEssentials Coffee Maker",
+        "quantity": 1,
+        "unit_price": 158,
+        "discounted_price": 120.08,
+        "discount_percentage": 0.24,
+        "total_price": 120.08,
+        "sku": "HOM-000019",
+        "category": "Home & Garden"
+      },
+      {
+        "product_id": 27,
+        "product_name": "ActiveLife Protein Powder",
+        "quantity": 2,
+        "unit_price": 279,
+        "discounted_price": 279,
+        "discount_percentage": 0,
+        "total_price": 558,
+        "sku": "SPO-000027",
+        "category": "Sports"
+      },
+      {
+        "product_id": 3,
+        "product_name": "FutureTech Laptop",
+        "quantity": 3,
+        "unit_price": 876,
+        "discounted_price": 876,
+        "discount_percentage": 0,
+        "total_price": 2628,
+        "sku": "ELE-000003",
+        "category": "Electronics"
+      }
+    ],
+    "totals": {
+      "subtotal": 3306.08,
+      "tax_amount": 264.49,
+      "shipping_cost": 17.85,
+      "total": 3588.42
+    },
+    "shipping_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "USPS",
+      "service": "Ground",
+      "tracking_number": "USP681159906",
+      "estimated_delivery": "2025-09-03",
+      "shipping_cost": 17.85
+    },
+    "payment_info": {
+      "method": "paypal",
+      "amount": 3588.42,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN3605766701",
+      "processed_at": "2024-08-30 06:17:05.826389",
+      "paypal_transaction_id": "PAY537501364"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-07-24 22:57:47.144904",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-07-25 08:57:47.144904",
+        "note": "Payment confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-07-26 00:57:47.144904",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-07-29 00:57:47.144904",
+        "note": "Tracking number assigned"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-08-02 00:57:47.144904",
+        "note": "Delivery confirmed"
+      }
+    ],
+    "notes": [
+      "Delivery to front door"
+    ],
+    "created_at": "2025-07-24 22:57:47.144904",
+    "updated_at": "2025-08-02 00:57:47.144904"
+  },
+  {
+    "id": 6,
+    "order_number": "ORD00000006",
+    "user_id": 1,
+    "user_email": "jennifer.everett@yahoo.com",
+    "order_date": "2025-02-22 23:17:59.600826",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 17,
+        "product_name": "KnowledgeHub Textbook",
+        "quantity": 1,
+        "unit_price": 46.5,
+        "discounted_price": 46.5,
+        "discount_percentage": 0,
+        "total_price": 46.5,
+        "sku": "BOO-000017",
+        "category": "Books"
+      }
+    ],
+    "totals": {
+      "subtotal": 46.5,
+      "tax_amount": 3.72,
+      "shipping_cost": 19.08,
+      "total": 69.3
+    },
+    "shipping_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "DHL",
+      "service": "2-Day",
+      "tracking_number": "DHL313181760",
+      "estimated_delivery": "2025-08-29",
+      "shipping_cost": 19.08
+    },
+    "payment_info": {
+      "method": "debit_card",
+      "amount": 69.3,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN6213427294",
+      "processed_at": "2025-04-17 11:41:55.938429"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-02-22 23:17:59.600826",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-02-23 15:17:59.600826",
+        "note": "Order confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-02-24 16:17:59.600826",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-02-27 16:17:59.600826",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-03-06 16:17:59.600826",
+        "note": "Package delivered"
+      }
+    ],
+    "notes": [],
+    "created_at": "2025-02-22 23:17:59.600826",
+    "updated_at": "2025-03-06 16:17:59.600826"
+  },
+  {
+    "id": 7,
+    "order_number": "ORD00000007",
+    "user_id": 1,
+    "user_email": "jennifer.everett@yahoo.com",
+    "order_date": "2024-12-21 13:27:51.048405",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 4,
+        "product_name": "SmartLine Speaker",
+        "quantity": 3,
+        "unit_price": 1820,
+        "discounted_price": 1820,
+        "discount_percentage": 0,
+        "total_price": 5460,
+        "sku": "ELE-000004",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 29,
+        "product_name": "ActiveLife Water Bottle",
+        "quantity": 1,
+        "unit_price": 109,
+        "discounted_price": 109,
+        "discount_percentage": 0,
+        "total_price": 109,
+        "sku": "SPO-000029",
+        "category": "Sports"
+      }
+    ],
+    "totals": {
+      "subtotal": 5569,
+      "tax_amount": 445.52,
+      "shipping_cost": 14.23,
+      "total": 6028.75
+    },
+    "shipping_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "FedEx",
+      "service": "Standard",
+      "tracking_number": "FED839298960",
+      "estimated_delivery": "2025-08-29",
+      "shipping_cost": 14.23
+    },
+    "payment_info": {
+      "method": "paypal",
+      "amount": 6028.75,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN1526474566",
+      "processed_at": "2025-01-22 18:12:13.667640",
+      "paypal_transaction_id": "PAY477267223"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2024-12-21 13:27:51.048405",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2024-12-21 19:27:51.048405",
+        "note": "Payment confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2024-12-22 03:27:51.048405",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2024-12-25 03:27:51.048405",
+        "note": "Tracking number assigned"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2024-12-31 03:27:51.048405",
+        "note": "Order completed"
+      }
+    ],
+    "notes": [
+      "Fragile items - handle with care",
+      "Gift wrapping requested"
+    ],
+    "created_at": "2024-12-21 13:27:51.048405",
+    "updated_at": "2024-12-31 03:27:51.048405"
+  },
+  {
+    "id": 8,
+    "order_number": "ORD00000008",
+    "user_id": 1,
+    "user_email": "jennifer.everett@yahoo.com",
+    "order_date": "2025-07-13 10:38:03.681103",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 15,
+        "product_name": "WisdomBooks Science Fiction Plus",
+        "quantity": 1,
+        "unit_price": 15.0,
+        "discounted_price": 15.0,
+        "discount_percentage": 0,
+        "total_price": 15.0,
+        "sku": "BOO-000015",
+        "category": "Books"
+      },
+      {
+        "product_id": 1,
+        "product_name": "SmartLine Keyboard",
+        "quantity": 3,
+        "unit_price": 1962,
+        "discounted_price": 1962,
+        "discount_percentage": 0,
+        "total_price": 5886,
+        "sku": "ELE-000001",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 22,
+        "product_name": "ComfortZone Bedding Elite",
+        "quantity": 3,
+        "unit_price": 481,
+        "discounted_price": 481,
+        "discount_percentage": 0,
+        "total_price": 1443,
+        "sku": "HOM-000022",
+        "category": "Home & Garden"
+      },
+      {
+        "product_id": 29,
+        "product_name": "ActiveLife Water Bottle",
+        "quantity": 3,
+        "unit_price": 109,
+        "discounted_price": 87.2,
+        "discount_percentage": 0.2,
+        "total_price": 261.6,
+        "sku": "SPO-000029",
+        "category": "Sports"
+      },
+      {
+        "product_id": 25,
+        "product_name": "ActiveZone Protein Powder",
+        "quantity": 3,
+        "unit_price": 186,
+        "discounted_price": 186,
+        "discount_percentage": 0,
+        "total_price": 558,
+        "sku": "SPO-000025",
+        "category": "Sports"
+      }
+    ],
+    "totals": {
+      "subtotal": 8163.6,
+      "tax_amount": 653.09,
+      "shipping_cost": 21.37,
+      "total": 8838.06
+    },
+    "shipping_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "Amazon Logistics",
+      "service": "Standard",
+      "tracking_number": "AMA204940072",
+      "estimated_delivery": "2025-08-30",
+      "shipping_cost": 21.37
+    },
+    "payment_info": {
+      "method": "credit_card",
+      "amount": 8838.06,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN2716277701",
+      "processed_at": "2025-03-02 03:15:46.804010",
+      "card_type": "American Express",
+      "last_four": "7148"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-07-13 10:38:03.681103",
+        "note": "Payment pending"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-07-14 02:38:03.681103",
+        "note": "Processing started"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-07-15 18:38:03.681103",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-07-16 18:38:03.681103",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-07-22 18:38:03.681103",
+        "note": "Delivery confirmed"
+      }
+    ],
+    "notes": [],
+    "created_at": "2025-07-13 10:38:03.681103",
+    "updated_at": "2025-07-22 18:38:03.681103"
+  },
+  {
+    "id": 9,
+    "order_number": "ORD00000009",
+    "user_id": 2,
+    "user_email": "michael.ritter@yahoo.com",
+    "order_date": "2025-05-16 06:30:59.971084",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 5,
+        "product_name": "SmartLine Keyboard Pro",
+        "quantity": 1,
+        "unit_price": 1604,
+        "discounted_price": 1604,
+        "discount_percentage": 0,
+        "total_price": 1604,
+        "sku": "ELE-000005",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 23,
+        "product_name": "EverydayLiving Blender",
+        "quantity": 1,
+        "unit_price": 450,
+        "discounted_price": 450,
+        "discount_percentage": 0,
+        "total_price": 450,
+        "sku": "HOM-000023",
+        "category": "Home & Garden"
+      },
+      {
+        "product_id": 29,
+        "product_name": "ActiveLife Water Bottle",
+        "quantity": 2,
+        "unit_price": 109,
+        "discounted_price": 109,
+        "discount_percentage": 0,
+        "total_price": 218,
+        "sku": "SPO-000029",
+        "category": "Sports"
+      },
+      {
+        "product_id": 28,
+        "product_name": "ActiveZone Protein Powder Ultra",
+        "quantity": 2,
+        "unit_price": 38.0,
+        "discounted_price": 38.0,
+        "discount_percentage": 0,
+        "total_price": 76.0,
+        "sku": "SPO-000028",
+        "category": "Sports"
+      },
+      {
+        "product_id": 10,
+        "product_name": "StyleCraft Boots X",
+        "quantity": 1,
+        "unit_price": 46.5,
+        "discounted_price": 46.5,
+        "discount_percentage": 0,
+        "total_price": 46.5,
+        "sku": "CLO-000010",
+        "category": "Clothing"
+      }
+    ],
+    "totals": {
+      "subtotal": 2394.5,
+      "tax_amount": 191.56,
+      "shipping_cost": 11.52,
+      "total": 2597.58
+    },
+    "shipping_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "Amazon Logistics",
+      "service": "2-Day",
+      "tracking_number": "AMA266110520",
+      "estimated_delivery": "2025-08-28",
+      "shipping_cost": 11.52
+    },
+    "payment_info": {
+      "method": "paypal",
+      "amount": 2597.58,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN9300992218",
+      "processed_at": "2024-09-29 07:32:44.635835",
+      "paypal_transaction_id": "PAY227307626"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-05-16 06:30:59.971084",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-05-17 02:30:59.971084",
+        "note": "Order confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-05-18 05:30:59.971084",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-05-19 05:30:59.971084",
+        "note": "Package in transit"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-05-25 05:30:59.971084",
+        "note": "Delivery confirmed"
+      }
+    ],
+    "notes": [
+      "Fragile items - handle with care",
+      "Call before delivery"
+    ],
+    "created_at": "2025-05-16 06:30:59.971084",
+    "updated_at": "2025-05-25 05:30:59.971084"
+  },
+  {
+    "id": 10,
+    "order_number": "ORD00000010",
+    "user_id": 2,
+    "user_email": "michael.ritter@yahoo.com",
+    "order_date": "2025-03-15 19:46:40.522885",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 26,
+        "product_name": "PerformanceGear Bicycle",
+        "quantity": 2,
+        "unit_price": 129,
+        "discounted_price": 129,
+        "discount_percentage": 0,
+        "total_price": 258,
+        "sku": "SPO-000026",
+        "category": "Sports"
+      }
+    ],
+    "totals": {
+      "subtotal": 258,
+      "tax_amount": 20.64,
+      "shipping_cost": 8.69,
+      "total": 287.33
+    },
+    "shipping_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "FedEx",
+      "service": "Standard",
+      "tracking_number": "FED755431600",
+      "estimated_delivery": "2025-08-28",
+      "shipping_cost": 8.69
+    },
+    "payment_info": {
+      "method": "debit_card",
+      "amount": 287.33,
+      "currency": "USD",
+      "status": "failed",
+      "transaction_id": "TXN7392506911",
+      "processed_at": "2025-08-26 15:14:26.909343"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-03-15 19:46:40.522885",
+        "note": "Awaiting confirmation"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-03-15 22:46:40.522885",
+        "note": "Processing started"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-03-17 04:46:40.522885",
+        "note": "Preparing items"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-03-20 04:46:40.522885",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-03-27 04:46:40.522885",
+        "note": "Order completed"
+      }
+    ],
+    "notes": [
+      "Leave with neighbor if not home",
+      "Fragile items - handle with care"
+    ],
+    "created_at": "2025-03-15 19:46:40.522885",
+    "updated_at": "2025-03-27 04:46:40.522885"
+  },
+  {
+    "id": 11,
+    "order_number": "ORD00000011",
+    "user_id": 2,
+    "user_email": "michael.ritter@yahoo.com",
+    "order_date": "2025-03-08 15:06:43.390103",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 3,
+        "product_name": "FutureTech Laptop",
+        "quantity": 1,
+        "unit_price": 876,
+        "discounted_price": 876,
+        "discount_percentage": 0,
+        "total_price": 876,
+        "sku": "ELE-000003",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 8,
+        "product_name": "StyleCraft Jeans",
+        "quantity": 2,
+        "unit_price": 149,
+        "discounted_price": 149,
+        "discount_percentage": 0,
+        "total_price": 298,
+        "sku": "CLO-000008",
+        "category": "Clothing"
+      },
+      {
+        "product_id": 29,
+        "product_name": "ActiveLife Water Bottle",
+        "quantity": 3,
+        "unit_price": 109,
+        "discounted_price": 109,
+        "discount_percentage": 0,
+        "total_price": 327,
+        "sku": "SPO-000029",
+        "category": "Sports"
+      },
+      {
+        "product_id": 10,
+        "product_name": "StyleCraft Boots X",
+        "quantity": 1,
+        "unit_price": 46.5,
+        "discounted_price": 46.5,
+        "discount_percentage": 0,
+        "total_price": 46.5,
+        "sku": "CLO-000010",
+        "category": "Clothing"
+      },
+      {
+        "product_id": 28,
+        "product_name": "ActiveZone Protein Powder Ultra",
+        "quantity": 2,
+        "unit_price": 38.0,
+        "discounted_price": 38.0,
+        "discount_percentage": 0,
+        "total_price": 76.0,
+        "sku": "SPO-000028",
+        "category": "Sports"
+      }
+    ],
+    "totals": {
+      "subtotal": 1623.5,
+      "tax_amount": 129.88,
+      "shipping_cost": 26.96,
+      "total": 1780.34
+    },
+    "shipping_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "FedEx",
+      "service": "Standard",
+      "tracking_number": "FED207516266",
+      "estimated_delivery": "2025-09-03",
+      "shipping_cost": 26.96
+    },
+    "payment_info": {
+      "method": "debit_card",
+      "amount": 1780.34,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN8541676510",
+      "processed_at": "2024-12-09 13:34:56.342469"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-03-08 15:06:43.390103",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-03-09 08:06:43.390103",
+        "note": "Processing started"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-03-09 13:06:43.390103",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-03-12 13:06:43.390103",
+        "note": "Tracking number assigned"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-03-14 13:06:43.390103",
+        "note": "Order completed"
+      }
+    ],
+    "notes": [
+      "Call before delivery"
+    ],
+    "created_at": "2025-03-08 15:06:43.390103",
+    "updated_at": "2025-03-14 13:06:43.390103"
+  },
+  {
+    "id": 12,
+    "order_number": "ORD00000012",
+    "user_id": 2,
+    "user_email": "michael.ritter@yahoo.com",
+    "order_date": "2024-11-04 19:31:26.422403",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 11,
+        "product_name": "TrendSetter Shirt",
+        "quantity": 2,
+        "unit_price": 181,
+        "discounted_price": 181,
+        "discount_percentage": 0,
+        "total_price": 362,
+        "sku": "CLO-000011",
+        "category": "Clothing"
+      },
+      {
+        "product_id": 18,
+        "product_name": "ClearPath Cookbook",
+        "quantity": 2,
+        "unit_price": 19.5,
+        "discounted_price": 19.5,
+        "discount_percentage": 0,
+        "total_price": 39.0,
+        "sku": "BOO-000018",
+        "category": "Books"
+      },
+      {
+        "product_id": 26,
+        "product_name": "PerformanceGear Bicycle",
+        "quantity": 3,
+        "unit_price": 129,
+        "discounted_price": 129,
+        "discount_percentage": 0,
+        "total_price": 387,
+        "sku": "SPO-000026",
+        "category": "Sports"
+      },
+      {
+        "product_id": 13,
+        "product_name": "ClearPath Science Fiction",
+        "quantity": 1,
+        "unit_price": 76,
+        "discounted_price": 76,
+        "discount_percentage": 0,
+        "total_price": 76,
+        "sku": "BOO-000013",
+        "category": "Books"
+      },
+      {
+        "product_id": 16,
+        "product_name": "BrightMinds Biography Pro",
+        "quantity": 2,
+        "unit_price": 39.5,
+        "discounted_price": 39.5,
+        "discount_percentage": 0,
+        "total_price": 79.0,
+        "sku": "BOO-000016",
+        "category": "Books"
+      }
+    ],
+    "totals": {
+      "subtotal": 943.0,
+      "tax_amount": 75.44,
+      "shipping_cost": 8.45,
+      "total": 1026.89
+    },
+    "shipping_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "USPS",
+      "service": "Ground",
+      "tracking_number": "USP787668762",
+      "estimated_delivery": "2025-09-03",
+      "shipping_cost": 8.45
+    },
+    "payment_info": {
+      "method": "paypal",
+      "amount": 1026.89,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN7846483021",
+      "processed_at": "2024-12-09 06:35:40.821234",
+      "paypal_transaction_id": "PAY245346090"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2024-11-04 19:31:26.422403",
+        "note": "Awaiting confirmation"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2024-11-05 17:31:26.422403",
+        "note": "Order confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2024-11-06 08:31:26.422403",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2024-11-07 08:31:26.422403",
+        "note": "Package in transit"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2024-11-10 08:31:26.422403",
+        "note": "Delivery confirmed"
+      }
+    ],
+    "notes": [],
+    "created_at": "2024-11-04 19:31:26.422403",
+    "updated_at": "2024-11-10 08:31:26.422403"
+  },
+  {
+    "id": 13,
+    "order_number": "ORD00000013",
+    "user_id": 2,
+    "user_email": "michael.ritter@yahoo.com",
+    "order_date": "2024-10-13 13:05:09.733622",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 1,
+        "product_name": "SmartLine Keyboard",
+        "quantity": 3,
+        "unit_price": 1962,
+        "discounted_price": 1962,
+        "discount_percentage": 0,
+        "total_price": 5886,
+        "sku": "ELE-000001",
+        "category": "Electronics"
+      }
+    ],
+    "totals": {
+      "subtotal": 5886,
+      "tax_amount": 470.88,
+      "shipping_cost": 9.04,
+      "total": 6365.92
+    },
+    "shipping_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "DHL",
+      "service": "Next Day",
+      "tracking_number": "DHL523270831",
+      "estimated_delivery": "2025-09-01",
+      "shipping_cost": 9.04
+    },
+    "payment_info": {
+      "method": "paypal",
+      "amount": 6365.92,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN8711339643",
+      "processed_at": "2024-12-12 03:59:29.981087",
+      "paypal_transaction_id": "PAY596624068"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2024-10-13 13:05:09.733622",
+        "note": "Awaiting confirmation"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2024-10-14 13:05:09.733622",
+        "note": "Payment confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2024-10-15 08:05:09.733622",
+        "note": "Items collected"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2024-10-18 08:05:09.733622",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2024-10-21 08:05:09.733622",
+        "note": "Package delivered"
+      }
+    ],
+    "notes": [
+      "Fragile items - handle with care",
+      "Call before delivery"
+    ],
+    "created_at": "2024-10-13 13:05:09.733622",
+    "updated_at": "2024-10-21 08:05:09.733622"
+  },
+  {
+    "id": 14,
+    "order_number": "ORD00000014",
+    "user_id": 2,
+    "user_email": "michael.ritter@yahoo.com",
+    "order_date": "2025-05-27 16:12:00.153025",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 1,
+        "product_name": "SmartLine Keyboard",
+        "quantity": 2,
+        "unit_price": 1962,
+        "discounted_price": 1962,
+        "discount_percentage": 0,
+        "total_price": 3924,
+        "sku": "ELE-000001",
+        "category": "Electronics"
+      }
+    ],
+    "totals": {
+      "subtotal": 3924,
+      "tax_amount": 313.92,
+      "shipping_cost": 16.17,
+      "total": 4254.09
+    },
+    "shipping_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "USPS",
+      "service": "Ground",
+      "tracking_number": "USP289809527",
+      "estimated_delivery": "2025-08-30",
+      "shipping_cost": 16.17
+    },
+    "payment_info": {
+      "method": "paypal",
+      "amount": 4254.09,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN1493580406",
+      "processed_at": "2024-12-17 02:26:54.796949",
+      "paypal_transaction_id": "PAY723084793"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-05-27 16:12:00.153025",
+        "note": "Awaiting confirmation"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-05-28 16:12:00.153025",
+        "note": "Processing started"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-05-30 16:12:00.153025",
+        "note": "Items collected"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-06-02 16:12:00.153025",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-06-09 16:12:00.153025",
+        "note": "Delivery confirmed"
+      }
+    ],
+    "notes": [],
+    "created_at": "2025-05-27 16:12:00.153025",
+    "updated_at": "2025-06-09 16:12:00.153025"
+  },
+  {
+    "id": 15,
+    "order_number": "ORD00000015",
+    "user_id": 2,
+    "user_email": "michael.ritter@yahoo.com",
+    "order_date": "2025-06-20 17:10:57.852653",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 4,
+        "product_name": "SmartLine Speaker",
+        "quantity": 2,
+        "unit_price": 1820,
+        "discounted_price": 1820,
+        "discount_percentage": 0,
+        "total_price": 3640,
+        "sku": "ELE-000004",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 5,
+        "product_name": "SmartLine Keyboard Pro",
+        "quantity": 3,
+        "unit_price": 1604,
+        "discounted_price": 1604,
+        "discount_percentage": 0,
+        "total_price": 4812,
+        "sku": "ELE-000005",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 6,
+        "product_name": "TechPro Smartwatch",
+        "quantity": 2,
+        "unit_price": 965,
+        "discounted_price": 965,
+        "discount_percentage": 0,
+        "total_price": 1930,
+        "sku": "ELE-000006",
+        "category": "Electronics"
+      }
+    ],
+    "totals": {
+      "subtotal": 10382,
+      "tax_amount": 830.56,
+      "shipping_cost": 25.28,
+      "total": 11237.84
+    },
+    "shipping_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "UPS",
+      "service": "Next Day",
+      "tracking_number": "UPS341041916",
+      "estimated_delivery": "2025-08-30",
+      "shipping_cost": 25.28
+    },
+    "payment_info": {
+      "method": "paypal",
+      "amount": 11237.84,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN3677085334",
+      "processed_at": "2025-01-19 05:57:46.018948",
+      "paypal_transaction_id": "PAY458122590"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-06-20 17:10:57.852653",
+        "note": "Awaiting confirmation"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-06-21 06:10:57.852653",
+        "note": "Order confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-06-21 12:10:57.852653",
+        "note": "Preparing items"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-06-22 12:10:57.852653",
+        "note": "Package in transit"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-06-27 12:10:57.852653",
+        "note": "Order completed"
+      }
+    ],
+    "notes": [],
+    "created_at": "2025-06-20 17:10:57.852653",
+    "updated_at": "2025-06-27 12:10:57.852653"
+  },
+  {
+    "id": 16,
+    "order_number": "ORD00000016",
+    "user_id": 2,
+    "user_email": "michael.ritter@yahoo.com",
+    "order_date": "2025-08-13 02:29:25.205902",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 3,
+        "product_name": "FutureTech Laptop",
+        "quantity": 1,
+        "unit_price": 876,
+        "discounted_price": 797.16,
+        "discount_percentage": 0.09,
+        "total_price": 797.16,
+        "sku": "ELE-000003",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 28,
+        "product_name": "ActiveZone Protein Powder Ultra",
+        "quantity": 3,
+        "unit_price": 38.0,
+        "discounted_price": 38.0,
+        "discount_percentage": 0,
+        "total_price": 114.0,
+        "sku": "SPO-000028",
+        "category": "Sports"
+      },
+      {
+        "product_id": 9,
+        "product_name": "TrendSetter Pants",
+        "quantity": 1,
+        "unit_price": 158,
+        "discounted_price": 158,
+        "discount_percentage": 0,
+        "total_price": 158,
+        "sku": "CLO-000009",
+        "category": "Clothing"
+      }
+    ],
+    "totals": {
+      "subtotal": 1069.1599999999999,
+      "tax_amount": 85.53,
+      "shipping_cost": 12.22,
+      "total": 1166.91
+    },
+    "shipping_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "DHL",
+      "service": "2-Day",
+      "tracking_number": "DHL262191679",
+      "estimated_delivery": "2025-08-30",
+      "shipping_cost": 12.22
+    },
+    "payment_info": {
+      "method": "apple_pay",
+      "amount": 1166.91,
+      "currency": "USD",
+      "status": "failed",
+      "transaction_id": "TXN1458837372",
+      "processed_at": "2025-02-13 11:50:50.942176"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-08-13 02:29:25.205902",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-08-14 02:29:25.205902",
+        "note": "Payment confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-08-15 13:29:25.205902",
+        "note": "Preparing items"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-08-18 13:29:25.205902",
+        "note": "Package in transit"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-08-24 13:29:25.205902",
+        "note": "Delivery confirmed"
+      }
+    ],
+    "notes": [],
+    "created_at": "2025-08-13 02:29:25.205902",
+    "updated_at": "2025-08-24 13:29:25.205902"
+  },
+  {
+    "id": 17,
+    "order_number": "ORD00000017",
+    "user_id": 3,
+    "user_email": "steven.roberts@yahoo.com",
+    "order_date": "2024-10-11 08:25:27.170391",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 3,
+        "product_name": "FutureTech Laptop",
+        "quantity": 2,
+        "unit_price": 876,
+        "discounted_price": 876,
+        "discount_percentage": 0,
+        "total_price": 1752,
+        "sku": "ELE-000003",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 12,
+        "product_name": "StreetWear T-Shirt X",
+        "quantity": 1,
+        "unit_price": 192,
+        "discounted_price": 192,
+        "discount_percentage": 0,
+        "total_price": 192,
+        "sku": "CLO-000012",
+        "category": "Clothing"
+      }
+    ],
+    "totals": {
+      "subtotal": 1944,
+      "tax_amount": 155.52,
+      "shipping_cost": 7.07,
+      "total": 2106.59
+    },
+    "shipping_address": {
+      "street": "319 Emily Path",
+      "city": "Kirkburgh",
+      "state": "Wisconsin",
+      "postal_code": "77604",
+      "country": "MY",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "925 Nancy Gateway",
+      "city": "Cookshire",
+      "state": "Massachusetts",
+      "postal_code": "74121",
+      "country": "KG",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "DHL",
+      "service": "Standard",
+      "tracking_number": "DHL268610542",
+      "estimated_delivery": "2025-08-26",
+      "shipping_cost": 7.07
+    },
+    "payment_info": {
+      "method": "credit_card",
+      "amount": 2106.59,
+      "currency": "USD",
+      "status": "failed",
+      "transaction_id": "TXN5710803771",
+      "processed_at": "2025-06-21 10:37:49.938149",
+      "card_type": "Mastercard",
+      "last_four": "3603"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2024-10-11 08:25:27.170391",
+        "note": "Awaiting confirmation"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2024-10-12 08:25:27.170391",
+        "note": "Payment confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2024-10-12 12:25:27.170391",
+        "note": "Items collected"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2024-10-13 12:25:27.170391",
+        "note": "Tracking number assigned"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2024-10-16 12:25:27.170391",
+        "note": "Delivery confirmed"
+      }
+    ],
+    "notes": [],
+    "created_at": "2024-10-11 08:25:27.170391",
+    "updated_at": "2024-10-16 12:25:27.170391"
+  },
+  {
+    "id": 18,
+    "order_number": "ORD00000018",
+    "user_id": 3,
+    "user_email": "steven.roberts@yahoo.com",
+    "order_date": "2025-06-04 14:20:10.799539",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 17,
+        "product_name": "KnowledgeHub Textbook",
+        "quantity": 2,
+        "unit_price": 46.5,
+        "discounted_price": 46.5,
+        "discount_percentage": 0,
+        "total_price": 93.0,
+        "sku": "BOO-000017",
+        "category": "Books"
+      },
+      {
+        "product_id": 6,
+        "product_name": "TechPro Smartwatch",
+        "quantity": 3,
+        "unit_price": 965,
+        "discounted_price": 965,
+        "discount_percentage": 0,
+        "total_price": 2895,
+        "sku": "ELE-000006",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 3,
+        "product_name": "FutureTech Laptop",
+        "quantity": 1,
+        "unit_price": 876,
+        "discounted_price": 876,
+        "discount_percentage": 0,
+        "total_price": 876,
+        "sku": "ELE-000003",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 11,
+        "product_name": "TrendSetter Shirt",
+        "quantity": 1,
+        "unit_price": 181,
+        "discounted_price": 181,
+        "discount_percentage": 0,
+        "total_price": 181,
+        "sku": "CLO-000011",
+        "category": "Clothing"
+      }
+    ],
+    "totals": {
+      "subtotal": 4045.0,
+      "tax_amount": 323.6,
+      "shipping_cost": 15.2,
+      "total": 4383.8
+    },
+    "shipping_address": {
+      "street": "319 Emily Path",
+      "city": "Kirkburgh",
+      "state": "Wisconsin",
+      "postal_code": "77604",
+      "country": "MY",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "925 Nancy Gateway",
+      "city": "Cookshire",
+      "state": "Massachusetts",
+      "postal_code": "74121",
+      "country": "KG",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "Amazon Logistics",
+      "service": "2-Day",
+      "tracking_number": "AMA417822504",
+      "estimated_delivery": "2025-09-03",
+      "shipping_cost": 15.2
+    },
+    "payment_info": {
+      "method": "google_pay",
+      "amount": 4383.8,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN8078952186",
+      "processed_at": "2025-07-06 16:25:38.701727"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-06-04 14:20:10.799539",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-06-05 05:20:10.799539",
+        "note": "Order confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-06-06 19:20:10.799539",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-06-08 19:20:10.799539",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-06-13 19:20:10.799539",
+        "note": "Package delivered"
+      }
+    ],
+    "notes": [],
+    "created_at": "2025-06-04 14:20:10.799539",
+    "updated_at": "2025-06-13 19:20:10.799539"
+  },
+  {
+    "id": 19,
+    "order_number": "ORD00000019",
+    "user_id": 4,
+    "user_email": "shelia.guerrero@gmail.com",
+    "order_date": "2024-09-12 21:35:57.440008",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 23,
+        "product_name": "EverydayLiving Blender",
+        "quantity": 1,
+        "unit_price": 450,
+        "discounted_price": 450,
+        "discount_percentage": 0,
+        "total_price": 450,
+        "sku": "HOM-000023",
+        "category": "Home & Garden"
+      },
+      {
+        "product_id": 11,
+        "product_name": "TrendSetter Shirt",
+        "quantity": 1,
+        "unit_price": 181,
+        "discounted_price": 181,
+        "discount_percentage": 0,
+        "total_price": 181,
+        "sku": "CLO-000011",
+        "category": "Clothing"
+      },
+      {
+        "product_id": 18,
+        "product_name": "ClearPath Cookbook",
+        "quantity": 2,
+        "unit_price": 19.5,
+        "discounted_price": 19.5,
+        "discount_percentage": 0,
+        "total_price": 39.0,
+        "sku": "BOO-000018",
+        "category": "Books"
+      },
+      {
+        "product_id": 7,
+        "product_name": "CasualPlus Dress Elite",
+        "quantity": 3,
+        "unit_price": 71,
+        "discounted_price": 71,
+        "discount_percentage": 0,
+        "total_price": 213,
+        "sku": "CLO-000007",
+        "category": "Clothing"
+      },
+      {
+        "product_id": 3,
+        "product_name": "FutureTech Laptop",
+        "quantity": 1,
+        "unit_price": 876,
+        "discounted_price": 876,
+        "discount_percentage": 0,
+        "total_price": 876,
+        "sku": "ELE-000003",
+        "category": "Electronics"
+      }
+    ],
+    "totals": {
+      "subtotal": 1759.0,
+      "tax_amount": 140.72,
+      "shipping_cost": 16.72,
+      "total": 1916.44
+    },
+    "shipping_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "DHL",
+      "service": "2-Day",
+      "tracking_number": "DHL784569009",
+      "estimated_delivery": "2025-08-28",
+      "shipping_cost": 16.72
+    },
+    "payment_info": {
+      "method": "google_pay",
+      "amount": 1916.44,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN6603538143",
+      "processed_at": "2024-09-08 18:15:44.328872"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2024-09-12 21:35:57.440008",
+        "note": "Payment pending"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2024-09-13 05:35:57.440008",
+        "note": "Order confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2024-09-15 05:35:57.440008",
+        "note": "Preparing items"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2024-09-16 05:35:57.440008",
+        "note": "Tracking number assigned"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2024-09-20 05:35:57.440008",
+        "note": "Delivery confirmed"
+      }
+    ],
+    "notes": [],
+    "created_at": "2024-09-12 21:35:57.440008",
+    "updated_at": "2024-09-20 05:35:57.440008"
+  },
+  {
+    "id": 20,
+    "order_number": "ORD00000020",
+    "user_id": 4,
+    "user_email": "shelia.guerrero@gmail.com",
+    "order_date": "2024-12-26 23:29:59.559431",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 25,
+        "product_name": "ActiveZone Protein Powder",
+        "quantity": 2,
+        "unit_price": 186,
+        "discounted_price": 174.84,
+        "discount_percentage": 0.06,
+        "total_price": 349.68,
+        "sku": "SPO-000025",
+        "category": "Sports"
+      },
+      {
+        "product_id": 18,
+        "product_name": "ClearPath Cookbook",
+        "quantity": 3,
+        "unit_price": 19.5,
+        "discounted_price": 19.5,
+        "discount_percentage": 0,
+        "total_price": 58.5,
+        "sku": "BOO-000018",
+        "category": "Books"
+      },
+      {
+        "product_id": 3,
+        "product_name": "FutureTech Laptop",
+        "quantity": 2,
+        "unit_price": 876,
+        "discounted_price": 876,
+        "discount_percentage": 0,
+        "total_price": 1752,
+        "sku": "ELE-000003",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 12,
+        "product_name": "StreetWear T-Shirt X",
+        "quantity": 3,
+        "unit_price": 192,
+        "discounted_price": 192,
+        "discount_percentage": 0,
+        "total_price": 576,
+        "sku": "CLO-000012",
+        "category": "Clothing"
+      },
+      {
+        "product_id": 14,
+        "product_name": "BrightMinds Novel",
+        "quantity": 2,
+        "unit_price": 56,
+        "discounted_price": 56,
+        "discount_percentage": 0,
+        "total_price": 112,
+        "sku": "BOO-000014",
+        "category": "Books"
+      }
+    ],
+    "totals": {
+      "subtotal": 2848.18,
+      "tax_amount": 227.85,
+      "shipping_cost": 18.44,
+      "total": 3094.47
+    },
+    "shipping_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "UPS",
+      "service": "2-Day",
+      "tracking_number": "UPS158538418",
+      "estimated_delivery": "2025-08-30",
+      "shipping_cost": 18.44
+    },
+    "payment_info": {
+      "method": "credit_card",
+      "amount": 3094.47,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN7382183985",
+      "processed_at": "2025-05-23 10:46:02.881713",
+      "card_type": "American Express",
+      "last_four": "8066"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2024-12-26 23:29:59.559431",
+        "note": "Payment pending"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2024-12-27 00:29:59.559431",
+        "note": "Processing started"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2024-12-27 03:29:59.559431",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2024-12-29 03:29:59.559431",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-01-02 03:29:59.559431",
+        "note": "Order completed"
+      }
+    ],
+    "notes": [
+      "Leave with neighbor if not home",
+      "Call before delivery"
+    ],
+    "created_at": "2024-12-26 23:29:59.559431",
+    "updated_at": "2025-01-02 03:29:59.559431"
+  },
+  {
+    "id": 21,
+    "order_number": "ORD00000021",
+    "user_id": 4,
+    "user_email": "shelia.guerrero@gmail.com",
+    "order_date": "2025-01-31 11:53:42.462095",
+    "status": "returned",
+    "items": [
+      {
+        "product_id": 18,
+        "product_name": "ClearPath Cookbook",
+        "quantity": 1,
+        "unit_price": 19.5,
+        "discounted_price": 19.5,
+        "discount_percentage": 0,
+        "total_price": 19.5,
+        "sku": "BOO-000018",
+        "category": "Books"
+      },
+      {
+        "product_id": 6,
+        "product_name": "TechPro Smartwatch",
+        "quantity": 3,
+        "unit_price": 965,
+        "discounted_price": 965,
+        "discount_percentage": 0,
+        "total_price": 2895,
+        "sku": "ELE-000006",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 29,
+        "product_name": "ActiveLife Water Bottle",
+        "quantity": 3,
+        "unit_price": 109,
+        "discounted_price": 109,
+        "discount_percentage": 0,
+        "total_price": 327,
+        "sku": "SPO-000029",
+        "category": "Sports"
+      }
+    ],
+    "totals": {
+      "subtotal": 3241.5,
+      "tax_amount": 259.32,
+      "shipping_cost": 17.89,
+      "total": 3518.71
+    },
+    "shipping_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "Amazon Logistics",
+      "service": "Ground",
+      "tracking_number": "AMA966850729",
+      "estimated_delivery": "2025-08-28",
+      "shipping_cost": 17.89
+    },
+    "payment_info": {
+      "method": "google_pay",
+      "amount": 3518.71,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN7543977561",
+      "processed_at": "2024-09-01 11:15:29.986250"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-01-31 11:53:42.462095",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-02-01 07:53:42.462095",
+        "note": "Processing started"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-02-02 00:53:42.462095",
+        "note": "Items collected"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-02-03 00:53:42.462095",
+        "note": "Tracking number assigned"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-02-08 00:53:42.462095",
+        "note": "Order completed"
+      },
+      {
+        "status": "returned",
+        "timestamp": "2025-03-03 00:53:42.462095",
+        "note": "Item returned"
+      }
+    ],
+    "notes": [
+      "Business address - deliver during office hours",
+      "Customer requested expedited shipping"
+    ],
+    "created_at": "2025-01-31 11:53:42.462095",
+    "updated_at": "2025-03-03 00:53:42.462095"
+  },
+  {
+    "id": 22,
+    "order_number": "ORD00000022",
+    "user_id": 4,
+    "user_email": "shelia.guerrero@gmail.com",
+    "order_date": "2025-04-29 12:15:20.750314",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 23,
+        "product_name": "EverydayLiving Blender",
+        "quantity": 1,
+        "unit_price": 450,
+        "discounted_price": 450,
+        "discount_percentage": 0,
+        "total_price": 450,
+        "sku": "HOM-000023",
+        "category": "Home & Garden"
+      },
+      {
+        "product_id": 25,
+        "product_name": "ActiveZone Protein Powder",
+        "quantity": 2,
+        "unit_price": 186,
+        "discounted_price": 186,
+        "discount_percentage": 0,
+        "total_price": 372,
+        "sku": "SPO-000025",
+        "category": "Sports"
+      },
+      {
+        "product_id": 19,
+        "product_name": "HomeEssentials Coffee Maker",
+        "quantity": 1,
+        "unit_price": 158,
+        "discounted_price": 158,
+        "discount_percentage": 0,
+        "total_price": 158,
+        "sku": "HOM-000019",
+        "category": "Home & Garden"
+      }
+    ],
+    "totals": {
+      "subtotal": 980,
+      "tax_amount": 78.4,
+      "shipping_cost": 23.29,
+      "total": 1081.69
+    },
+    "shipping_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "FedEx",
+      "service": "Ground",
+      "tracking_number": "FED108554617",
+      "estimated_delivery": "2025-09-01",
+      "shipping_cost": 23.29
+    },
+    "payment_info": {
+      "method": "paypal",
+      "amount": 1081.69,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN2439283812",
+      "processed_at": "2025-01-31 13:58:53.792018",
+      "paypal_transaction_id": "PAY774246377"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-04-29 12:15:20.750314",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-04-30 10:15:20.750314",
+        "note": "Order confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-05-01 23:15:20.750314",
+        "note": "Items collected"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-05-03 23:15:20.750314",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-05-07 23:15:20.750314",
+        "note": "Delivery confirmed"
+      }
+    ],
+    "notes": [
+      "Customer requested expedited shipping",
+      "Gift wrapping requested"
+    ],
+    "created_at": "2025-04-29 12:15:20.750314",
+    "updated_at": "2025-05-07 23:15:20.750314"
+  },
+  {
+    "id": 23,
+    "order_number": "ORD00000023",
+    "user_id": 4,
+    "user_email": "shelia.guerrero@gmail.com",
+    "order_date": "2024-12-01 09:01:44.262553",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 6,
+        "product_name": "TechPro Smartwatch",
+        "quantity": 3,
+        "unit_price": 965,
+        "discounted_price": 965,
+        "discount_percentage": 0,
+        "total_price": 2895,
+        "sku": "ELE-000006",
+        "category": "Electronics"
+      }
+    ],
+    "totals": {
+      "subtotal": 2895,
+      "tax_amount": 231.6,
+      "shipping_cost": 28.88,
+      "total": 3155.48
+    },
+    "shipping_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "DHL",
+      "service": "Express",
+      "tracking_number": "DHL419313555",
+      "estimated_delivery": "2025-09-02",
+      "shipping_cost": 28.88
+    },
+    "payment_info": {
+      "method": "debit_card",
+      "amount": 3155.48,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN6108456298",
+      "processed_at": "2024-11-08 21:26:48.452055"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2024-12-01 09:01:44.262553",
+        "note": "Payment pending"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2024-12-01 19:01:44.262553",
+        "note": "Processing started"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2024-12-03 13:01:44.262553",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2024-12-06 13:01:44.262553",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2024-12-10 13:01:44.262553",
+        "note": "Order completed"
+      }
+    ],
+    "notes": [],
+    "created_at": "2024-12-01 09:01:44.262553",
+    "updated_at": "2024-12-10 13:01:44.262553"
+  },
+  {
+    "id": 24,
+    "order_number": "ORD00000024",
+    "user_id": 4,
+    "user_email": "shelia.guerrero@gmail.com",
+    "order_date": "2025-08-11 04:47:14.934666",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 20,
+        "product_name": "HomeCraft Furniture",
+        "quantity": 3,
+        "unit_price": 102,
+        "discounted_price": 102,
+        "discount_percentage": 0,
+        "total_price": 306,
+        "sku": "HOM-000020",
+        "category": "Home & Garden"
+      },
+      {
+        "product_id": 16,
+        "product_name": "BrightMinds Biography Pro",
+        "quantity": 3,
+        "unit_price": 39.5,
+        "discounted_price": 39.5,
+        "discount_percentage": 0,
+        "total_price": 118.5,
+        "sku": "BOO-000016",
+        "category": "Books"
+      },
+      {
+        "product_id": 8,
+        "product_name": "StyleCraft Jeans",
+        "quantity": 1,
+        "unit_price": 149,
+        "discounted_price": 149,
+        "discount_percentage": 0,
+        "total_price": 149,
+        "sku": "CLO-000008",
+        "category": "Clothing"
+      },
+      {
+        "product_id": 13,
+        "product_name": "ClearPath Science Fiction",
+        "quantity": 1,
+        "unit_price": 76,
+        "discounted_price": 76,
+        "discount_percentage": 0,
+        "total_price": 76,
+        "sku": "BOO-000013",
+        "category": "Books"
+      }
+    ],
+    "totals": {
+      "subtotal": 649.5,
+      "tax_amount": 51.96,
+      "shipping_cost": 16.99,
+      "total": 718.45
+    },
+    "shipping_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "Amazon Logistics",
+      "service": "Next Day",
+      "tracking_number": "AMA942577387",
+      "estimated_delivery": "2025-08-28",
+      "shipping_cost": 16.99
+    },
+    "payment_info": {
+      "method": "credit_card",
+      "amount": 718.45,
+      "currency": "USD",
+      "status": "failed",
+      "transaction_id": "TXN2955499033",
+      "processed_at": "2025-08-13 17:49:55.477649",
+      "card_type": "Visa",
+      "last_four": "1109"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-08-11 04:47:14.934666",
+        "note": "Awaiting confirmation"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-08-11 23:47:14.934666",
+        "note": "Payment confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-08-12 21:47:14.934666",
+        "note": "Items collected"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-08-15 21:47:14.934666",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-08-22 21:47:14.934666",
+        "note": "Delivery confirmed"
+      }
+    ],
+    "notes": [],
+    "created_at": "2025-08-11 04:47:14.934666",
+    "updated_at": "2025-08-22 21:47:14.934666"
+  },
+  {
+    "id": 25,
+    "order_number": "ORD00000025",
+    "user_id": 4,
+    "user_email": "shelia.guerrero@gmail.com",
+    "order_date": "2024-09-16 15:52:15.752050",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 24,
+        "product_name": "PracticalLiving Kitchen Utensils",
+        "quantity": 2,
+        "unit_price": 394,
+        "discounted_price": 394,
+        "discount_percentage": 0,
+        "total_price": 788,
+        "sku": "HOM-000024",
+        "category": "Home & Garden"
+      },
+      {
+        "product_id": 12,
+        "product_name": "StreetWear T-Shirt X",
+        "quantity": 2,
+        "unit_price": 192,
+        "discounted_price": 178.56,
+        "discount_percentage": 0.07,
+        "total_price": 357.12,
+        "sku": "CLO-000012",
+        "category": "Clothing"
+      },
+      {
+        "product_id": 21,
+        "product_name": "ComfortZone Bedding",
+        "quantity": 3,
+        "unit_price": 186,
+        "discounted_price": 186,
+        "discount_percentage": 0,
+        "total_price": 558,
+        "sku": "HOM-000021",
+        "category": "Home & Garden"
+      },
+      {
+        "product_id": 17,
+        "product_name": "KnowledgeHub Textbook",
+        "quantity": 2,
+        "unit_price": 46.5,
+        "discounted_price": 46.5,
+        "discount_percentage": 0,
+        "total_price": 93.0,
+        "sku": "BOO-000017",
+        "category": "Books"
+      }
+    ],
+    "totals": {
+      "subtotal": 1796.12,
+      "tax_amount": 143.69,
+      "shipping_cost": 25.68,
+      "total": 1965.49
+    },
+    "shipping_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "UPS",
+      "service": "Ground",
+      "tracking_number": "UPS672657758",
+      "estimated_delivery": "2025-09-02",
+      "shipping_cost": 25.68
+    },
+    "payment_info": {
+      "method": "credit_card",
+      "amount": 1965.49,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN6528313125",
+      "processed_at": "2025-05-02 15:16:38.067828",
+      "card_type": "Visa",
+      "last_four": "8956"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2024-09-16 15:52:15.752050",
+        "note": "Order received"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2024-09-17 12:52:15.752050",
+        "note": "Order confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2024-09-19 03:52:15.752050",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2024-09-22 03:52:15.752050",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2024-09-27 03:52:15.752050",
+        "note": "Package delivered"
+      }
+    ],
+    "notes": [],
+    "created_at": "2024-09-16 15:52:15.752050",
+    "updated_at": "2024-09-27 03:52:15.752050"
+  },
+  {
+    "id": 26,
+    "order_number": "ORD00000026",
+    "user_id": 5,
+    "user_email": "virginia.lopez@hotmail.com",
+    "order_date": "2025-08-05 11:12:17.059481",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 10,
+        "product_name": "StyleCraft Boots X",
+        "quantity": 2,
+        "unit_price": 46.5,
+        "discounted_price": 41.38,
+        "discount_percentage": 0.11,
+        "total_price": 82.76,
+        "sku": "CLO-000010",
+        "category": "Clothing"
+      },
+      {
+        "product_id": 22,
+        "product_name": "ComfortZone Bedding Elite",
+        "quantity": 3,
+        "unit_price": 481,
+        "discounted_price": 481,
+        "discount_percentage": 0,
+        "total_price": 1443,
+        "sku": "HOM-000022",
+        "category": "Home & Garden"
+      }
+    ],
+    "totals": {
+      "subtotal": 1525.76,
+      "tax_amount": 122.06,
+      "shipping_cost": 18.28,
+      "total": 1666.1
+    },
+    "shipping_address": {
+      "street": "19375 Martin Springs Suite 770",
+      "city": "Juarezmouth",
+      "state": "Oregon",
+      "postal_code": "97449",
+      "country": "KW",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "1921 Brittany Vista Suite 619",
+      "city": "South Joshualand",
+      "state": "Montana",
+      "postal_code": "74520",
+      "country": "MN",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "UPS",
+      "service": "Ground",
+      "tracking_number": "UPS588911356",
+      "estimated_delivery": "2025-08-27",
+      "shipping_cost": 18.28
+    },
+    "payment_info": {
+      "method": "apple_pay",
+      "amount": 1666.1,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN6329250523",
+      "processed_at": "2025-01-27 08:49:12.423579"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-08-05 11:12:17.059481",
+        "note": "Awaiting confirmation"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-08-06 00:12:17.059481",
+        "note": "Order confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-08-07 07:12:17.059481",
+        "note": "Items collected"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-08-08 07:12:17.059481",
+        "note": "Package in transit"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-08-11 07:12:17.059481",
+        "note": "Package delivered"
+      }
+    ],
+    "notes": [
+      "Leave with neighbor if not home"
+    ],
+    "created_at": "2025-08-05 11:12:17.059481",
+    "updated_at": "2025-08-11 07:12:17.059481"
+  },
+  {
+    "id": 27,
+    "order_number": "ORD00000027",
+    "user_id": 5,
+    "user_email": "virginia.lopez@hotmail.com",
+    "order_date": "2025-01-26 08:48:49.784710",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 27,
+        "product_name": "ActiveLife Protein Powder",
+        "quantity": 3,
+        "unit_price": 279,
+        "discounted_price": 279,
+        "discount_percentage": 0,
+        "total_price": 837,
+        "sku": "SPO-000027",
+        "category": "Sports"
+      },
+      {
+        "product_id": 30,
+        "product_name": "EndurancePro Tennis Racket",
+        "quantity": 2,
+        "unit_price": 250,
+        "discounted_price": 250,
+        "discount_percentage": 0,
+        "total_price": 500,
+        "sku": "SPO-000030",
+        "category": "Sports"
+      },
+      {
+        "product_id": 29,
+        "product_name": "ActiveLife Water Bottle",
+        "quantity": 1,
+        "unit_price": 109,
+        "discounted_price": 109,
+        "discount_percentage": 0,
+        "total_price": 109,
+        "sku": "SPO-000029",
+        "category": "Sports"
+      },
+      {
+        "product_id": 16,
+        "product_name": "BrightMinds Biography Pro",
+        "quantity": 1,
+        "unit_price": 39.5,
+        "discounted_price": 39.5,
+        "discount_percentage": 0,
+        "total_price": 39.5,
+        "sku": "BOO-000016",
+        "category": "Books"
+      },
+      {
+        "product_id": 9,
+        "product_name": "TrendSetter Pants",
+        "quantity": 3,
+        "unit_price": 158,
+        "discounted_price": 158,
+        "discount_percentage": 0,
+        "total_price": 474,
+        "sku": "CLO-000009",
+        "category": "Clothing"
+      }
+    ],
+    "totals": {
+      "subtotal": 1959.5,
+      "tax_amount": 156.76,
+      "shipping_cost": 15.25,
+      "total": 2131.51
+    },
+    "shipping_address": {
+      "street": "19375 Martin Springs Suite 770",
+      "city": "Juarezmouth",
+      "state": "Oregon",
+      "postal_code": "97449",
+      "country": "KW",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "1921 Brittany Vista Suite 619",
+      "city": "South Joshualand",
+      "state": "Montana",
+      "postal_code": "74520",
+      "country": "MN",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "USPS",
+      "service": "Express",
+      "tracking_number": "USP610826394",
+      "estimated_delivery": "2025-08-31",
+      "shipping_cost": 15.25
+    },
+    "payment_info": {
+      "method": "paypal",
+      "amount": 2131.51,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN5776972222",
+      "processed_at": "2025-02-13 18:59:16.434571",
+      "paypal_transaction_id": "PAY953222424"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-01-26 08:48:49.784710",
+        "note": "Awaiting confirmation"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-01-26 22:48:49.784710",
+        "note": "Processing started"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-01-27 17:48:49.784710",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-01-30 17:48:49.784710",
+        "note": "Package in transit"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-02-01 17:48:49.784710",
+        "note": "Order completed"
+      }
+    ],
+    "notes": [],
+    "created_at": "2025-01-26 08:48:49.784710",
+    "updated_at": "2025-02-01 17:48:49.784710"
+  },
+  {
+    "id": 28,
+    "order_number": "ORD00000028",
+    "user_id": 5,
+    "user_email": "virginia.lopez@hotmail.com",
+    "order_date": "2025-04-03 20:09:46.812666",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 3,
+        "product_name": "FutureTech Laptop",
+        "quantity": 1,
+        "unit_price": 876,
+        "discounted_price": 876,
+        "discount_percentage": 0,
+        "total_price": 876,
+        "sku": "ELE-000003",
+        "category": "Electronics"
+      },
+      {
+        "product_id": 27,
+        "product_name": "ActiveLife Protein Powder",
+        "quantity": 3,
+        "unit_price": 279,
+        "discounted_price": 279,
+        "discount_percentage": 0,
+        "total_price": 837,
+        "sku": "SPO-000027",
+        "category": "Sports"
+      },
+      {
+        "product_id": 2,
+        "product_name": "InnovateTech Monitor",
+        "quantity": 1,
+        "unit_price": 178,
+        "discounted_price": 178,
+        "discount_percentage": 0,
+        "total_price": 178,
+        "sku": "ELE-000002",
+        "category": "Electronics"
+      }
+    ],
+    "totals": {
+      "subtotal": 1891,
+      "tax_amount": 151.28,
+      "shipping_cost": 6.21,
+      "total": 2048.49
+    },
+    "shipping_address": {
+      "street": "19375 Martin Springs Suite 770",
+      "city": "Juarezmouth",
+      "state": "Oregon",
+      "postal_code": "97449",
+      "country": "KW",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "1921 Brittany Vista Suite 619",
+      "city": "South Joshualand",
+      "state": "Montana",
+      "postal_code": "74520",
+      "country": "MN",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "DHL",
+      "service": "Next Day",
+      "tracking_number": "DHL871801382",
+      "estimated_delivery": "2025-08-31",
+      "shipping_cost": 6.21
+    },
+    "payment_info": {
+      "method": "credit_card",
+      "amount": 2048.49,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN8756501143",
+      "processed_at": "2025-04-05 12:10:37.529128",
+      "card_type": "American Express",
+      "last_four": "1397"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-04-03 20:09:46.812666",
+        "note": "Payment pending"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-04-04 03:09:46.812666",
+        "note": "Payment confirmed"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-04-04 14:09:46.812666",
+        "note": "Items collected"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-04-06 14:09:46.812666",
+        "note": "Order shipped"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-04-10 14:09:46.812666",
+        "note": "Delivery confirmed"
+      }
+    ],
+    "notes": [
+      "Fragile items - handle with care",
+      "Delivery to front door"
+    ],
+    "created_at": "2025-04-03 20:09:46.812666",
+    "updated_at": "2025-04-10 14:09:46.812666"
+  },
+  {
+    "id": 29,
+    "order_number": "ORD00000029",
+    "user_id": 5,
+    "user_email": "virginia.lopez@hotmail.com",
+    "order_date": "2025-01-11 20:01:50.072988",
+    "status": "delivered",
+    "items": [
+      {
+        "product_id": 28,
+        "product_name": "ActiveZone Protein Powder Ultra",
+        "quantity": 3,
+        "unit_price": 38.0,
+        "discounted_price": 38.0,
+        "discount_percentage": 0,
+        "total_price": 114.0,
+        "sku": "SPO-000028",
+        "category": "Sports"
+      },
+      {
+        "product_id": 16,
+        "product_name": "BrightMinds Biography Pro",
+        "quantity": 2,
+        "unit_price": 39.5,
+        "discounted_price": 39.5,
+        "discount_percentage": 0,
+        "total_price": 79.0,
+        "sku": "BOO-000016",
+        "category": "Books"
+      },
+      {
+        "product_id": 12,
+        "product_name": "StreetWear T-Shirt X",
+        "quantity": 2,
+        "unit_price": 192,
+        "discounted_price": 192,
+        "discount_percentage": 0,
+        "total_price": 384,
+        "sku": "CLO-000012",
+        "category": "Clothing"
+      },
+      {
+        "product_id": 3,
+        "product_name": "FutureTech Laptop",
+        "quantity": 2,
+        "unit_price": 876,
+        "discounted_price": 876,
+        "discount_percentage": 0,
+        "total_price": 1752,
+        "sku": "ELE-000003",
+        "category": "Electronics"
+      }
+    ],
+    "totals": {
+      "subtotal": 2329.0,
+      "tax_amount": 186.32,
+      "shipping_cost": 13.5,
+      "total": 2528.82
+    },
+    "shipping_address": {
+      "street": "19375 Martin Springs Suite 770",
+      "city": "Juarezmouth",
+      "state": "Oregon",
+      "postal_code": "97449",
+      "country": "KW",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "1921 Brittany Vista Suite 619",
+      "city": "South Joshualand",
+      "state": "Montana",
+      "postal_code": "74520",
+      "country": "MN",
+      "is_default": true
+    },
+    "shipping_info": {
+      "carrier": "UPS",
+      "service": "Ground",
+      "tracking_number": "UPS729218508",
+      "estimated_delivery": "2025-08-30",
+      "shipping_cost": 13.5
+    },
+    "payment_info": {
+      "method": "credit_card",
+      "amount": 2528.82,
+      "currency": "USD",
+      "status": "completed",
+      "transaction_id": "TXN6181336284",
+      "processed_at": "2025-07-19 04:37:17.639735",
+      "card_type": "American Express",
+      "last_four": "6386"
+    },
+    "status_history": [
+      {
+        "status": "pending",
+        "timestamp": "2025-01-11 20:01:50.072988",
+        "note": "Awaiting confirmation"
+      },
+      {
+        "status": "confirmed",
+        "timestamp": "2025-01-12 08:01:50.072988",
+        "note": "Processing started"
+      },
+      {
+        "status": "processing",
+        "timestamp": "2025-01-12 10:01:50.072988",
+        "note": "Packaging in progress"
+      },
+      {
+        "status": "shipped",
+        "timestamp": "2025-01-15 10:01:50.072988",
+        "note": "Package in transit"
+      },
+      {
+        "status": "delivered",
+        "timestamp": "2025-01-20 10:01:50.072988",
+        "note": "Order completed"
+      }
+    ],
+    "notes": [
+      "Delivery to front door"
+    ],
+    "created_at": "2025-01-11 20:01:50.072988",
+    "updated_at": "2025-01-20 10:01:50.072988"
+  }
+]

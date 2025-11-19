@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinIO File Manager - SPA Demo</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>MinIO File Manager</h1>
+            <nav>
+                <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+                <button class="nav-btn" data-view="upload">Upload</button>
+                <button class="nav-btn" data-view="files">Files</button>
+                <button class="nav-btn" data-view="settings">Settings</button>
+            </nav>
+        </header>
+
+        <main id="content">
+            <!-- Content will be dynamically loaded here -->
+        </main>
+
+        <div id="notification" class="notification hidden"></div>
+    </div>
+
+    <!-- Templates -->
+    <template id="dashboard-template">
+        <div class="dashboard">
+            <h2>Dashboard</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Files</h3>
+                    <p class="stat-value" id="total-files">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Storage Used</h3>
+                    <p class="stat-value" id="storage-used">0 MB</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Last Upload</h3>
+                    <p class="stat-value" id="last-upload">Never</p>
+                </div>
+            </div>
+            <div class="recent-files">
+                <h3>Recent Files</h3>
+                <ul id="recent-files-list"></ul>
+            </div>
+        </div>
+    </template>
+
+    <template id="upload-template">
+        <div class="upload-view">
+            <h2>Upload Files</h2>
+            <div class="upload-area" id="drop-zone">
+                <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <p>Drag and drop files here or click to browse</p>
+                <input type="file" id="file-input" multiple hidden>
+                <button class="btn-primary" id="browse-btn">Browse Files</button>
+            </div>
+            <div id="upload-queue" class="upload-queue hidden">
+                <h3>Upload Queue</h3>
+                <ul id="queue-list"></ul>
+            </div>
+        </div>
+    </template>
+
+    <template id="files-template">
+        <div class="files-view">
+            <h2>File Browser</h2>
+            <div class="file-actions">
+                <input type="text" id="search-input" placeholder="Search files...">
+                <select id="sort-select">
+                    <option value="name">Sort by Name</option>
+                    <option value="size">Sort by Size</option>
+                    <option value="date">Sort by Date</option>
+                </select>
+            </div>
+            <div class="file-grid" id="file-grid">
+                <!-- Files will be dynamically loaded here -->
+            </div>
+        </div>
+    </template>
+
+    <template id="settings-template">
+        <div class="settings-view">
+            <h2>Settings</h2>
+            <form id="settings-form">
+                <div class="form-group">
+                    <label for="endpoint">MinIO Endpoint</label>
+                    <input type="text" id="endpoint" value="localhost:9000">
+                </div>
+                <div class="form-group">
+                    <label for="bucket">Default Bucket</label>
+                    <input type="text" id="bucket" value="demo-bucket">
+                </div>
+                <div class="form-group">
+                    <label for="theme">Theme</label>
+                    <select id="theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Save Settings</button>
+            </form>
+        </div>
+    </template>
+
+    <script src="app.js"></script>
+</body>
+</html>

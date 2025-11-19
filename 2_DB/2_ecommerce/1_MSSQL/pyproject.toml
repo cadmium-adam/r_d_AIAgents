@@ -1,0 +1,18 @@
+[project]
+name = "ecommerce-mssql"
+version = "0.1.0"
+description = "E-commerce MSSQL database service"
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pyodbc>=5.0.0",
+    "sqlalchemy>=2.0.0",
+    "pydantic>=2.5.0",
+    "faker>=22.0.0",
+    "python-dotenv>=1.0.0",
+    "alembic>=1.13.0"
+]
+
+[tool.uv]
+dev-dependencies = []

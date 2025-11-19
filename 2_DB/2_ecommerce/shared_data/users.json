@@ -1,0 +1,297 @@
+[
+  {
+    "id": 1,
+    "email": "jennifer.everett@yahoo.com",
+    "username": "jennifer581",
+    "first_name": "Jennifer",
+    "last_name": "Everett",
+    "phone": "+1-854-694-5355x0017",
+    "date_of_birth": "1989-07-20",
+    "gender": "female",
+    "is_active": true,
+    "is_premium": true,
+    "email_verified": true,
+    "registration_date": "2024-05-06 00:23:07.198072",
+    "last_login": "2025-08-03 01:07:40.392935",
+    "shipping_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "18666 Jeanne Village",
+      "city": "Stephanieton",
+      "state": "Montana",
+      "postal_code": "53039",
+      "country": "BO",
+      "is_default": true
+    },
+    "preferences": {
+      "newsletter": false,
+      "marketing_emails": true,
+      "preferred_categories": [
+        "Books",
+        "Home & Garden",
+        "Sports"
+      ],
+      "language": "de",
+      "currency": "GBP",
+      "notifications": {
+        "order_updates": true,
+        "price_drops": false,
+        "new_arrivals": true
+      }
+    },
+    "stats": {
+      "orders_count": 31,
+      "total_spent": 2898.63,
+      "average_order_value": 93.5,
+      "last_login": "2025-08-03 01:07:40.392935",
+      "login_count": 73,
+      "wishlist_items": 14,
+      "cart_items": 2
+    },
+    "loyalty_points": 3040,
+    "referral_code": "REF000001",
+    "created_at": "2024-05-06 00:23:07.198072",
+    "updated_at": "2024-05-06 06:03:31.353564"
+  },
+  {
+    "id": 2,
+    "email": "michael.ritter@yahoo.com",
+    "username": "michael7436",
+    "first_name": "Michael",
+    "last_name": "Ritter",
+    "phone": "001-710-495-2077x996",
+    "date_of_birth": "1964-11-24",
+    "gender": "male",
+    "is_active": false,
+    "is_premium": false,
+    "email_verified": false,
+    "registration_date": "2025-05-29 16:02:30.482795",
+    "last_login": "2025-08-17 00:41:37.711088",
+    "shipping_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "37658 Stephanie Harbors",
+      "city": "Deanland",
+      "state": "Tennessee",
+      "postal_code": "19855",
+      "country": "EC",
+      "is_default": true
+    },
+    "preferences": {
+      "newsletter": false,
+      "marketing_emails": true,
+      "preferred_categories": [
+        "Clothing",
+        "Books"
+      ],
+      "language": "de",
+      "currency": "GBP",
+      "notifications": {
+        "order_updates": true,
+        "price_drops": false,
+        "new_arrivals": true
+      }
+    },
+    "stats": {
+      "orders_count": 17,
+      "total_spent": 4187.16,
+      "average_order_value": 246.3,
+      "last_login": "2025-08-17 00:41:37.711088",
+      "login_count": 89,
+      "wishlist_items": 5,
+      "cart_items": 1
+    },
+    "loyalty_points": 844,
+    "referral_code": "REF000002",
+    "created_at": "2025-05-29 16:02:30.482795",
+    "updated_at": "2025-06-04 21:29:25.970756"
+  },
+  {
+    "id": 3,
+    "email": "steven.roberts@yahoo.com",
+    "username": "steven748",
+    "first_name": "Steven",
+    "last_name": "Roberts",
+    "phone": "745.708.0363",
+    "date_of_birth": "1955-03-26",
+    "gender": "male",
+    "is_active": true,
+    "is_premium": true,
+    "email_verified": true,
+    "registration_date": "2024-07-22 20:11:21.789340",
+    "last_login": "2025-08-19 04:07:08.854109",
+    "shipping_address": {
+      "street": "319 Emily Path",
+      "city": "Kirkburgh",
+      "state": "Wisconsin",
+      "postal_code": "77604",
+      "country": "MY",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "925 Nancy Gateway",
+      "city": "Cookshire",
+      "state": "Massachusetts",
+      "postal_code": "74121",
+      "country": "KG",
+      "is_default": true
+    },
+    "preferences": {
+      "newsletter": false,
+      "marketing_emails": true,
+      "preferred_categories": [
+        "Sports",
+        "Home & Garden"
+      ],
+      "language": "en",
+      "currency": "GBP",
+      "notifications": {
+        "order_updates": false,
+        "price_drops": false,
+        "new_arrivals": false
+      }
+    },
+    "stats": {
+      "orders_count": 46,
+      "total_spent": 4787.38,
+      "average_order_value": 104.07,
+      "last_login": "2025-08-19 04:07:08.854109",
+      "login_count": 60,
+      "wishlist_items": 17,
+      "cart_items": 0
+    },
+    "loyalty_points": 2079,
+    "referral_code": "REF000003",
+    "created_at": "2024-07-22 20:11:21.789340",
+    "updated_at": "2025-07-22 06:13:27.053527"
+  },
+  {
+    "id": 4,
+    "email": "shelia.guerrero@gmail.com",
+    "username": "shelia9376",
+    "first_name": "Shelia",
+    "last_name": "Guerrero",
+    "phone": "+1-639-798-7091",
+    "date_of_birth": "1991-03-18",
+    "gender": "female",
+    "is_active": true,
+    "is_premium": true,
+    "email_verified": true,
+    "registration_date": "2025-08-23 21:29:33.549944",
+    "last_login": "2025-07-31 19:44:50.905239",
+    "shipping_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "0445 Madison Inlet Suite 523",
+      "city": "Petersonchester",
+      "state": "Washington",
+      "postal_code": "68926",
+      "country": "MH",
+      "is_default": true
+    },
+    "preferences": {
+      "newsletter": false,
+      "marketing_emails": true,
+      "preferred_categories": [
+        "Sports",
+        "Electronics"
+      ],
+      "language": "de",
+      "currency": "EUR",
+      "notifications": {
+        "order_updates": true,
+        "price_drops": false,
+        "new_arrivals": true
+      }
+    },
+    "stats": {
+      "orders_count": 39,
+      "total_spent": 3449.09,
+      "average_order_value": 88.44,
+      "last_login": "2025-07-31 19:44:50.905239",
+      "login_count": 96,
+      "wishlist_items": 12,
+      "cart_items": 0
+    },
+    "loyalty_points": 4684,
+    "referral_code": "REF000004",
+    "created_at": "2025-08-23 21:29:33.549944",
+    "updated_at": "2025-08-23 22:18:22.885933"
+  },
+  {
+    "id": 5,
+    "email": "virginia.lopez@hotmail.com",
+    "username": "virginia2825",
+    "first_name": "Virginia",
+    "last_name": "Lopez",
+    "phone": "(435)269-8838x514",
+    "date_of_birth": "1986-05-23",
+    "gender": "female",
+    "is_active": false,
+    "is_premium": true,
+    "email_verified": true,
+    "registration_date": "2023-10-08 13:14:47.237283",
+    "last_login": "2025-08-12 17:50:23.362729",
+    "shipping_address": {
+      "street": "19375 Martin Springs Suite 770",
+      "city": "Juarezmouth",
+      "state": "Oregon",
+      "postal_code": "97449",
+      "country": "KW",
+      "is_default": true
+    },
+    "billing_address": {
+      "street": "1921 Brittany Vista Suite 619",
+      "city": "South Joshualand",
+      "state": "Montana",
+      "postal_code": "74520",
+      "country": "MN",
+      "is_default": true
+    },
+    "preferences": {
+      "newsletter": false,
+      "marketing_emails": true,
+      "preferred_categories": [
+        "Books"
+      ],
+      "language": "en",
+      "currency": "USD",
+      "notifications": {
+        "order_updates": false,
+        "price_drops": true,
+        "new_arrivals": true
+      }
+    },
+    "stats": {
+      "orders_count": 48,
+      "total_spent": 1876.39,
+      "average_order_value": 39.09,
+      "last_login": "2025-08-12 17:50:23.362729",
+      "login_count": 128,
+      "wishlist_items": 8,
+      "cart_items": 4
+    },
+    "loyalty_points": 4551,
+    "referral_code": "REF000005",
+    "created_at": "2023-10-08 13:14:47.237283",
+    "updated_at": "2024-06-26 17:14:18.088331"
+  }
+]

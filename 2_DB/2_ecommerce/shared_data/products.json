@@ -1,0 +1,1273 @@
+[
+  {
+    "id": 1,
+    "name": "SmartLine Keyboard",
+    "description": "\"Experience seamless typing with SmartLine's SmartLine Keyboard! Boasting wireless connectivity, this keyboard offers unparalleled freedom, eliminating tangled wires. Powered by a reliable battery and backed by a robust 3-year warranty, it ensures durability and performance. Ideal for modern computing, upgrade your typing experience today!\"",
+    "category": "Electronics",
+    "brand": "SmartLine",
+    "price": 1962,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 66,
+    "rating": 5.0,
+    "review_count": 294,
+    "sku": "ELE-000001",
+    "weight": 0.31,
+    "dimensions": {
+      "length": 29.7,
+      "width": 20.1,
+      "height": 9.8,
+      "unit": "cm"
+    },
+    "features": {
+      "power": "Battery",
+      "warranty": "3 years",
+      "connectivity": "Wireless"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/1/SmartLine_Keyboard.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T153720Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=433bdfadcac2e153c8a9fc339403382dc7432e2f0089e1bcd0f42a45b949534e",
+      "thumbnail": "http://localhost:9000/product-images/products/1/SmartLine_Keyboard.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T153720Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=433bdfadcac2e153c8a9fc339403382dc7432e2f0089e1bcd0f42a45b949534e",
+      "gallery": [
+        "http://localhost:9000/product-images/products/1/SmartLine_Keyboard.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T153720Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=433bdfadcac2e153c8a9fc339403382dc7432e2f0089e1bcd0f42a45b949534e"
+      ]
+    },
+    "tags": [
+      "keyboard",
+      "gadget",
+      "device",
+      "tech",
+      "electronics"
+    ],
+    "created_at": "2025-01-14 11:49:05.087694",
+    "updated_at": "2025-08-03 07:53:35.970740"
+  },
+  {
+    "id": 2,
+    "name": "InnovateTech Monitor",
+    "description": "Experience sharp clarity with the InnovateTech Monitor - powered by a reliable battery, backed by a 1-year warranty, and featuring seamless USB connectivity. Upgrade your viewing experience today!",
+    "category": "Electronics",
+    "brand": "InnovateTech",
+    "price": 178,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 41,
+    "rating": 3.5,
+    "review_count": 50,
+    "sku": "ELE-000002",
+    "weight": 0.56,
+    "dimensions": {
+      "length": 13.9,
+      "width": 29.4,
+      "height": 3.4,
+      "unit": "cm"
+    },
+    "features": {
+      "power": "Battery",
+      "warranty": "1 year",
+      "connectivity": "USB"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/2/InnovateTech_Monitor.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T153837Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4b4d99e86c869ec136221c3cf7f6c6dfab7f9921cb7ffaefb72517c9d84c4006",
+      "thumbnail": "http://localhost:9000/product-images/products/2/InnovateTech_Monitor.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T153837Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4b4d99e86c869ec136221c3cf7f6c6dfab7f9921cb7ffaefb72517c9d84c4006",
+      "gallery": [
+        "http://localhost:9000/product-images/products/2/InnovateTech_Monitor.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T153837Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4b4d99e86c869ec136221c3cf7f6c6dfab7f9921cb7ffaefb72517c9d84c4006"
+      ]
+    },
+    "tags": [
+      "gadget",
+      "device",
+      "tech",
+      "electronics",
+      "monitor"
+    ],
+    "created_at": "2024-10-03 15:52:56.152917",
+    "updated_at": "2025-07-31 13:56:07.117906"
+  },
+  {
+    "id": 3,
+    "name": "FutureTech Laptop",
+    "description": "Experience unparalleled productivity with the FutureTech Laptop. Powered by an Intel i5 processor, this powerhouse delivers lightning-fast performance, ensuring seamless multitasking and quick file transfers. Boasting a spacious 17.3\" screen, immerse yourself in high-definition visuals that bring your content to life. Adeptly manage large files with the 1TB SSD, offering blazingly fast load times and reliable storage capacity. Backed by 16GB RAM, this laptop ensures effortless multitasking and smooth operation of multiple applications simultaneously. Elevate your workflow with the FutureTech Laptop - where power meets precision.",
+    "category": "Electronics",
+    "brand": "FutureTech",
+    "price": 876,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 28,
+    "rating": 5.0,
+    "review_count": 157,
+    "sku": "ELE-000003",
+    "weight": 4.54,
+    "dimensions": {
+      "length": 38.0,
+      "width": 21.0,
+      "height": 16.3,
+      "unit": "cm"
+    },
+    "features": {
+      "processor": "Intel i5",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "screen_size": "17.3\""
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/3/FutureTech_Laptop.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T153952Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fe7ca7abdde1930926997a0b5dcd10e38d52668548e63386d6bea7858fb54fec",
+      "thumbnail": "http://localhost:9000/product-images/products/3/FutureTech_Laptop.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T153952Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fe7ca7abdde1930926997a0b5dcd10e38d52668548e63386d6bea7858fb54fec",
+      "gallery": [
+        "http://localhost:9000/product-images/products/3/FutureTech_Laptop.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T153952Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fe7ca7abdde1930926997a0b5dcd10e38d52668548e63386d6bea7858fb54fec"
+      ]
+    },
+    "tags": [
+      "gadget",
+      "device",
+      "work",
+      "tech",
+      "electronics",
+      "laptop",
+      "computing"
+    ],
+    "created_at": "2025-08-23 03:57:52.731792",
+    "updated_at": "2025-08-23 09:31:05.726394"
+  },
+  {
+    "id": 4,
+    "name": "SmartLine Speaker",
+    "description": "Experience immersive sound with the USB Rechargeable SmartLine Speaker. Boasting a 2-year warranty, this compact powerhouse delivers crystal-clear audio for your listening pleasure. Connect effortlessly via USB and elevate your entertainment setup today!",
+    "category": "Electronics",
+    "brand": "SmartLine",
+    "price": 1820,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 24,
+    "rating": 3.9,
+    "review_count": 297,
+    "sku": "ELE-000004",
+    "weight": 4.27,
+    "dimensions": {
+      "length": 38.3,
+      "width": 34.2,
+      "height": 4.3,
+      "unit": "cm"
+    },
+    "features": {
+      "power": "USB Rechargeable",
+      "warranty": "2 years",
+      "connectivity": "USB"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/4/SmartLine_Speaker.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154105Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=28df290add0f84cfe977bf056098a36458c89f9283f5a5bc0b9f9e38c78a1bcd",
+      "thumbnail": "http://localhost:9000/product-images/products/4/SmartLine_Speaker.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154105Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=28df290add0f84cfe977bf056098a36458c89f9283f5a5bc0b9f9e38c78a1bcd",
+      "gallery": [
+        "http://localhost:9000/product-images/products/4/SmartLine_Speaker.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154105Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=28df290add0f84cfe977bf056098a36458c89f9283f5a5bc0b9f9e38c78a1bcd"
+      ]
+    },
+    "tags": [
+      "gadget",
+      "device",
+      "speaker",
+      "tech",
+      "electronics"
+    ],
+    "created_at": "2025-04-05 18:41:28.041274",
+    "updated_at": "2025-08-11 05:24:51.498487"
+  },
+  {
+    "id": 5,
+    "name": "SmartLine Keyboard Pro",
+    "description": "Experience unparalleled efficiency with the SmartLine Keyboard Pro - Wireless & USB Rechargeable. Boasting a 3-year warranty, this sleek device offers seamless connectivity for ultimate productivity. Elevate your typing game today!",
+    "category": "Electronics",
+    "brand": "SmartLine",
+    "price": 1604,
+    "currency": "USD",
+    "in_stock": false,
+    "stock_quantity": 100,
+    "rating": 3.2,
+    "review_count": 46,
+    "sku": "ELE-000005",
+    "weight": 1.07,
+    "dimensions": {
+      "length": 6.2,
+      "width": 40.7,
+      "height": 4.5,
+      "unit": "cm"
+    },
+    "features": {
+      "power": "USB Rechargeable",
+      "warranty": "3 years",
+      "connectivity": "Wireless"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/5/SmartLine_Keyboard_Pro.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154218Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2a07a84674b408e4726bfbe106aa20172e41b584a8008a85ca142652ec13b71e",
+      "thumbnail": "http://localhost:9000/product-images/products/5/SmartLine_Keyboard_Pro.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154218Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2a07a84674b408e4726bfbe106aa20172e41b584a8008a85ca142652ec13b71e",
+      "gallery": [
+        "http://localhost:9000/product-images/products/5/SmartLine_Keyboard_Pro.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154218Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2a07a84674b408e4726bfbe106aa20172e41b584a8008a85ca142652ec13b71e"
+      ]
+    },
+    "tags": [
+      "keyboard",
+      "gadget",
+      "device",
+      "tech",
+      "electronics"
+    ],
+    "created_at": "2025-01-18 07:10:25.793622",
+    "updated_at": "2025-08-12 14:15:54.291250"
+  },
+  {
+    "id": 6,
+    "name": "TechPro Smartwatch",
+    "description": "Experience unparalleled sophistication with the TechPro Smartwatch. Equipped with USB rechargeability, ensuring seamless charging convenience, and backed by a robust 2-year warranty. Connect effortlessly to your devices via USB for hassle-free synchronization, making every moment smarter. Elevate your lifestyle with the precision and style of the TechPro Smartwatch.",
+    "category": "Electronics",
+    "brand": "TechPro",
+    "price": 965,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 51,
+    "rating": 3.5,
+    "review_count": 16,
+    "sku": "ELE-000006",
+    "weight": 2.08,
+    "dimensions": {
+      "length": 23.8,
+      "width": 43.8,
+      "height": 14.6,
+      "unit": "cm"
+    },
+    "features": {
+      "power": "USB Rechargeable",
+      "warranty": "2 years",
+      "connectivity": "USB"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/6/TechPro_Smartwatch.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154336Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7799752a43c6ec00f35b755a6a8c9ddfe04e9bd50892b442999deb92015ab40b",
+      "thumbnail": "http://localhost:9000/product-images/products/6/TechPro_Smartwatch.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154336Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7799752a43c6ec00f35b755a6a8c9ddfe04e9bd50892b442999deb92015ab40b",
+      "gallery": [
+        "http://localhost:9000/product-images/products/6/TechPro_Smartwatch.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154336Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7799752a43c6ec00f35b755a6a8c9ddfe04e9bd50892b442999deb92015ab40b"
+      ]
+    },
+    "tags": [
+      "gadget",
+      "device",
+      "smartwatch",
+      "tech",
+      "electronics"
+    ],
+    "created_at": "2025-03-29 22:51:59.918658",
+    "updated_at": "2025-08-05 13:16:10.186517"
+  },
+  {
+    "id": 7,
+    "name": "CasualPlus Dress Elite",
+    "description": "\"Embrace effortless style with our CasualPlus Dress Elite! Crafted from premium denim, this L-sized, crisp white dress exudes casual elegance. Perfect for any occasion, its versatile design seamlessly transitions from day to night. Elevate your wardrobe today with this timeless, size-friendly addition.\"",
+    "category": "Clothing",
+    "brand": "CasualPlus",
+    "price": 71,
+    "currency": "USD",
+    "in_stock": false,
+    "stock_quantity": 99,
+    "rating": 3.2,
+    "review_count": 440,
+    "sku": "CLO-000007",
+    "weight": 4.97,
+    "dimensions": {
+      "length": 11.0,
+      "width": 11.6,
+      "height": 2.5,
+      "unit": "cm"
+    },
+    "features": {
+      "size": "L",
+      "color": "White",
+      "material": "Denim"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/7/CasualPlus_Dress_Elite.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154451Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d13c76de10aeb88df1d603c3b56c066dbecb241bbf351b233b5803728754505d",
+      "thumbnail": "http://localhost:9000/product-images/products/7/CasualPlus_Dress_Elite.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154451Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d13c76de10aeb88df1d603c3b56c066dbecb241bbf351b233b5803728754505d",
+      "gallery": [
+        "http://localhost:9000/product-images/products/7/CasualPlus_Dress_Elite.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154451Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d13c76de10aeb88df1d603c3b56c066dbecb241bbf351b233b5803728754505d"
+      ]
+    },
+    "tags": [
+      "dress",
+      "clothing",
+      "style",
+      "denim",
+      "white",
+      "apparel",
+      "fashion",
+      "size-l"
+    ],
+    "created_at": "2024-12-03 20:54:50.893975",
+    "updated_at": "2025-08-25 04:36:20.510746"
+  },
+  {
+    "id": 8,
+    "name": "StyleCraft Jeans",
+    "description": "Experience effortless style with StyleCraft's XS Blue Jeans - crafted from durable denim for a timeless fit. Perfectly pair these classic blues with your favorite looks or dress up with ease for stylish everyday wear. Upgrade your wardrobe with our top-quality, size-inclusive jeans today!",
+    "category": "Clothing",
+    "brand": "StyleCraft",
+    "price": 149,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 25,
+    "rating": 4.8,
+    "review_count": 492,
+    "sku": "CLO-000008",
+    "weight": 4.65,
+    "dimensions": {
+      "length": 24.1,
+      "width": 10.7,
+      "height": 19.7,
+      "unit": "cm"
+    },
+    "features": {
+      "size": "XS",
+      "color": "Blue",
+      "material": "Denim"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/8/StyleCraft_Jeans.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154607Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7742ed83297bb364b6328aafdb26725becdb107b5de86f9a32193641502db92b",
+      "thumbnail": "http://localhost:9000/product-images/products/8/StyleCraft_Jeans.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154607Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7742ed83297bb364b6328aafdb26725becdb107b5de86f9a32193641502db92b",
+      "gallery": [
+        "http://localhost:9000/product-images/products/8/StyleCraft_Jeans.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154607Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7742ed83297bb364b6328aafdb26725becdb107b5de86f9a32193641502db92b"
+      ]
+    },
+    "tags": [
+      "blue",
+      "clothing",
+      "denim",
+      "apparel",
+      "size-xs",
+      "fashion",
+      "jeans",
+      "style"
+    ],
+    "created_at": "2024-10-15 05:54:26.225474",
+    "updated_at": "2025-08-22 01:38:13.660730"
+  },
+  {
+    "id": 9,
+    "name": "TrendSetter Pants",
+    "description": "\"Embrace modern style with our TrendSetter Gray Pants! XS size offers a perfect fit. Crafted from high-quality polyester for exceptional durability and comfort. Perfect addition to any contemporary wardrobe - stand out effortlessly!\"",
+    "category": "Clothing",
+    "brand": "TrendSetter",
+    "price": 158,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 98,
+    "rating": 3.6,
+    "review_count": 474,
+    "sku": "CLO-000009",
+    "weight": 4.86,
+    "dimensions": {
+      "length": 16.1,
+      "width": 28.0,
+      "height": 5.8,
+      "unit": "cm"
+    },
+    "features": {
+      "size": "XS",
+      "color": "Gray",
+      "material": "Polyester"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/9/TrendSetter_Pants.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154720Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4e479ad3f4d6b9d4cfa8318ec854c2bec23aa53687b78185d2c3d69f08dac8b5",
+      "thumbnail": "http://localhost:9000/product-images/products/9/TrendSetter_Pants.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154720Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4e479ad3f4d6b9d4cfa8318ec854c2bec23aa53687b78185d2c3d69f08dac8b5",
+      "gallery": [
+        "http://localhost:9000/product-images/products/9/TrendSetter_Pants.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154720Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4e479ad3f4d6b9d4cfa8318ec854c2bec23aa53687b78185d2c3d69f08dac8b5"
+      ]
+    },
+    "tags": [
+      "pants",
+      "clothing",
+      "apparel",
+      "size-xs",
+      "polyester",
+      "fashion",
+      "gray",
+      "style"
+    ],
+    "created_at": "2025-01-24 20:36:54.838256",
+    "updated_at": "2025-08-24 08:38:51.509680"
+  },
+  {
+    "id": 10,
+    "name": "StyleCraft Boots X",
+    "description": "Experience the ultimate comfort in StyleCraft's Size XXL Green Boots X, crafted from a durable Cotton Blend material. Perfect for those with wider feet, these boots arrive in a generously sized 8.5. Embrace nature's hues and stand out effortlessly with this stylish footwear that embodies both function and fashion. Upgrade your wardrobe today with StyleCraft Boots X!",
+    "category": "Clothing",
+    "brand": "StyleCraft",
+    "price": 46.5,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 60,
+    "rating": 4.7,
+    "review_count": 244,
+    "sku": "CLO-000010",
+    "weight": 0.55,
+    "dimensions": {
+      "length": 43.6,
+      "width": 21.9,
+      "height": 24.7,
+      "unit": "cm"
+    },
+    "features": {
+      "size": "XXL",
+      "color": "Green",
+      "material": "Cotton Blend",
+      "shoe_size": "8.5",
+      "width": "Wide"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/10/StyleCraft_Boots_X.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154837Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=b3ae71f6f2948c06784f2fffb54dfa1a004a7f6a052dc599809f71eec6fb67fb",
+      "thumbnail": "http://localhost:9000/product-images/products/10/StyleCraft_Boots_X.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154837Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=b3ae71f6f2948c06784f2fffb54dfa1a004a7f6a052dc599809f71eec6fb67fb",
+      "gallery": [
+        "http://localhost:9000/product-images/products/10/StyleCraft_Boots_X.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154837Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=b3ae71f6f2948c06784f2fffb54dfa1a004a7f6a052dc599809f71eec6fb67fb"
+      ]
+    },
+    "tags": [
+      "boots",
+      "size-xxl",
+      "cotton blend",
+      "clothing",
+      "apparel",
+      "fashion",
+      "green",
+      "style"
+    ],
+    "created_at": "2025-04-16 04:48:24.172397",
+    "updated_at": "2025-08-03 17:51:56.146470"
+  },
+  {
+    "id": 11,
+    "name": "TrendSetter Shirt",
+    "description": "Introducing the TrendSetter Shirt - Sized S, Crafted in a stylish Gray Hue. Made from premium, soft-to-touch Cotton for unmatched comfort. Perfect for your modern wardrobe essentials, this versatile piece will effortlessly elevate any look. Stand out and stay comfortable with the TrendSetter Shirt.",
+    "category": "Clothing",
+    "brand": "TrendSetter",
+    "price": 181,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 67,
+    "rating": 3.7,
+    "review_count": 308,
+    "sku": "CLO-000011",
+    "weight": 1.75,
+    "dimensions": {
+      "length": 27.0,
+      "width": 44.3,
+      "height": 5.5,
+      "unit": "cm"
+    },
+    "features": {
+      "size": "S",
+      "color": "Gray",
+      "material": "Cotton"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/11/TrendSetter_Shirt.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154949Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=5d71de146570e71cfc480802d55a22f675fc7b07c5fc9ee089591c613854d315",
+      "thumbnail": "http://localhost:9000/product-images/products/11/TrendSetter_Shirt.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154949Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=5d71de146570e71cfc480802d55a22f675fc7b07c5fc9ee089591c613854d315",
+      "gallery": [
+        "http://localhost:9000/product-images/products/11/TrendSetter_Shirt.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T154949Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=5d71de146570e71cfc480802d55a22f675fc7b07c5fc9ee089591c613854d315"
+      ]
+    },
+    "tags": [
+      "clothing",
+      "apparel",
+      "cotton",
+      "fashion",
+      "shirt",
+      "gray",
+      "size-s",
+      "style"
+    ],
+    "created_at": "2025-01-20 04:26:22.737365",
+    "updated_at": "2025-08-18 15:21:51.889501"
+  },
+  {
+    "id": 12,
+    "name": "StreetWear T-Shirt X",
+    "description": "\"Experience urban style with our StreetWear X T-Shirt in bold Red! Crafted from a comfortable Cotton Blend fabric, this XL size tee offers a perfect fit for your fashion-forward lifestyle. Stand out in any crowd while staying comfy and effortlessly cool. Perfect for everyday wear or casual gatherings, this versatile StreetWear garment is a must-have addition to your wardrobe.\"",
+    "category": "Clothing",
+    "brand": "StreetWear",
+    "price": 192,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 94,
+    "rating": 4.5,
+    "review_count": 175,
+    "sku": "CLO-000012",
+    "weight": 4.87,
+    "dimensions": {
+      "length": 48.9,
+      "width": 28.1,
+      "height": 6.7,
+      "unit": "cm"
+    },
+    "features": {
+      "size": "XL",
+      "color": "Red",
+      "material": "Cotton Blend"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/12/StreetWear_T_Shirt_X.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155104Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1d69c016b1279266b62744609324b5a0e4cd3024b180d59a5a9980b52d17dd3d",
+      "thumbnail": "http://localhost:9000/product-images/products/12/StreetWear_T_Shirt_X.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155104Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1d69c016b1279266b62744609324b5a0e4cd3024b180d59a5a9980b52d17dd3d",
+      "gallery": [
+        "http://localhost:9000/product-images/products/12/StreetWear_T_Shirt_X.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155104Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1d69c016b1279266b62744609324b5a0e4cd3024b180d59a5a9980b52d17dd3d"
+      ]
+    },
+    "tags": [
+      "size-xl",
+      "cotton blend",
+      "clothing",
+      "red",
+      "t-shirt",
+      "apparel",
+      "fashion",
+      "style"
+    ],
+    "created_at": "2025-05-25 18:54:57.479139",
+    "updated_at": "2025-08-05 01:40:06.189683"
+  },
+  {
+    "id": 13,
+    "name": "ClearPath Science Fiction",
+    "description": "\"Dive into an immersive world with ClearPath Science Fiction: 308 thrilling pages await in this English language Paperback (ISBN: 978-1-291-89993-1). Explore new galaxies and challenge the boundaries of reality - your journey begins here.\"",
+    "category": "Books",
+    "brand": "ClearPath",
+    "price": 76,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 11,
+    "rating": 3.7,
+    "review_count": 297,
+    "sku": "BOO-000013",
+    "weight": 4.02,
+    "dimensions": {
+      "length": 22.7,
+      "width": 20.8,
+      "height": 13.7,
+      "unit": "cm"
+    },
+    "features": {
+      "pages": 308,
+      "format": "Paperback",
+      "language": "English",
+      "isbn": "978-1-291-89993-1"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/13/ClearPath_Science_Fiction.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155220Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fa0b0106a26348aceaa537f27fca7b81fbb01f6ab045647bdf15cce6fb60ca5b",
+      "thumbnail": "http://localhost:9000/product-images/products/13/ClearPath_Science_Fiction.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155220Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fa0b0106a26348aceaa537f27fca7b81fbb01f6ab045647bdf15cce6fb60ca5b",
+      "gallery": [
+        "http://localhost:9000/product-images/products/13/ClearPath_Science_Fiction.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155220Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fa0b0106a26348aceaa537f27fca7b81fbb01f6ab045647bdf15cce6fb60ca5b"
+      ]
+    },
+    "tags": [
+      "books",
+      "education",
+      "literature",
+      "science fiction",
+      "reading"
+    ],
+    "created_at": "2024-12-20 04:24:44.021179",
+    "updated_at": "2025-08-08 14:23:35.110943"
+  },
+  {
+    "id": 14,
+    "name": "BrightMinds Novel",
+    "description": "Delve into a rich tapestry of ideas with BrightMinds Novel - a captivating 606-page hardcover masterpiece in English language. Enhance your literary journey with this meticulously crafted work, featuring ISBN: 978-1-162-66157-5 for seamless identification and exploration. Immerse yourself in the depth of knowledge and intrigue that lies between its bound pages.",
+    "category": "Books",
+    "brand": "BrightMinds",
+    "price": 56,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 1,
+    "rating": 4.1,
+    "review_count": 135,
+    "sku": "BOO-000014",
+    "weight": 0.48,
+    "dimensions": {
+      "length": 42.9,
+      "width": 30.7,
+      "height": 24.3,
+      "unit": "cm"
+    },
+    "features": {
+      "pages": 606,
+      "format": "Hardcover",
+      "language": "English",
+      "isbn": "978-1-162-66157-5"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/14/BrightMinds_Novel.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155338Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=604754fdf89dbf7036424c9b6fa3ff0d2a77e62bfc81bed012150d66e1833d99",
+      "thumbnail": "http://localhost:9000/product-images/products/14/BrightMinds_Novel.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155338Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=604754fdf89dbf7036424c9b6fa3ff0d2a77e62bfc81bed012150d66e1833d99",
+      "gallery": [
+        "http://localhost:9000/product-images/products/14/BrightMinds_Novel.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155338Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=604754fdf89dbf7036424c9b6fa3ff0d2a77e62bfc81bed012150d66e1833d99"
+      ]
+    },
+    "tags": [
+      "books",
+      "education",
+      "literature",
+      "reading",
+      "novel"
+    ],
+    "created_at": "2024-10-16 01:32:08.353426",
+    "updated_at": "2025-08-25 05:28:23.394816"
+  },
+  {
+    "id": 15,
+    "name": "WisdomBooks Science Fiction Plus",
+    "description": "Dive into a thrilling cosmic odyssey with WisdomBooks Science Fiction Plus - a 227-page E-book masterpiece! Explore the infinite universe in high definition English, with the convenience of digital reading. ISBN: 978-0-7866-5818-3 awaits you, promising an unforgettable journey beyond your wildest dreams!",
+    "category": "Books",
+    "brand": "WisdomBooks",
+    "price": 15.0,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 89,
+    "rating": 5.0,
+    "review_count": 51,
+    "sku": "BOO-000015",
+    "weight": 0.24,
+    "dimensions": {
+      "length": 33.7,
+      "width": 9.9,
+      "height": 19.8,
+      "unit": "cm"
+    },
+    "features": {
+      "pages": 227,
+      "format": "E-book",
+      "language": "English",
+      "isbn": "978-0-7866-5818-3"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/15/WisdomBooks_Science_Fiction_Plus.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155451Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=632d291c20b1399af22cf3ce7e15e6fd8935bd1a6ac811be04e0febe42364841",
+      "thumbnail": "http://localhost:9000/product-images/products/15/WisdomBooks_Science_Fiction_Plus.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155451Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=632d291c20b1399af22cf3ce7e15e6fd8935bd1a6ac811be04e0febe42364841",
+      "gallery": [
+        "http://localhost:9000/product-images/products/15/WisdomBooks_Science_Fiction_Plus.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155451Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=632d291c20b1399af22cf3ce7e15e6fd8935bd1a6ac811be04e0febe42364841"
+      ]
+    },
+    "tags": [
+      "books",
+      "education",
+      "literature",
+      "science fiction",
+      "reading"
+    ],
+    "created_at": "2025-04-24 08:59:02.902991",
+    "updated_at": "2025-08-24 07:58:46.596658"
+  },
+  {
+    "id": 16,
+    "name": "BrightMinds Biography Pro",
+    "description": "\"Discover depth and insight with BrightMinds Biography Pro - a 637-page English e-book enriching your literary journey. Immerse yourself in the storytelling of lives that matter, accessed instantly. ISBN: 978-0-917556-46-3\"",
+    "category": "Books",
+    "brand": "BrightMinds",
+    "price": 39.5,
+    "currency": "USD",
+    "in_stock": false,
+    "stock_quantity": 17,
+    "rating": 4.6,
+    "review_count": 240,
+    "sku": "BOO-000016",
+    "weight": 2.66,
+    "dimensions": {
+      "length": 5.4,
+      "width": 6.9,
+      "height": 14.7,
+      "unit": "cm"
+    },
+    "features": {
+      "pages": 637,
+      "format": "E-book",
+      "language": "English",
+      "isbn": "978-0-917556-46-3"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/16/BrightMinds_Biography_Pro.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155605Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=747dd0d361fe5a991b5b7d7a47c2c121b6760dc11363652025bda436f72dadb5",
+      "thumbnail": "http://localhost:9000/product-images/products/16/BrightMinds_Biography_Pro.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155605Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=747dd0d361fe5a991b5b7d7a47c2c121b6760dc11363652025bda436f72dadb5",
+      "gallery": [
+        "http://localhost:9000/product-images/products/16/BrightMinds_Biography_Pro.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155605Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=747dd0d361fe5a991b5b7d7a47c2c121b6760dc11363652025bda436f72dadb5"
+      ]
+    },
+    "tags": [
+      "biography",
+      "books",
+      "education",
+      "reading",
+      "literature"
+    ],
+    "created_at": "2024-09-22 17:49:15.430857",
+    "updated_at": "2025-08-14 21:00:11.404878"
+  },
+  {
+    "id": 17,
+    "name": "KnowledgeHub Textbook",
+    "description": "Transform your academic journey with KnowledgeHub's Textbook [ISBN: 978-0-9723567-6-3], a comprehensive 481-page E-book offering immersive English language content. Empower your learning today, wherever you are!",
+    "category": "Books",
+    "brand": "KnowledgeHub",
+    "price": 46.5,
+    "currency": "USD",
+    "in_stock": false,
+    "stock_quantity": 24,
+    "rating": 3.8,
+    "review_count": 416,
+    "sku": "BOO-000017",
+    "weight": 2.73,
+    "dimensions": {
+      "length": 6.5,
+      "width": 24.7,
+      "height": 12.4,
+      "unit": "cm"
+    },
+    "features": {
+      "pages": 481,
+      "format": "E-book",
+      "language": "English",
+      "isbn": "978-0-9723567-6-3"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/17/KnowledgeHub_Textbook.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155717Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a5773bc537f88f98a2583ad998eb0bccf4fa9f35d56d54cddc6639f0ee6f9719",
+      "thumbnail": "http://localhost:9000/product-images/products/17/KnowledgeHub_Textbook.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155717Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a5773bc537f88f98a2583ad998eb0bccf4fa9f35d56d54cddc6639f0ee6f9719",
+      "gallery": [
+        "http://localhost:9000/product-images/products/17/KnowledgeHub_Textbook.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155717Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a5773bc537f88f98a2583ad998eb0bccf4fa9f35d56d54cddc6639f0ee6f9719"
+      ]
+    },
+    "tags": [
+      "books",
+      "education",
+      "reading",
+      "literature",
+      "textbook"
+    ],
+    "created_at": "2025-03-27 07:05:28.120861",
+    "updated_at": "2025-07-30 18:22:07.664021"
+  },
+  {
+    "id": 18,
+    "name": "ClearPath Cookbook",
+    "description": "Discover the ClearPath Cookbook a 425-page culinary journey! Now available as an e-book in English, this comprehensive guide is your key to innovative recipes and hassle-free cooking. ISBN: 978-0-253-94516-7. Embark on your gastronomic adventure today!",
+    "category": "Books",
+    "brand": "ClearPath",
+    "price": 19.5,
+    "currency": "USD",
+    "in_stock": false,
+    "stock_quantity": 99,
+    "rating": 3.1,
+    "review_count": 419,
+    "sku": "BOO-000018",
+    "weight": 3.64,
+    "dimensions": {
+      "length": 7.3,
+      "width": 17.4,
+      "height": 20.4,
+      "unit": "cm"
+    },
+    "features": {
+      "pages": 425,
+      "format": "E-book",
+      "language": "English",
+      "isbn": "978-0-253-94516-7"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/18/ClearPath_Cookbook.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155834Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0d84507a72e83a1c0c5d577099fca532d5a68d35161509ad5c7b179f48f37dfb",
+      "thumbnail": "http://localhost:9000/product-images/products/18/ClearPath_Cookbook.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155834Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0d84507a72e83a1c0c5d577099fca532d5a68d35161509ad5c7b179f48f37dfb",
+      "gallery": [
+        "http://localhost:9000/product-images/products/18/ClearPath_Cookbook.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155834Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0d84507a72e83a1c0c5d577099fca532d5a68d35161509ad5c7b179f48f37dfb"
+      ]
+    },
+    "tags": [
+      "cookbook",
+      "books",
+      "education",
+      "literature",
+      "reading"
+    ],
+    "created_at": "2025-02-01 03:00:27.280255",
+    "updated_at": "2025-08-24 18:12:14.564932"
+  },
+  {
+    "id": 19,
+    "name": "HomeEssentials Coffee Maker",
+    "description": "Experience a richer coffee taste with the HomeEssentials 12-Cup French Press Coffee Maker. Craft your perfect brew using this stylish and functional device, perfect for weekday mornings or weekend gatherings. Its large capacity ensures ample cups for family or friends, while its French Press design delivers a robust, full-bodied flavor. Brew like a barista in the comfort of your home.",
+    "category": "Home & Garden",
+    "brand": "HomeEssentials",
+    "price": 158,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 68,
+    "rating": 3.8,
+    "review_count": 414,
+    "sku": "HOM-000019",
+    "weight": 0.98,
+    "dimensions": {
+      "length": 34.9,
+      "width": 37.8,
+      "height": 2.6,
+      "unit": "cm"
+    },
+    "features": {
+      "capacity": "12 cups",
+      "type": "French Press"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/19/HomeEssentials_Coffee_Maker.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155949Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=dc42dcfc37580d68f17e237c534f2c8b383318889021039908f639f9e0268231",
+      "thumbnail": "http://localhost:9000/product-images/products/19/HomeEssentials_Coffee_Maker.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155949Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=dc42dcfc37580d68f17e237c534f2c8b383318889021039908f639f9e0268231",
+      "gallery": [
+        "http://localhost:9000/product-images/products/19/HomeEssentials_Coffee_Maker.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T155949Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=dc42dcfc37580d68f17e237c534f2c8b383318889021039908f639f9e0268231"
+      ]
+    },
+    "tags": [
+      "household",
+      "home & garden",
+      "domestic",
+      "coffee maker",
+      "home"
+    ],
+    "created_at": "2025-06-26 09:50:06.138623",
+    "updated_at": "2025-08-06 23:10:02.927871"
+  },
+  {
+    "id": 20,
+    "name": "HomeCraft Furniture",
+    "description": "Experience timeless elegance with HomeCraft's Solid Wood Dining Table (60'' L x 30'' W x 29.5'' H). Crafted from sustainable hardwood, this durable piece boasts a sturdy construction designed to last generations. Its sleek, rustic design enhances any dining space, offering an inviting ambiance for meals and gatherings. With ample seating for eight, the extended leaf allows for easy expansion. Elevate your home decor with HomeCraft Furniture quality craftsmanship, enduring style.",
+    "category": "Home & Garden",
+    "brand": "HomeCraft",
+    "price": 102,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 13,
+    "rating": 5.0,
+    "review_count": 400,
+    "sku": "HOM-000020",
+    "weight": 4.48,
+    "dimensions": {
+      "length": 36.8,
+      "width": 38.3,
+      "height": 7.5,
+      "unit": "cm"
+    },
+    "features": {},
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/20/HomeCraft_Furniture.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160108Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f261e46ce4679324b7b63c02aa71abf32f38c31c0dfe7235ab55b4284a08bea1",
+      "thumbnail": "http://localhost:9000/product-images/products/20/HomeCraft_Furniture.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160108Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f261e46ce4679324b7b63c02aa71abf32f38c31c0dfe7235ab55b4284a08bea1",
+      "gallery": [
+        "http://localhost:9000/product-images/products/20/HomeCraft_Furniture.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160108Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f261e46ce4679324b7b63c02aa71abf32f38c31c0dfe7235ab55b4284a08bea1"
+      ]
+    },
+    "tags": [
+      "household",
+      "home & garden",
+      "furniture",
+      "domestic",
+      "home"
+    ],
+    "created_at": "2025-06-09 11:46:29.144841",
+    "updated_at": "2025-08-04 11:05:46.321865"
+  },
+  {
+    "id": 21,
+    "name": "ComfortZone Bedding",
+    "description": "Experience unparalleled comfort with our ComfortZone Bedding - designed for a restful night's sleep. Engineered with premium quality materials, this bedding set boasts superior softness and breathability, ensuring optimal temperature regulation. Indulge in blissful slumber on its luxuriously plush construction, crafted to provide ultimate support for your body. Upgrade your bedroom with our ComfortZone Bedding - the perfect blend of style, comfort, and quality.",
+    "category": "Home & Garden",
+    "brand": "ComfortZone",
+    "price": 186,
+    "currency": "USD",
+    "in_stock": false,
+    "stock_quantity": 1,
+    "rating": 4.7,
+    "review_count": 365,
+    "sku": "HOM-000021",
+    "weight": 3.66,
+    "dimensions": {
+      "length": 13.4,
+      "width": 8.9,
+      "height": 16.9,
+      "unit": "cm"
+    },
+    "features": {},
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/21/ComfortZone_Bedding.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160230Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6393b84e001ffee3b363543d0e79c2e79f695bffffcf8101251a23b86134640c",
+      "thumbnail": "http://localhost:9000/product-images/products/21/ComfortZone_Bedding.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160230Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6393b84e001ffee3b363543d0e79c2e79f695bffffcf8101251a23b86134640c",
+      "gallery": [
+        "http://localhost:9000/product-images/products/21/ComfortZone_Bedding.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160230Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=6393b84e001ffee3b363543d0e79c2e79f695bffffcf8101251a23b86134640c"
+      ]
+    },
+    "tags": [
+      "household",
+      "home & garden",
+      "domestic",
+      "home",
+      "bedding"
+    ],
+    "created_at": "2025-05-14 14:01:14.850714",
+    "updated_at": "2025-08-10 19:06:50.541745"
+  },
+  {
+    "id": 22,
+    "name": "ComfortZone Bedding Elite",
+    "description": "Experience supreme comfort with the ComfortZone Bedding Elite. Crafted for ultimate relaxation, this premium mattress boasts high-density foam layers and a supportive coil system, ensuring optimal spine alignment. Luxuriously soft and breathable, it's perfect for a restful night's sleep. Experience the difference today. #ComfortZoneBeddingElite #LuxurySleep #HighDensityFoam",
+    "category": "Home & Garden",
+    "brand": "ComfortZone",
+    "price": 481,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 59,
+    "rating": 3.8,
+    "review_count": 97,
+    "sku": "HOM-000022",
+    "weight": 1.08,
+    "dimensions": {
+      "length": 34.9,
+      "width": 32.6,
+      "height": 12.9,
+      "unit": "cm"
+    },
+    "features": {},
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/22/ComfortZone_Bedding_Elite.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160348Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0d90f3f924a863bf464408ea552b849a375c13d4d4391f26fdc75fcf0567ff48",
+      "thumbnail": "http://localhost:9000/product-images/products/22/ComfortZone_Bedding_Elite.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160348Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0d90f3f924a863bf464408ea552b849a375c13d4d4391f26fdc75fcf0567ff48",
+      "gallery": [
+        "http://localhost:9000/product-images/products/22/ComfortZone_Bedding_Elite.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160348Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0d90f3f924a863bf464408ea552b849a375c13d4d4391f26fdc75fcf0567ff48"
+      ]
+    },
+    "tags": [
+      "household",
+      "home & garden",
+      "domestic",
+      "home",
+      "bedding"
+    ],
+    "created_at": "2024-11-30 20:33:07.241617",
+    "updated_at": "2025-08-22 06:22:31.697841"
+  },
+  {
+    "id": 23,
+    "name": "EverydayLiving Blender",
+    "description": "Experience seamless blending with the EverydayLiving 750W Blender, boasting a generous 2L capacity. Power through your daily smoothie routines effortlessly, thanks to its robust motor and high-performance blades. Ideal for families or busy households, this versatile appliance is your go-to companion for quick, delicious meals on the move.",
+    "category": "Home & Garden",
+    "brand": "EverydayLiving",
+    "price": 450,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 63,
+    "rating": 3.6,
+    "review_count": 331,
+    "sku": "HOM-000023",
+    "weight": 2.13,
+    "dimensions": {
+      "length": 14.4,
+      "width": 27.5,
+      "height": 24.0,
+      "unit": "cm"
+    },
+    "features": {
+      "power": "750W",
+      "capacity": "2L"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/23/EverydayLiving_Blender.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160510Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a632ea5dd942c2196d4f8746fc4596712b84263712b1ce882e00fe309d6fb0a0",
+      "thumbnail": "http://localhost:9000/product-images/products/23/EverydayLiving_Blender.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160510Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a632ea5dd942c2196d4f8746fc4596712b84263712b1ce882e00fe309d6fb0a0",
+      "gallery": [
+        "http://localhost:9000/product-images/products/23/EverydayLiving_Blender.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160510Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a632ea5dd942c2196d4f8746fc4596712b84263712b1ce882e00fe309d6fb0a0"
+      ]
+    },
+    "tags": [
+      "household",
+      "home & garden",
+      "domestic",
+      "home",
+      "blender"
+    ],
+    "created_at": "2025-02-06 22:04:20.020046",
+    "updated_at": "2025-08-09 01:46:52.649118"
+  },
+  {
+    "id": 24,
+    "name": "PracticalLiving Kitchen Utensils",
+    "description": "\"Transform your culinary experience with PracticalLiving's durable Kitchen Utensils, designed for ease and efficiency in every meal prep. Featuring ergonomic silicone handles for a comfortable grip, these versatile tools include a spatula, whisk, ladle, and tongs - all crafted from high-quality stainless steel for long-lasting performance. Perfect for any home chef, PracticalLiving Kitchen Utensils elevate your cooking routine with style and functionality.\"",
+    "category": "Home & Garden",
+    "brand": "PracticalLiving",
+    "price": 394,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 26,
+    "rating": 4.5,
+    "review_count": 397,
+    "sku": "HOM-000024",
+    "weight": 2.04,
+    "dimensions": {
+      "length": 14.3,
+      "width": 17.2,
+      "height": 7.2,
+      "unit": "cm"
+    },
+    "features": {},
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/24/PracticalLiving_Kitchen_Utensils.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160629Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=21b116c2bfcf5576ca7d2a7f183d9e6bf947e05f2cff0f0b68824950fc84a3fa",
+      "thumbnail": "http://localhost:9000/product-images/products/24/PracticalLiving_Kitchen_Utensils.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160629Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=21b116c2bfcf5576ca7d2a7f183d9e6bf947e05f2cff0f0b68824950fc84a3fa",
+      "gallery": [
+        "http://localhost:9000/product-images/products/24/PracticalLiving_Kitchen_Utensils.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160629Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=21b116c2bfcf5576ca7d2a7f183d9e6bf947e05f2cff0f0b68824950fc84a3fa"
+      ]
+    },
+    "tags": [
+      "kitchen utensils",
+      "home & garden",
+      "household",
+      "domestic",
+      "home"
+    ],
+    "created_at": "2024-11-01 03:27:36.746731",
+    "updated_at": "2025-08-16 20:43:28.674695"
+  },
+  {
+    "id": 25,
+    "name": "ActiveZone Protein Powder",
+    "description": "Boost your fitness journey with ActiveZone Protein Powder! Crafted from premium nylon material, this protein powder is designed specifically for indoor use. Packed with essential nutrients, it supports muscle recovery and growth, aiding your performance in various sports activities. Enhance your workout regimen today and embrace a healthier lifestyle with ActiveZone.",
+    "category": "Sports",
+    "brand": "ActiveZone",
+    "price": 186,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 66,
+    "rating": 3.3,
+    "review_count": 252,
+    "sku": "SPO-000025",
+    "weight": 4.19,
+    "dimensions": {
+      "length": 49.5,
+      "width": 29.4,
+      "height": 24.1,
+      "unit": "cm"
+    },
+    "features": {
+      "material": "Nylon",
+      "suitable_for": "Indoor"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/25/ActiveZone_Protein_Powder.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160748Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=38b08cec61f1b0714b1df3d3033ce54ad91413340e12c9054b941c6b2ec99bf5",
+      "thumbnail": "http://localhost:9000/product-images/products/25/ActiveZone_Protein_Powder.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160748Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=38b08cec61f1b0714b1df3d3033ce54ad91413340e12c9054b941c6b2ec99bf5",
+      "gallery": [
+        "http://localhost:9000/product-images/products/25/ActiveZone_Protein_Powder.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160748Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=38b08cec61f1b0714b1df3d3033ce54ad91413340e12c9054b941c6b2ec99bf5"
+      ]
+    },
+    "tags": [
+      "exercise",
+      "protein powder",
+      "athletic",
+      "sports",
+      "fitness",
+      "nylon"
+    ],
+    "created_at": "2024-12-23 16:48:58.062802",
+    "updated_at": "2025-08-03 17:33:02.612181"
+  },
+  {
+    "id": 26,
+    "name": "PerformanceGear Bicycle",
+    "description": "Experience smooth rides with the PerformanceGear Bicycle, crafted from robust nylon material suitable for all cycling enthusiasts. This durable bicycle boasts unmatched performance on any terrain, ensuring a reliable ride every time. Upgrade your sporting journey today!",
+    "category": "Sports",
+    "brand": "PerformanceGear",
+    "price": 129,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 4,
+    "rating": 3.5,
+    "review_count": 17,
+    "sku": "SPO-000026",
+    "weight": 2.36,
+    "dimensions": {
+      "length": 28.1,
+      "width": 34.9,
+      "height": 13.2,
+      "unit": "cm"
+    },
+    "features": {
+      "material": "Nylon",
+      "suitable_for": "Both"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/26/PerformanceGear_Bicycle.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160909Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e8551fd950e7063f0da5b3bbc5de9fee09e9b644988e340f32b41d7ce29f25cc",
+      "thumbnail": "http://localhost:9000/product-images/products/26/PerformanceGear_Bicycle.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160909Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e8551fd950e7063f0da5b3bbc5de9fee09e9b644988e340f32b41d7ce29f25cc",
+      "gallery": [
+        "http://localhost:9000/product-images/products/26/PerformanceGear_Bicycle.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T160909Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=e8551fd950e7063f0da5b3bbc5de9fee09e9b644988e340f32b41d7ce29f25cc"
+      ]
+    },
+    "tags": [
+      "exercise",
+      "athletic",
+      "bicycle",
+      "sports",
+      "fitness",
+      "nylon"
+    ],
+    "created_at": "2024-12-08 18:22:26.986589",
+    "updated_at": "2025-08-20 22:30:15.151570"
+  },
+  {
+    "id": 27,
+    "name": "ActiveLife Protein Powder",
+    "description": "Experience peak performance with ActiveLife Protein Powder! Crafted for both fitness enthusiasts and athletic professionals alike, this premium protein powder is designed to fuel your active lifestyle. Packed with high-quality protein, it's perfect for post-workout recovery or daily nutrition boosts. The rubber material ensures a durable and reliable container, making it the ideal companion for your busy routine. Elevate your game today with ActiveLife Protein Powder!",
+    "category": "Sports",
+    "brand": "ActiveLife",
+    "price": 279,
+    "currency": "USD",
+    "in_stock": false,
+    "stock_quantity": 38,
+    "rating": 4.9,
+    "review_count": 102,
+    "sku": "SPO-000027",
+    "weight": 3.42,
+    "dimensions": {
+      "length": 15.9,
+      "width": 47.8,
+      "height": 23.5,
+      "unit": "cm"
+    },
+    "features": {
+      "material": "Rubber",
+      "suitable_for": "Both"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/27/ActiveLife_Protein_Powder.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T161026Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=82e6e544d175804efaff19c703621d7322d85612d65683b020d869cd3a3868f5",
+      "thumbnail": "http://localhost:9000/product-images/products/27/ActiveLife_Protein_Powder.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T161026Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=82e6e544d175804efaff19c703621d7322d85612d65683b020d869cd3a3868f5",
+      "gallery": [
+        "http://localhost:9000/product-images/products/27/ActiveLife_Protein_Powder.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T161026Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=82e6e544d175804efaff19c703621d7322d85612d65683b020d869cd3a3868f5"
+      ]
+    },
+    "tags": [
+      "exercise",
+      "protein powder",
+      "athletic",
+      "rubber",
+      "sports",
+      "fitness"
+    ],
+    "created_at": "2024-12-08 16:53:06.054200",
+    "updated_at": "2025-07-31 05:13:48.914869"
+  },
+  {
+    "id": 28,
+    "name": "ActiveZone Protein Powder Ultra",
+    "description": "Boost your performance with ActiveZone Protein Powder Ultra - engineered for outdoor athletes! Crafted from durable nylon, this protein powder is your perfect companion on demanding adventures. Fuel your body with high-quality proteins to aid in muscle recovery and growth. Experience the ActiveZone difference today and conquer the great outdoors like never before!",
+    "category": "Sports",
+    "brand": "ActiveZone",
+    "price": 38.0,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 26,
+    "rating": 3.6,
+    "review_count": 227,
+    "sku": "SPO-000028",
+    "weight": 1.4,
+    "dimensions": {
+      "length": 18.0,
+      "width": 31.1,
+      "height": 7.8,
+      "unit": "cm"
+    },
+    "features": {
+      "material": "Nylon",
+      "suitable_for": "Outdoor"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/28/ActiveZone_Protein_Powder_Ultra.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T161146Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=ece69fbad6d249e22d629db220c5aabc77d5f4ac264b54790c78afe946521815",
+      "thumbnail": "http://localhost:9000/product-images/products/28/ActiveZone_Protein_Powder_Ultra.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T161146Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=ece69fbad6d249e22d629db220c5aabc77d5f4ac264b54790c78afe946521815",
+      "gallery": [
+        "http://localhost:9000/product-images/products/28/ActiveZone_Protein_Powder_Ultra.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T161146Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=ece69fbad6d249e22d629db220c5aabc77d5f4ac264b54790c78afe946521815"
+      ]
+    },
+    "tags": [
+      "exercise",
+      "protein powder",
+      "athletic",
+      "sports",
+      "fitness",
+      "nylon"
+    ],
+    "created_at": "2024-11-15 11:58:08.726906",
+    "updated_at": "2025-08-12 23:18:41.194508"
+  },
+  {
+    "id": 29,
+    "name": "ActiveLife Water Bottle",
+    "description": "Experience unmatched durability with our ActiveLife Water Bottle, crafted from premium rubber. Ideal for both gym enthusiasts and outdoor adventurers alike. Embrace versatility as this sturdy bottle adapts seamlessly to your active lifestyle.",
+    "category": "Sports",
+    "brand": "ActiveLife",
+    "price": 109,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 79,
+    "rating": 4.4,
+    "review_count": 151,
+    "sku": "SPO-000029",
+    "weight": 2.54,
+    "dimensions": {
+      "length": 46.3,
+      "width": 21.0,
+      "height": 5.6,
+      "unit": "cm"
+    },
+    "features": {
+      "material": "Rubber",
+      "suitable_for": "Both"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/29/ActiveLife_Water_Bottle.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T161303Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4ff3ea0e3871d75190ae55df5b7749f5db25664daa7dc3e6c44d760dc3922dd0",
+      "thumbnail": "http://localhost:9000/product-images/products/29/ActiveLife_Water_Bottle.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T161303Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4ff3ea0e3871d75190ae55df5b7749f5db25664daa7dc3e6c44d760dc3922dd0",
+      "gallery": [
+        "http://localhost:9000/product-images/products/29/ActiveLife_Water_Bottle.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T161303Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4ff3ea0e3871d75190ae55df5b7749f5db25664daa7dc3e6c44d760dc3922dd0"
+      ]
+    },
+    "tags": [
+      "exercise",
+      "water bottle",
+      "athletic",
+      "rubber",
+      "sports",
+      "fitness"
+    ],
+    "created_at": "2025-01-13 19:24:18.079715",
+    "updated_at": "2025-08-22 11:54:36.892317"
+  },
+  {
+    "id": 30,
+    "name": "EndurancePro Tennis Racket",
+    "description": "Experience unrivaled precision with the EndurancePro Tennis Racket, designed for indoor play. Crafted from premium rubber, this racket delivers exceptional control and power, perfecting your game. Ideal for players seeking a competitive edge on the court. Discover the difference with EndurancePro - where performance meets durability.",
+    "category": "Sports",
+    "brand": "EndurancePro",
+    "price": 250,
+    "currency": "USD",
+    "in_stock": true,
+    "stock_quantity": 65,
+    "rating": 3.7,
+    "review_count": 364,
+    "sku": "SPO-000030",
+    "weight": 3.42,
+    "dimensions": {
+      "length": 43.0,
+      "width": 12.7,
+      "height": 5.2,
+      "unit": "cm"
+    },
+    "features": {
+      "material": "Rubber",
+      "suitable_for": "Indoor"
+    },
+    "images": {
+      "main_image": "http://localhost:9000/product-images/products/30/EndurancePro_Tennis_Racket.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T161420Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=26fdeb4051be7049f2727af00fab2c4e052ab75516cbc598b6250a85cdf72de0",
+      "thumbnail": "http://localhost:9000/product-images/products/30/EndurancePro_Tennis_Racket.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T161420Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=26fdeb4051be7049f2727af00fab2c4e052ab75516cbc598b6250a85cdf72de0",
+      "gallery": [
+        "http://localhost:9000/product-images/products/30/EndurancePro_Tennis_Racket.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250826%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250826T161420Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=26fdeb4051be7049f2727af00fab2c4e052ab75516cbc598b6250a85cdf72de0"
+      ]
+    },
+    "tags": [
+      "exercise",
+      "athletic",
+      "rubber",
+      "tennis racket",
+      "sports",
+      "fitness"
+    ],
+    "created_at": "2024-12-10 01:21:59.136657",
+    "updated_at": "2025-08-10 17:49:09.702525"
+  }
+]

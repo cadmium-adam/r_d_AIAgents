@@ -1,0 +1,188 @@
+{
+  "name": "My workflow 8",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        -60
+      ],
+      "id": "2c2b873d-3bfa-4459-8f24-7d279be8d109",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json.total}}",
+              "operation": "smallerEqual",
+              "value2": 10
+            }
+          ]
+        }
+      },
+      "id": "f286c0e6-eb04-45ca-becf-12413e3df49b",
+      "name": "Check Minimal Order",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "We do not accept order smaller than 10 euro"
+      },
+      "id": "3d48a5c4-8180-43ef-9643-99c36403630b",
+      "name": "Stop - Small Order",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "value2": "delivered"
+            }
+          ]
+        }
+      },
+      "id": "1ad8ee41-2fff-46ec-ad19-9b8703b582b3",
+      "name": "Check Order Status",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "Order has been already processed"
+      },
+      "id": "8f57f4b9-c272-4d0c-9775-5c2529a23160",
+      "name": "Stop - Invalid Status",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        80,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "status",
+              "value": "success"
+            },
+            {
+              "name": "message",
+              "value": "All validations passed - user registration can proceed"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "86e6d9b2-5e0d-40a2-963a-0e081f0cc093",
+      "name": "Order Registration Success",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        80,
+        140
+      ]
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Test workflow’": [
+      {
+        "json": {
+          "order_id": "1010",
+          "customer": "Jack Miller",
+          "order_date": "2025-06-12",
+          "total": 19.99,
+          "status": "delivered",
+          "products": [
+            {
+              "product_id": "J1",
+              "name": "Screen Protector",
+              "quantity": 1,
+              "price": 19.99
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Check Minimal Order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Minimal Order": {
+      "main": [
+        [
+          {
+            "node": "Stop - Small Order",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check Order Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Order Status": {
+      "main": [
+        [
+          {
+            "node": "Stop - Invalid Status",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Order Registration Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4205a1e1-5e8f-4a12-a349-38bb284a5cab",
+  "meta": {
+    "instanceId": "56f0fb7864fd4715d6b856fb7d15019871e7c74a4c5f5341afe764a8aa7d9adb"
+  },
+  "id": "VFAtCgwyxr3p8Bqx",
+  "tags": []
+}

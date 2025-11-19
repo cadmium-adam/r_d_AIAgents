@@ -1,0 +1,16 @@
+[project]
+name = "ecommerce-elasticsearch"
+version = "0.1.0"
+description = "E-commerce Elasticsearch search service"
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "elasticsearch>=8.17.2",
+    "pydantic>=2.5.0",
+    "faker>=22.0.0",
+    "python-dotenv>=1.0.0"
+]
+
+[tool.uv]
+dev-dependencies = []

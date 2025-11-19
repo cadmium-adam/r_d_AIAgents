@@ -1,0 +1,199 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "ba2dce81-d55a-41f0-af33-735acbdbcf07",
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "position": [
+        -680,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "firstName",
+              "value": "John"
+            },
+            {
+              "name": "lastName",
+              "value": "Doe"
+            },
+            {
+              "name": "email",
+              "value": "john.doe@example.com"
+            }
+          ],
+          "number": [
+            {
+              "name": "age",
+              "value": 30
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fe25846a-02c9-4312-8156-d9235efc69bc",
+      "name": "Set Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        -460,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "id": "2b186fcb-4469-4c96-9ae8-f0fd22fe74bf",
+      "name": "Process Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json.age}}",
+              "operation": "largerEqual",
+              "value2": 18
+            }
+          ]
+        }
+      },
+      "id": "495d16b9-5610-4a6e-8876-00f5e8959abe",
+      "name": "Check Age",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "status",
+              "value": "Adult"
+            },
+            {
+              "name": "message",
+              "value": "User is an adult and can access all features"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ff99c04f-5970-442b-81b9-6a9f13681c1b",
+      "name": "Adult Path",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        200,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "status",
+              "value": "Minor"
+            },
+            {
+              "name": "message",
+              "value": "User is a minor with restricted access"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c0b8621e-3c17-49e8-b57c-ac27f3d69050",
+      "name": "Minor Path",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        200,
+        -40
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Set Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Data": {
+      "main": [
+        [
+          {
+            "node": "Process Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Data": {
+      "main": [
+        [
+          {
+            "node": "Check Age",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Age": {
+      "main": [
+        [
+          {
+            "node": "Adult Path",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Minor Path",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "dd031486-86e7-4df0-b10f-b0c8e1102b45",
+  "meta": {
+    "instanceId": "56f0fb7864fd4715d6b856fb7d15019871e7c74a4c5f5341afe764a8aa7d9adb"
+  },
+  "id": "M5oqzgNm4t77RQRD",
+  "tags": []
+}

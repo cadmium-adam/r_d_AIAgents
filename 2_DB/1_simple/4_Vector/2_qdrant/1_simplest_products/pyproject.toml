@@ -1,0 +1,9 @@
+[project]
+name = "qdrant-simple-products"
+version = "0.1.0"
+description = "Simple product catalog with Qdrant vector database"
+requires-python = ">=3.12"
+dependencies = [
+    "qdrant-client>=1.9.0",
+    "sentence-transformers>=4.1.0",
+]

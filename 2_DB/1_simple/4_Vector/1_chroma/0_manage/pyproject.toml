@@ -1,0 +1,11 @@
+[project]
+name = "chroma-manager"
+version = "0.1.0"
+description = "ChromaDB management utilities"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "chromadb>=1.0.12",
+    "rich>=13.0.0",
+    "typer>=0.12.0",
+]

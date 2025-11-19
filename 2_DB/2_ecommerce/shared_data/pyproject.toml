@@ -1,0 +1,22 @@
+[project]
+name = "ecommerce-shared-data"
+version = "0.1.0"
+description = "Shared data generation utilities for multi-database e-commerce project"
+requires-python = ">=3.9"
+dependencies = [
+    "faker>=22.0.0",
+    "ollama>=0.4.7",
+    "requests>=2.32.3",
+    "openai>=1.91.0",
+    "python-dotenv>=1.1.0",
+    "minio>=7.2.5",
+    "diffusers[torch]>=0.33.1",
+    "protobuf>=6.31.1",
+    "sentencepiece>=0.2.0",
+    "transformers>=4.52.4",
+    "bitsandbytes>=0.46.0",
+    "accelerate>=1.8.1",
+]
+
+[tool.uv]
+dev-dependencies = []
