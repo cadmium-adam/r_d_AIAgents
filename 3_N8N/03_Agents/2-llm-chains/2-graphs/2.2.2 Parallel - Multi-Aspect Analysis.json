@@ -1,0 +1,307 @@
+{
+  "name": "2.2.2 Parallel - Multi-Aspect Analysis",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [260, 1000],
+      "webhookId": "parallel-llm-chain",
+      "id": "c7a8f7b0-68fe-47c6-a971-9e4a5130b7f3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// This workflow demonstrates PARALLEL LLM processing\n// We'll analyze the same input from multiple perspectives simultaneously:\n// 1. Technical Analysis\n// 2. Business Analysis  \n// 3. Creative Analysis\n// 4. Risk Analysis\n\nconsole.log('=== PARALLEL LLM CHAIN DEMO ===');\nconsole.log('Original Input:', $input.first().json.chatInput);\nconsole.log('\\nThis will analyze in parallel:');\nconsole.log('📊 Technical aspects');\nconsole.log('💼 Business implications');\nconsole.log('🎨 Creative opportunities');\nconsole.log('⚠️ Potential risks');\nconsole.log('==============================\\n');\n\nreturn [{\n  json: {\n    originalInput: $input.first().json.chatInput,\n    sessionId: $input.first().json.sessionId,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "name": "Explain Parallel Process",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 1000],
+      "id": "9be33e0d-08b9-48eb-bfff-bc1be89c7da9"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analyze the following text from a TECHNICAL perspective:\n\n{{ $json.originalInput }}\n\nFocus on:\n- Technical requirements and specifications\n- Technology stack recommendations\n- Implementation complexity\n- Performance considerations\n- Scalability aspects\n\nProvide a detailed technical analysis:"
+      },
+      "name": "Technical Analysis",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [700, 500],
+      "id": "af5e0d40-6a29-4f37-b2e6-e137b6b9c2e5"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analyze the following text from a BUSINESS perspective:\n\n{{ $json.originalInput }}\n\nFocus on:\n- Business value and ROI\n- Market opportunities\n- Competitive advantages\n- Resource requirements\n- Timeline and milestones\n\nProvide a detailed business analysis:"
+      },
+      "name": "Business Analysis",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [700, 900],
+      "id": "fc684f92-78a0-4bd5-a69d-f8bdc3dee284"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analyze the following text from a CREATIVE perspective:\n\n{{ $json.originalInput }}\n\nFocus on:\n- Innovative approaches\n- Unique selling points\n- User experience enhancements\n- Creative solutions\n- Differentiation opportunities\n\nProvide a detailed creative analysis:"
+      },
+      "name": "Creative Analysis",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [700, 1100],
+      "id": "f789fa97-fd78-4a08-8904-b5c0cd2f441e"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analyze the following text from a RISK perspective:\n\n{{ $json.originalInput }}\n\nFocus on:\n- Potential challenges and obstacles\n- Security considerations\n- Compliance and regulatory issues\n- Resource constraints\n- Mitigation strategies\n\nProvide a detailed risk analysis:"
+      },
+      "name": "Risk Analysis",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [700, 1340],
+      "id": "93188646-4758-474e-bc63-28a86e28fb6c"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4o Mini"
+        },
+        "options": {
+          "maxTokens": 300,
+          "temperature": 0.7
+        }
+      },
+      "name": "OpenAI Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [1400, 1500],
+      "id": "dcac75fe-f4db-40b4-b44c-9045731f69b9",
+      "credentials": {
+        "openAiApi": {
+          "id": "1",
+          "name": "OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Wait for all parallel analyses to complete\n// n8n automatically handles parallel execution\n\nconsole.log('\\n🔄 Waiting for all parallel analyses to complete...\\n');\n\n// Collect all results - they arrive as separate inputs\nconst allInputs = $input.all();\n\nconsole.log('\\n=== DEBUG: INPUT STRUCTURE ===');\nconsole.log('Number of inputs:', allInputs.length);\nallInputs.forEach((input, index) => {\n  console.log(`Input ${index}:`, JSON.stringify(input, null, 2));\n});\nconsole.log('================================\\n');\n\n// Safely extract analysis results\nconst analyses = [];\nconst analysisTypes = ['Technical', 'Business', 'Creative', 'Risk'];\n\nallInputs.forEach((input, index) => {\n  if (input && input.json && input.json.text) {\n    analyses.push(input.json.text);\n    console.log(`✅ ${analysisTypes[index] || 'Unknown'} Analysis Complete`);\n  } else {\n    console.log(`⚠️ Missing or invalid input at index ${index}`);\n    analyses.push('Analysis not available');\n  }\n});\n\nconsole.log('\\n📊 All parallel analyses completed!\\n');\n\n// Ensure we have at least 4 analyses (pad with defaults if needed)\nwhile (analyses.length < 4) {\n  analyses.push('Analysis not completed');\n}\n\n// Pass all data forward for synthesis\nreturn [{\n  json: {\n    originalInput: $node[\"Explain Parallel Process\"].json.originalInput,\n    technicalAnalysis: analyses[0],\n    businessAnalysis: analyses[1],\n    creativeAnalysis: analyses[2],\n    riskAnalysis: analyses[3],\n    sessionId: $node[\"Explain Parallel Process\"].json.sessionId\n  }\n}];"
+      },
+      "name": "Collect Parallel Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1060, 1000],
+      "id": "9272c7a4-490f-4149-96ac-0731cbb25c0b"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Based on these four parallel analyses:\n\n**Technical Analysis:**\n{{ $json.technicalAnalysis }}\n\n**Business Analysis:**\n{{ $json.businessAnalysis }}\n\n**Creative Analysis:**\n{{ $json.creativeAnalysis }}\n\n**Risk Analysis:**\n{{ $json.riskAnalysis }}\n\nCreate a comprehensive synthesis that:\n1. Identifies key themes across all perspectives\n2. Highlights areas of agreement and conflict\n3. Provides balanced recommendations\n4. Suggests immediate next steps\n\nSynthesis:"
+      },
+      "name": "Synthesize Results",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [1280, 1000],
+      "id": "28111e3a-95a8-4ccc-8765-b58526c7180a"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Final output with performance metrics\nconst synthesis = $input.first().json.text;\nconst originalInput = $node[\"Explain Parallel Process\"].json.originalInput;\n\n// Get individual analyses from the collect node\nconst collectData = $node[\"Collect Parallel Results\"].json;\nconst technicalAnalysis = collectData.technicalAnalysis;\nconst businessAnalysis = collectData.businessAnalysis;\nconst creativeAnalysis = collectData.creativeAnalysis;\nconst riskAnalysis = collectData.riskAnalysis;\n\nconsole.log('\\n✨ SYNTHESIS COMPLETE:');\nconsole.log(synthesis.substring(0, 200) + '...');\n\n// Calculate metrics\nconst totalChars = \n  originalInput.length + \n  technicalAnalysis.length + \n  businessAnalysis.length + \n  creativeAnalysis.length + \n  riskAnalysis.length +\n  synthesis.length;\n\nconst estimatedTokens = Math.ceil(totalChars / 4);\nconst estimatedCost = estimatedTokens * 0.00002;\n\n// Calculate time saved by parallel processing\nconst avgProcessingTime = 2000; // 2 seconds per analysis\nconst sequentialTime = avgProcessingTime * 4;\nconst parallelTime = avgProcessingTime;\nconst timeSaved = sequentialTime - parallelTime;\n\nconsole.log('\\n📊 PARALLEL PROCESSING METRICS:');\nconsole.log(`Total characters processed: ${totalChars}`);\nconsole.log(`Estimated tokens: ${estimatedTokens}`);\nconsole.log(`Estimated cost: $${estimatedCost.toFixed(4)}`);\nconsole.log(`Parallel branches: 4`);\nconsole.log(`Time saved vs sequential: ~${timeSaved}ms`);\nconsole.log('\\n=== PARALLEL CHAIN COMPLETE ===\\n');\n\n// Return formatted output\nreturn [{\n  json: {\n    output: `**🔄 Comprehensive Multi-Perspective Analysis**\\n\\n${synthesis}\\n\\n---\\n*Analyzed from 4 perspectives in parallel*`,\n    fullAnalysis: {\n      original: originalInput,\n      perspectives: {\n        technical: technicalAnalysis,\n        business: businessAnalysis,\n        creative: creativeAnalysis,\n        risk: riskAnalysis\n      },\n      synthesis: synthesis\n    },\n    metrics: {\n      totalChars,\n      estimatedTokens,\n      estimatedCost,\n      parallelBranches: 4,\n      timeSavedMs: timeSaved\n    }\n  }\n}];"
+      },
+      "name": "Final Output with Metrics",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1640, 1000],
+      "id": "35ada228-9224-4f88-bf6b-f691f9164ce9"
+    },
+    {
+      "parameters": {
+        "content": "## 🔄 Parallel LLM Chain Demonstration\n\nThis workflow shows how to process the same input through multiple LLM chains **simultaneously** for faster, more comprehensive analysis.\n\n### How It Works:\n1. Input splits into 4 parallel branches\n2. Each branch analyzes a different aspect\n3. All results collected when complete\n4. Final synthesis combines insights\n\n### Try These Inputs:\n- \"Launch a new mobile app for fitness tracking\"\n- \"Implement AI chatbot for customer service\"\n- \"Expand business to international markets\"\n- \"Build a sustainable energy solution\"\n\n### Benefits of Parallel Processing:\n- **Speed**: 4x faster than sequential\n- **Comprehensive**: Multiple perspectives\n- **Scalable**: Easy to add more branches\n- **Efficient**: Same tokens, better insights",
+        "height": 450,
+        "width": 400,
+        "color": 4
+      },
+      "name": "Parallel Processing Guide",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-280, 740],
+      "id": "1199af08-04c6-49a8-be5c-0f78d09fe732"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [1240, 1500],
+      "id": "99cfe359-fe6b-4c80-9425-6ed344000f6b",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Explain Parallel Process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Explain Parallel Process": {
+      "main": [
+        [
+          {
+            "node": "Technical Analysis",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Business Analysis",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Creative Analysis",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Risk Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Technical Analysis": {
+      "main": [
+        [
+          {
+            "node": "Collect Parallel Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Business Analysis": {
+      "main": [
+        [
+          {
+            "node": "Collect Parallel Results",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Creative Analysis": {
+      "main": [
+        [
+          {
+            "node": "Collect Parallel Results",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Risk Analysis": {
+      "main": [
+        [
+          {
+            "node": "Collect Parallel Results",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "OpenAI Model": {
+      "ai_languageModel": [[]]
+    },
+    "Collect Parallel Results": {
+      "main": [
+        [
+          {
+            "node": "Synthesize Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Synthesize Results": {
+      "main": [
+        [
+          {
+            "node": "Final Output with Metrics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Technical Analysis",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Synthesize Results",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Risk Analysis",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Creative Analysis",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Business Analysis",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ff90145e-bff6-4ca1-9d79-010a79baeaac",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "Xflaa0ukIhDx4sZh",
+  "tags": []
+}

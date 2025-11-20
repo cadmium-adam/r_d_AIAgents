@@ -1,0 +1,130 @@
+{
+  "name": "3.2.4 Wikipedia",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Wikipedia",
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        860,
+        420
+      ],
+      "id": "637bb5c3-1973-4750-aabc-a8a8a9909892"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a research assistant with access to Wikipedia.",
+          "maxIterations": 5,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        660,
+        200
+      ],
+      "id": "8fcf8768-ae19-4913-972a-03e222a5db74"
+    },
+    {
+      "parameters": {
+        "content": "📚 **EXAMPLE PROMPTS FOR WIKIPEDIA RESEARCH**\n\n**Historical Events:**\n• Tell me about the French Revolution\n• What happened during World War II?\n• Explain the fall of the Berlin Wall\n\n**Famous People:**\n• Who was Albert Einstein?\n• Tell me about Marie Curie's achievements\n• What did Leonardo da Vinci accomplish?\n\n**Science & Technology:**\n• Explain quantum physics\n• What is artificial intelligence?\n• How does photosynthesis work?\n\n**Geography & Places:**\n• Tell me about the Amazon rainforest\n• What's special about Mount Everest?\n• Describe the Great Wall of China\n\n**Culture & Society:**\n• What is the Renaissance period?\n• Explain different world religions\n• Tell me about ancient Greek mythology\n\n**Current Topics:**\n• What is climate change?\n• Explain cryptocurrency and blockchain\n• Tell me about space exploration missions",
+        "height": 400,
+        "width": 350,
+        "color": 2
+      },
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        80
+      ],
+      "id": "196c6615-76c4-4091-b190-5595225de3d7"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        400,
+        200
+      ],
+      "id": "d5025dcc-e83b-4402-91aa-3ee89722d488",
+      "name": "When chat message received",
+      "webhookId": "fb89cb9f-83cf-4b7c-8417-befc0e3fab2c"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        640,
+        420
+      ],
+      "id": "cc2082d6-291e-4811-81c3-3ad3edeb859f",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "3f659498-8250-4f85-9a9c-d4263204d00c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "02GIQMO0TTJk88NC",
+  "tags": []
+}

@@ -1,0 +1,58 @@
+{
+  "name": "3.1_HTTP_RAW_VLLM_Basic",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5a552db0-b5f3-4c07-b795-e1c47f108651",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttt0nkhw3r2tz3-8080.proxy.runpod.net/v1/chat/completions",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n    \"model\": \"mistralai/Mistral-7B-Instruct-v0.3\",\n    \"messages\": [\n      {\n        \"role\": \"system\",\n        \"content\": \"You are a helpful assistant.\"\n      },\n      {\n        \"role\": \"user\",\n        \"content\": \"Tell me a joke!\"\n      }\n    ]\n  }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "7af47eea-7c7d-4276-a08a-7d1768e43d68",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "654fb450-5fb1-4bec-9651-e44f48bb6fea",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "zbnIy6xH78snXqEQ",
+  "tags": []
+}

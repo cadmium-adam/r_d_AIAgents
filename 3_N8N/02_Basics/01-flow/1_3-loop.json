@@ -1,0 +1,119 @@
+{
+  "name": "1_3-Loop-Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-580, -30],
+      "name": "When clicking ‘Test workflow’",
+      "id": "037b8a68-44e4-4944-b985-d69935a452f5"
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [-140, -30],
+      "name": "Loop Over Items",
+      "id": "ec4b1182-797f-4688-83b2-9738428e73f1"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log($input.all())\n\nreturn $input.all()"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [80, -180],
+      "name": "Code",
+      "id": "1876f079-a88f-449e-b841-2633b2ee8842"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log(\"item\", $input.all())\n\nreturn $input.all()"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [80, 20],
+      "name": "Code1",
+      "id": "90865d8f-c59c-499f-8253-12387f44a82b"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the input items\nconst items = [\n  {\n    \"order_id\": \"1001\",\n    \"customer\": \"Alice Smith\",\n    \"order_date\": \"2025-06-21\",\n    \"total\": 153.45,\n    \"status\": \"shipped\",\n    \"products\": [\n      {\"product_id\": \"A1\", \"name\": \"Keyboard\", \"quantity\": 1, \"price\": 49.99},\n      {\"product_id\": \"A2\", \"name\": \"Mouse\", \"quantity\": 2, \"price\": 19.99}\n    ]\n  },\n  {\n    \"order_id\": \"1002\",\n    \"customer\": \"Bob Johnson\",\n    \"order_date\": \"2025-06-20\",\n    \"total\": 299.95,\n    \"status\": \"delivered\",\n    \"products\": [\n      {\"product_id\": \"B1\", \"name\": \"Monitor\", \"quantity\": 1, \"price\": 199.99},\n      {\"product_id\": \"B2\", \"name\": \"HDMI Cable\", \"quantity\": 2, \"price\": 24.98}\n    ]\n  },\n  {\n    \"order_id\": \"1003\",\n    \"customer\": \"Carol White\",\n    \"order_date\": \"2025-06-19\",\n    \"total\": 89.90,\n    \"status\": \"processing\",\n    \"products\": [\n      {\"product_id\": \"C1\", \"name\": \"Wireless Charger\", \"quantity\": 2, \"price\": 29.95},\n      {\"product_id\": \"C2\", \"name\": \"Phone Case\", \"quantity\": 1, \"price\": 29.99}\n    ]\n  },\n  {\n    \"order_id\": \"1004\",\n    \"customer\": \"David Lee\",\n    \"order_date\": \"2025-06-18\",\n    \"total\": 24.99,\n    \"status\": \"cancelled\",\n    \"products\": [\n      {\"product_id\": \"D1\", \"name\": \"USB Flash Drive\", \"quantity\": 1, \"price\": 24.99}\n    ]\n  },\n  {\n    \"order_id\": \"1005\",\n    \"customer\": \"Eva Brown\",\n    \"order_date\": \"2025-06-17\",\n    \"total\": 459.00,\n    \"status\": \"pending\",\n    \"products\": [\n      {\"product_id\": \"E1\", \"name\": \"Tablet\", \"quantity\": 1, \"price\": 399.00},\n      {\"product_id\": \"E2\", \"name\": \"Tablet Cover\", \"quantity\": 1, \"price\": 60.00}\n    ]\n  },\n  {\n    \"order_id\": \"1006\",\n    \"customer\": \"Frank Green\",\n    \"order_date\": \"2025-06-16\",\n    \"total\": 134.95,\n    \"status\": \"shipped\",\n    \"products\": [\n      {\"product_id\": \"F1\", \"name\": \"Bluetooth Speaker\", \"quantity\": 1, \"price\": 59.99},\n      {\"product_id\": \"F2\", \"name\": \"Earbuds\", \"quantity\": 2, \"price\": 37.48}\n    ]\n  },\n  {\n    \"order_id\": \"1007\",\n    \"customer\": \"Grace Kim\",\n    \"order_date\": \"2025-06-15\",\n    \"total\": 55.90,\n    \"status\": \"delivered\",\n    \"products\": [\n      {\"product_id\": \"G1\", \"name\": \"Notebook\", \"quantity\": 2, \"price\": 19.95},\n      {\"product_id\": \"G2\", \"name\": \"Pen Set\", \"quantity\": 1, \"price\": 15.99}\n    ]\n  },\n  {\n    \"order_id\": \"1008\",\n    \"customer\": \"Henry Black\",\n    \"order_date\": \"2025-06-14\",\n    \"total\": 89.98,\n    \"status\": \"processing\",\n    \"products\": [\n      {\"product_id\": \"H1\", \"name\": \"Webcam\", \"quantity\": 2, \"price\": 44.99}\n    ]\n  },\n  {\n    \"order_id\": \"1009\",\n    \"customer\": \"Ivy Wilson\",\n    \"order_date\": \"2025-06-13\",\n    \"total\": 210.49,\n    \"status\": \"shipped\",\n    \"products\": [\n      {\"product_id\": \"I1\", \"name\": \"External Hard Drive\", \"quantity\": 1, \"price\": 99.99},\n      {\"product_id\": \"I2\", \"name\": \"Power Bank\", \"quantity\": 2, \"price\": 55.25}\n    ]\n  },\n  {\n    \"order_id\": \"1010\",\n    \"customer\": \"Jack Miller\",\n    \"order_date\": \"2025-06-12\",\n    \"total\": 19.99,\n    \"status\": \"delivered\",\n    \"products\": [\n      {\"product_id\": \"J1\", \"name\": \"Screen Protector\", \"quantity\": 1, \"price\": 19.99}\n    ]\n  }\n];\n\nreturn items"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-360, -30],
+      "id": "7fc8749a-2c71-4d71-81fc-c0ac1c8d6145",
+      "name": "Prepare data"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Prepare data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare data": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "aea9e682-b23b-4bac-a0bf-edb93bf9cd59",
+  "meta": {
+    "instanceId": "56f0fb7864fd4715d6b856fb7d15019871e7c74a4c5f5341afe764a8aa7d9adb"
+  },
+  "id": "Q00XAh3bcE9JHrTp",
+  "tags": []
+}

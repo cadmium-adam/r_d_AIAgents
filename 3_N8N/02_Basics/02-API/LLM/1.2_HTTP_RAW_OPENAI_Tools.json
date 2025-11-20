@@ -1,0 +1,66 @@
+{
+  "name": "1.2_HTTP_RAW_OPENAI_Tools",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "db05d0c0-896c-4b84-b0df-b687c68f9bcf",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n    \"model\": \"gpt-4o\",\n    \"messages\": [\n        {\"role\": \"system\", \"content\": \"You are an AI assistant.\"},\n        {\"role\": \"user\", \"content\": \"What is the current stock price for MSFT?\"}\n    ],\n    \"tools\": [\n     {\n        \"type\": \"function\",\n        \"function\": {\n            \"name\": \"get_stock_price\",\n            \"description\": \"Use this function to get the current price of a stock.\",\n            \"parameters\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"ticker\": {\n                        \"type\": \"string\",\n                        \"description\": \"The ticker symbol for the stock, e.g. GOOG\"\n                    }\n                },\n                \"required\": [\"ticker\"]\n            }\n        }\n    },\n     {\n        \"type\": \"function\",\n            \"function\": {\n            \"name\": \"get_dividend_date\",\n            \"description\": \"Use this function to get the next dividend payment date of a stock.\",\n            \"parameters\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"ticker\": {\n                        \"type\": \"string\",\n                        \"description\": \"The ticker symbol for the stock, e.g. GOOG\"\n                    }\n                },\n                \"required\": [\"ticker\"]\n            }\n        }\n    }\n],\n    \"tool_choice\": \"auto\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "4b492b28-d07d-41ef-b3ac-fc2a49f22595",
+      "name": "HTTP Request",
+      "credentials": {
+        "openAiApi": {
+          "id": "0yEunOn71yargPRc",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "08f0a256-6379-444f-be2a-9880493c1a36",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "v8LM53SWqer5M9vE",
+  "tags": []
+}

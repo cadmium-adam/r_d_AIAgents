@@ -1,0 +1,204 @@
+{
+  "name": "3.3.1 AI Agent with Qdrant Vector Store - Educational Demo",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 180],
+      "id": "c0909245-69f9-4cde-8f82-56d5462c6793",
+      "webhookId": "4861f90c-5766-446a-9596-750eb5ac804a"
+    },
+    {
+      "parameters": {
+        "sessionKey": "=qdrant-vector-demo-{{ $('Chat Trigger').json.sessionId }}"
+      },
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1,
+      "position": [560, 400],
+      "id": "dd231b7f-6ffc-4737-a009-9da77a9ff37e"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4o Mini"
+        },
+        "options": {}
+      },
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [360, 400],
+      "id": "e006c247-05cf-4a9a-9ae5-25448442c8c1",
+      "credentials": {
+        "openAiApi": {
+          "id": "0yEunOn71yargPRc",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "all-minilm:l6-v2"
+      },
+      "name": "Ollama Embeddings",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "typeVersion": 1,
+      "position": [760, 600],
+      "id": "d1694621-b2b4-4651-83c1-c14fc99283b6",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Search through uploaded documents and knowledge base to find relevant information about the user's questions. Use this tool when the user asks questions that might be answered by previously uploaded documents or when they mention specific topics that could be in the knowledge base.",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "product_embeddings",
+          "mode": "list",
+          "cachedResultName": "product_embeddings"
+        },
+        "topK": 5,
+        "options": {}
+      },
+      "name": "Qdrant Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [700, 402.5],
+      "id": "66db550d-a565-44da-b0cf-4a4efdd842ea",
+      "credentials": {
+        "qdrantApi": {
+          "id": "S8bkIOXPmCdqsWsB",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an intelligent assistant with access to a vector database containing uploaded documents and knowledge. Your capabilities include:\n\n🔍 **Vector Search Capabilities:**\n- Search through uploaded documents using semantic similarity\n- Find relevant information from the knowledge base\n- Retrieve context-aware answers from stored documents\n\n💡 **Instructions:**\n1. When users ask questions, first consider if the information might be available in the uploaded documents\n2. Use the vector search tool to find relevant information when appropriate\n3. Combine vector search results with your general knowledge to provide comprehensive answers\n4. Always cite when information comes from the vector database\n5. If no relevant documents are found, use your general knowledge\n\n📊 **Current Query:** {{ $json.chatInput }}\n\n**Session ID:** {{ $('Chat Trigger').json.sessionId }}\n\nProvide helpful, accurate responses while leveraging the vector database when relevant.",
+        "options": {
+          "systemMessage": "You are a helpful AI assistant with access to a vector database containing uploaded documents. Use the vector search tool when users ask questions that might be answered by documents in the knowledge base. Always be clear about whether information comes from the vector database or your general knowledge.",
+          "maxIterations": 15,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent with Vector Search",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [500, 180],
+      "id": "20d6f63b-454d-4136-adcf-a2460361d4cc"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Educational logging for AI Agent with Vector Store demo\nconsole.log(\"\\n=== AI AGENT VECTOR STORE EDUCATIONAL DEMO ===\");\nconsole.log(\"Purpose: Demonstrate AI Agent with Qdrant vector search capabilities\");\n\n// Get the input data\nconst inputData = $input.first().json;\nconsole.log(\"\\n=== DEBUG: RAW INPUT DATA ===\");\nconsole.log(\"Full input structure:\", JSON.stringify($input.all(), null, 2));\nconsole.log(\"First item:\", JSON.stringify($input.first(), null, 2));\nconsole.log(\"Input.first().json:\", JSON.stringify($input.first().json, null, 2));\nconsole.log(\"================================\\n\");\n\n// Extract the agent response\nlet agentOutput = \"\";\nlet intermediateSteps = [];\nlet totalTokens = 0;\nlet searchResults = [];\n\nif (inputData.output) {\n  agentOutput = inputData.output;\n  console.log(\"Agent final output:\", agentOutput);\n} else if (inputData.text) {\n  agentOutput = inputData.text;\n  console.log(\"Agent text output:\", agentOutput);\n} else {\n  agentOutput = \"No output found in agent response\";\n  console.log(\"Warning: No recognizable output in agent response\");\n}\n\n// Check for intermediate steps (tool usage)\nif (inputData.intermediateSteps && Array.isArray(inputData.intermediateSteps)) {\n  intermediateSteps = inputData.intermediateSteps;\n  console.log(\"\\n=== VECTOR SEARCH TOOL USAGE ===\");\n  \n  intermediateSteps.forEach((step, index) => {\n    console.log(`Step ${index + 1}:`);\n    console.log(\"Tool:\", step.action?.tool || 'Unknown');\n    console.log(\"Tool Input:\", step.action?.toolInput || 'N/A');\n    \n    if (step.observation) {\n      console.log(\"Search Results:\", step.observation);\n      \n      // Try to parse vector search results\n      try {\n        if (typeof step.observation === 'string' && step.observation.includes('pageContent')) {\n          const results = JSON.parse(step.observation);\n          if (Array.isArray(results)) {\n            searchResults = results;\n            console.log(`Found ${results.length} relevant documents`);\n            results.forEach((result, i) => {\n              console.log(`  Document ${i + 1}: ${result.pageContent?.substring(0, 100)}...`);\n              if (result.metadata) {\n                console.log(`    Metadata:`, result.metadata);\n              }\n            });\n          }\n        }\n      } catch (e) {\n        console.log(\"Could not parse search results as JSON\");\n      }\n    }\n    console.log(\"---\");\n  });\n}\n\n// Token estimation for educational purposes\nconst estimateTokens = (text) => Math.ceil((text || '').length / 4);\n\n// Safely get user input from various possible sources\nlet userInput = '';\ntry {\n  // Try different ways to get the user input\n  const chatTrigger = $node[\"Chat Trigger\"]?.json;\n  if (chatTrigger?.chatInput) {\n    userInput = chatTrigger.chatInput;\n  } else if (chatTrigger?.message) {\n    userInput = chatTrigger.message;\n  } else if (chatTrigger?.input) {\n    userInput = chatTrigger.input;\n  } else {\n    userInput = 'User input not available';\n  }\n  console.log(\"\\n=== USER INPUT EXTRACTION ===\");\n  console.log(\"User input:\", userInput);\n} catch (e) {\n  console.log(\"Error extracting user input:\", e.message);\n  userInput = 'Error extracting user input';\n}\n\nconst inputTokens = estimateTokens(userInput + agentOutput);\nconst outputTokens = estimateTokens(agentOutput);\ntotalTokens = inputTokens + outputTokens;\n\n// Cost calculation (OpenAI GPT-4o-mini pricing)\nconst inputCostPerToken = 0.15 / 1000000; // $0.15 per 1M input tokens\nconst outputCostPerToken = 0.60 / 1000000; // $0.60 per 1M output tokens\n\nconst inputCost = inputTokens * inputCostPerToken;\nconst outputCost = outputTokens * outputCostPerToken;\nconst totalCost = inputCost + outputCost;\n\nconsole.log(\"\\n=== COST ANALYSIS ===\");\nconsole.log(`Input tokens: ${inputTokens}`);\nconsole.log(`Output tokens: ${outputTokens}`);\nconsole.log(`Total tokens: ${totalTokens}`);\nconsole.log(`Input cost: $${inputCost.toFixed(6)}`);\nconsole.log(`Output cost: $${outputCost.toFixed(6)}`);\nconsole.log(`Total cost: $${totalCost.toFixed(6)}`);\n\n// Vector search analysis\nconsole.log(\"\\n=== VECTOR SEARCH ANALYSIS ===\");\nif (searchResults.length > 0) {\n  console.log(`✅ Vector search used: Found ${searchResults.length} relevant documents`);\n  console.log(\"📄 Document sources used in response\");\n  searchResults.forEach((result, i) => {\n    const preview = result.pageContent?.substring(0, 80) || 'No content';\n    console.log(`  ${i + 1}. ${preview}...`);\n  });\n} else if (intermediateSteps.length > 0) {\n  console.log(\"🔍 Vector search attempted but no relevant documents found\");\n} else {\n  console.log(\"💭 Response generated from AI's general knowledge (no vector search used)\");\n}\n\n// Educational insights\nconsole.log(\"\\n=== EDUCATIONAL INSIGHTS ===\");\nconsole.log(\"🎓 Vector Store Integration:\");\nconsole.log(\"  • Qdrant vector database provides semantic search capabilities\");\nconsole.log(\"  • AI Agent can choose when to search documents vs. use general knowledge\");\nconsole.log(\"  • Embeddings convert text to vectors for similarity matching\");\nconsole.log(\"  • Retrieved documents provide context for more accurate responses\");\n\nconsole.log(\"\\n💰 Cost Optimization Tips:\");\nconsole.log(\"  • Vector search reduces hallucination by providing factual context\");\nconsole.log(\"  • Pre-embedded documents avoid real-time embedding costs\");\nconsole.log(\"  • Smaller models (GPT-4o-mini) work well with good context\");\nconsole.log(\"  • Limit vector search results (topK) to control context size\");\n\nconsole.log(\"\\n🔧 Technical Architecture:\");\nconsole.log(\"  • Chat Trigger → AI Agent (with Memory & Vector Tool)\");\nconsole.log(\"  • Agent decides when to use vector search vs. general knowledge\");\nconsole.log(\"  • Embeddings model must match the one used during document insertion\");\nconsole.log(\"  • Memory maintains conversation context across interactions\");\n\nconsole.log(\"\\n=== DEMO COMPLETE ===\");\n\n// Safely extract session ID\nlet sessionId = 'unknown';\ntry {\n  const chatTrigger = $node[\"Chat Trigger\"]?.json;\n  sessionId = chatTrigger?.sessionId || 'session-not-found';\n} catch (e) {\n  console.log(\"Could not extract session ID:\", e.message);\n}\n\n// Return the processed response\nreturn {\n  response: agentOutput,\n  searchResults: searchResults,\n  metadata: {\n    sessionId: sessionId,\n    totalTokens: totalTokens,\n    totalCost: totalCost,\n    vectorSearchUsed: searchResults.length > 0,\n    documentsFound: searchResults.length,\n    timestamp: new Date().toISOString()\n  }\n};"
+      },
+      "name": "Educational Processing & Analysis",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1060, 180],
+      "id": "7a69e510-500d-449c-bd02-37780d2c9520"
+    },
+    {
+      "parameters": {
+        "content": "## 🎓 AI Agent with Qdrant Vector Store - Educational Demo\n\n### Overview\nThis workflow demonstrates an AI Agent enhanced with Qdrant vector store capabilities for semantic document search.\n\n### Key Components:\n\n**1. Chat Trigger** (`@n8n/n8n-nodes-langchain.chatTrigger` v1.1)\n- Web-based chat interface\n- Session management for conversation history\n- File upload support for document ingestion\n\n**2. Memory Management** (`@n8n/n8n-nodes-langchain.memoryBufferWindow` v1)\n- Maintains conversation context\n- Session-based memory with unique keys\n- Enables follow-up questions and references\n\n**3. OpenAI Chat Model** (`@n8n/n8n-nodes-langchain.lmChatOpenAi` v1.2)\n- GPT-4o-mini for cost-effective performance\n- Integrated with AI Agent for reasoning\n\n**4. Ollama Embeddings** (`@n8n/n8n-nodes-langchain.embeddingsOllama` v1)\n- all-minilm:l6-v2 model (local/free embedding model)\n- Converts text to vectors for similarity search\n- Must match embedding model used during document insertion\n- Runs locally - no API costs or external dependencies\n\n**5. Qdrant Vector Store** (`@n8n/n8n-nodes-langchain.vectorStoreQdrant` v1.3)\n- Vector database for semantic search\n- Retrieval-as-tool mode for AI Agent integration\n- Configurable search parameters (topK, metadata filtering)\n\n**6. AI Agent** (`@n8n/n8n-nodes-langchain.agent` v2)\n- Orchestrates between general knowledge and vector search\n- Decides when to query the vector database\n- Combines multiple information sources\n\n### 🔧 Setup Requirements:\n\n**Credentials Needed:**\n1. **OpenAI API** - For chat model only\n2. **Qdrant Cloud API** - For vector database access\n3. **Ollama API** - For local embeddings (typically http://localhost:11434)\n\n**Qdrant Collection Setup:**\n1. Create collection named \"knowledge-base\"\n2. Upload documents using Qdrant insertion workflow with **all-minilm:l6-v2** embeddings\n3. Ensure embedding model consistency (CRITICAL: use same model for insertion and retrieval)\n\n**Ollama Setup:**\n1. Install Ollama locally\n2. Pull the embedding model: `ollama pull all-minilm:l6-v2`\n3. Verify Ollama is running on http://localhost:11434\n\n### 💡 Educational Features:\n\n**Cost Tracking:**\n- Real-time token usage calculation\n- Cost estimation per interaction\n- Optimization recommendations\n\n**Technical Insights:**\n- Vector search vs. general knowledge decision logging\n- Document retrieval analysis\n- Performance metrics\n\n**Learning Objectives:**\n- Understanding semantic search with vectors\n- AI Agent tool integration patterns\n- Cost-effective LLM usage with context\n- Memory management in conversational AI\n\n### 🎯 Use Cases:\n\n1. **Document Q&A Systems**\n   - Upload PDFs, docs, or text files\n   - Ask questions about content\n   - Get contextual answers with citations\n\n2. **Knowledge Base Search**\n   - Semantic search through company docs\n   - Find relevant information quickly\n   - Combine with general AI knowledge\n\n3. **Research Assistance**\n   - Query research papers or articles\n   - Get summaries and insights\n   - Cross-reference multiple sources\n\n### 📊 Cost Optimization:\n\n**Model Selection:**\n- GPT-4o-mini: $0.15/1M input, $0.60/1M output tokens\n- Smaller model works well with good context from vectors\n\n**Vector Search Efficiency:**\n- Limit topK results to control context size\n- Use metadata filtering to narrow search scope\n- Pre-embed documents to avoid real-time costs\n\n### 🔍 Advanced Features:\n\n**Search Optimization:**\n- Semantic similarity matching\n- Metadata-based filtering\n- Relevance ranking\n- Context-aware retrieval\n\n**Agent Intelligence:**\n- Autonomous tool selection\n- Multi-step reasoning\n- Context synthesis\n- Source attribution\n\n### 🛠️ Troubleshooting:\n\n**Common Issues:**\n1. **No search results** - Check collection name and embedding model\n2. **High costs** - Reduce topK or use metadata filters\n3. **Poor relevance** - Review document chunking and embedding strategy\n4. **Memory issues** - Check session ID configuration\n\n**Best Practices:**\n- Keep document chunks focused and coherent\n- Use descriptive metadata for better filtering\n- Monitor token usage and costs\n- Test with various query types\n\n### 🎓 Learning Resources:\n\n- **Vector Databases:** Understanding embeddings and similarity search\n- **AI Agents:** Tool integration and decision-making patterns\n- **Cost Management:** Token optimization strategies\n- **Qdrant:** Vector database configuration and operations"
+      },
+      "name": "📚 Documentation",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-120, 140],
+      "id": "558dc1f1-6e5f-489b-bf6f-aa57aa41e929"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent with Vector Search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent with Vector Search",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent with Vector Search",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Embeddings": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent with Vector Search",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent with Vector Search": {
+      "main": [
+        [
+          {
+            "node": "Educational Processing & Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ca638c63-9f3b-44fe-b21d-9cd5b9e10c84",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "VBzTHHxH8cJqA1Jd",
+  "tags": []
+}

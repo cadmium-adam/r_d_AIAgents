@@ -1,0 +1,92 @@
+{
+  "name": "2_3-Slack",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        -80
+      ],
+      "id": "bfa641d3-298f-4021-90e2-2bf3105ae352",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "#all-team1",
+          "mode": "name"
+        },
+        "text": "={{ \"Order Id: \" + $json.text }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        240,
+        -80
+      ],
+      "id": "da94ca23-8583-4fcb-b584-4eafc901b99f",
+      "name": "Slack",
+      "webhookId": "a4e801d9-6b20-4a59-9b2e-2e460d432171",
+      "credentials": {
+        "slackApi": {
+          "id": "NMCPQIaxe6IwBIqJ",
+          "name": "Slack account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "function randomString(length) {\n  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\n  let result = '';\n  for (let i = 0; i < length; i++) {\n    result += chars.charAt(Math.floor(Math.random() * chars.length));\n  }\n  return result;\n}\n\nreturn [{\n  text: randomString(10)\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        0,
+        -80
+      ],
+      "id": "0bca8f73-8b75-4475-ab31-fce5fb836dfd",
+      "name": "Code"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b6957ca8-26f8-4ca8-ae47-c9585be44254",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "56f0fb7864fd4715d6b856fb7d15019871e7c74a4c5f5341afe764a8aa7d9adb"
+  },
+  "id": "LSpndw4biT6LnrmD",
+  "tags": []
+}

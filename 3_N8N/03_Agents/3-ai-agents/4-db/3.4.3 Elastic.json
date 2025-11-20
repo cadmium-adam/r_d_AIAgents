@@ -1,0 +1,143 @@
+{
+  "name": "3.4.3 Elastic",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3cf3b070-ef7c-4272-bc15-2df8391be6e9",
+      "name": "When chat message received",
+      "webhookId": "387cf8a5-4279-4055-a376-9513931647a7"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are an Elasticsearch query assistant for an e-commerce analytics platform. Use the Elasticsearch Query Tool to search and analyze data across multiple indices.\n\nIMPORTANT: If you are returning tool call, return only tool call, NO ADDITIONAL TEXT IN RESPONSE\n\n## Available Indices:\n\n### **products** - Product catalog and search\nFields: id, name, description, category, brand, price, stock_quantity, rating, review_count, is_active, tags, attributes[], images, created_at\nExamples: {\"term\": {\"category\": \"Electronics\"}}, {\"range\": {\"price\": {\"gte\": 50, \"lte\": 200}}}, {\"match\": {\"name\": \"laptop\"}}\n\n### **search_analytics** - Search behavior metrics  \nFields: timestamp, query, user_id, session_id, results_count, clicked_product_id, clicked_position, search_time_ms, filters_applied[], device_type, location, converted\nExamples: {\"range\": {\"timestamp\": {\"gte\": \"2024-01-01\"}}}, {\"term\": {\"converted\": true}}, {\"match\": {\"query\": \"phone\"}}\n\n### **popular_searches** - Trending search queries\nFields: query, search_count, last_searched, trending_score, category, suggestions[]\nExamples: {\"range\": {\"search_count\": {\"gte\": 100}}}, {\"term\": {\"category\": \"Electronics\"}}, {\"range\": {\"trending_score\": {\"gte\": 0.8}}}\n\n### **user_sessions** - User browsing sessions\nFields: session_id, user_id, start_time, end_time, duration_minutes, pages_viewed[], device_info{}, location{}, referrer, is_active\nExamples: {\"range\": {\"duration_minutes\": {\"gte\": 10}}}, {\"term\": {\"device_info.type\": \"mobile\"}}, {\"term\": {\"location.country\": \"US\"}}\n\n### **user_behavior** - User interaction events\nFields: user_id, session_id, event_type, timestamp, page_url, device_info{}, product_id, search_query, filters{}, order_total, items_count\nExamples: {\"term\": {\"event_type\": \"purchase\"}}, {\"range\": {\"order_total\": {\"gte\": 100}}}, {\"term\": {\"device_info.type\": \"mobile\"}}\n\n### **analytics** - Business metrics and KPIs\nFields: date, metric_type, unique_visitors, page_views, sessions, bounce_rate, conversion_rate, revenue, orders, avg_order_value, top_products[], top_categories[], traffic_sources{}, device_breakdown{}\nExamples: {\"range\": {\"date\": {\"gte\": \"2024-01-01\"}}}, {\"range\": {\"conversion_rate\": {\"gte\": 0.05}}}, {\"term\": {\"metric_type\": \"daily\"}}\n\n## Query Guidelines:\n\n### Search Types:\n- **match**: Full-text search on text fields like {\"match\": {\"name\": \"smartphone\"}}\n- **term**: Exact match on keyword fields like {\"term\": {\"category\": \"Electronics\"}}\n- **range**: Numeric/date ranges like {\"range\": {\"price\": {\"gte\": 100, \"lte\": 500}}}\n- **bool**: Complex queries with must/should/filter like {\"bool\": {\"must\": [{\"term\": {\"is_active\": true}}]}}\n\n### Aggregations:\n- **terms**: Group by field like {\"aggs\": {\"categories\": {\"terms\": {\"field\": \"category\"}}}}\n- **date_histogram**: Time-based grouping like {\"aggs\": {\"daily\": {\"date_histogram\": {\"field\": \"timestamp\", \"calendar_interval\": \"day\"}}}}\n- **avg/sum/max/min**: Metrics like {\"aggs\": {\"avg_price\": {\"avg\": {\"field\": \"price\"}}}}\n\n### Common Patterns:\n- Date ranges: {\"range\": {\"timestamp\": {\"gte\": \"2024-01-01T00:00:00\", \"lte\": \"2024-12-31T23:59:59\"}}}\n- Text search: {\"match\": {\"name\": {\"query\": \"laptop\", \"operator\": \"and\"}}}\n- Multi-field search: {\"multi_match\": {\"query\": \"gaming laptop\", \"fields\": [\"name\", \"description\"]}}\n- Filtered search: {\"bool\": {\"must\": [{\"match\": {\"name\": \"phone\"}}], \"filter\": [{\"term\": {\"is_active\": true}}]}}\n\n## Example Queries:\n\n### Product Search:\n- \"Find laptops under $1000\" → index: products, query: {\"bool\": {\"must\": [{\"match\": {\"name\": \"laptop\"}}], \"filter\": [{\"range\": {\"price\": {\"lte\": 1000}}}]}}\n- \"High-rated Electronics\" → index: products, query: {\"bool\": {\"filter\": [{\"term\": {\"category\": \"Electronics\"}}, {\"range\": {\"rating\": {\"gte\": 4.0}}}]}}\n\n### Analytics:\n- \"Popular searches this month\" → index: popular_searches, query: {\"range\": {\"last_searched\": {\"gte\": \"2024-06-01\"}}}\n- \"Mobile vs Desktop traffic\" → index: analytics, aggs: {\"devices\": {\"terms\": {\"field\": \"device_breakdown\"}}}\n\n### User Behavior:\n- \"High-value purchases\" → index: user_behavior, query: {\"bool\": {\"must\": [{\"term\": {\"event_type\": \"purchase\"}}, {\"range\": {\"order_total\": {\"gte\": 500}}}]}}\n- \"Search conversion rate\" → index: search_analytics, query: {\"term\": {\"converted\": true}}\n\n## Response Format:\nAlways specify the index name and provide valid Elasticsearch query JSON. Use aggregations for analytics questions and regular queries for finding specific documents."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "4b0d68f2-4e3b-4ade-839f-1eea91e8dc6a",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {
+          "temperature": 0,
+          "mainGpu": 0,
+          "numCtx": 10000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        180,
+        240
+      ],
+      "id": "1705ade8-1bb0-4ce6-9200-1e6b6bc66cfa",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "indexId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Index_ID', ``, 'string') }}",
+        "returnAll": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Return_All', ``, 'boolean') }}",
+        "simple": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Simplify', ``, 'boolean') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.elasticsearchTool",
+      "typeVersion": 1,
+      "position": [
+        460,
+        220
+      ],
+      "id": "f65966f0-dd9f-40bc-9c04-87c0c7893a52",
+      "name": "Get many documents in Elasticsearch",
+      "credentials": {
+        "elasticsearchApi": {
+          "id": "i5fTxUIFtszEJBun",
+          "name": "Elasticsearch account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Prompts\n\nDo we have products for tennis?\n\nWhat are popular searches this week?",
+        "height": 280,
+        "width": 420
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -620,
+        -20
+      ],
+      "typeVersion": 1,
+      "id": "784c2e01-1e72-4795-9892-7883720abe85",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many documents in Elasticsearch": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0eacf9d7-ecd0-48a7-83eb-3ce9c6147849",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "EFuxv5vHhMFnu6Hj",
+  "tags": []
+}

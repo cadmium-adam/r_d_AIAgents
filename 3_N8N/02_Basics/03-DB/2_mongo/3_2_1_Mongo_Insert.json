@@ -1,0 +1,111 @@
+{
+  "name": "3_2_1_Mongo_Insert",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "556b2831-bb8d-4932-bcc6-b2490a8525d7",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "const products = [\n    {\n        id: \"1\",\n        title: \"Wireless Bluetooth Headphones\",\n        description: \"Over-ear noise-cancelling headphones with 20h battery life\",\n    },\n    {\n        id: \"2\",\n        title: \"Gaming Laptop\",\n        description: \"High-performance laptop with RTX 3060 GPU and 16GB RAM for gaming and content creation\",\n    },\n    {\n        id: \"3\",\n        title: \"Eco-Friendly Water Bottle\",\n        description: \"Reusable stainless steel bottle made from recycled materials, keeps drinks cold for 24h\",\n    },\n    {\n        id: \"4\",\n        title: \"Fitness Tracker Watch\",\n        description: \"Tracks steps, heart rate, and sleep with 7-day battery and waterproof design\",\n    },\n    {\n        id: \"5\",\n        title: \"Smart Home Security Camera\",\n        description: \"1080p WiFi indoor camera with motion detection and mobile alerts\",\n    },\n    {\n        id: \"6\",\n        title: \"Hiking Backpack\",\n        description: \"Water-resistant backpack with 35L capacity, suitable for mountain trips\",\n    },\n    {\n        id: \"7\",\n        title: \"Mechanical Keyboard\",\n        description: \"RGB backlit mechanical keyboard with tactile switches, perfect for gamers\",\n    },\n    {\n        id: \"8\",\n        title: \"Noise-Isolating Earbuds\",\n        description: \"Compact in-ear headphones with rich bass and passive noise isolation\",\n    },\n    {\n        id: \"9\",\n        title: \"4K Monitor\",\n        description: \"Ultra HD 27-inch monitor with HDR support and slim bezel design\",\n    },\n    {\n        id: \"10\",\n        title: \"Portable Solar Charger\",\n        description: \"Foldable solar charger with USB-C output for phones and tablets on the go\",\n    },\n];\n\nreturn products"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "e934c9f7-f282-4c6e-bca4-1aa6d3b01dd3",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "operation": "insert",
+        "collection": "products",
+        "fields": "id,title,description",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.1,
+      "position": [
+        440,
+        0
+      ],
+      "id": "b5a62db6-e6b7-47ac-8588-e46df57f7248",
+      "name": "MongoDB",
+      "credentials": {
+        "mongoDb": {
+          "id": "EmECjQqKKbzzvAgq",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log($input.all())\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ],
+      "id": "31e3459a-4ecb-496c-807a-c6381e2f773a",
+      "name": "Code1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "MongoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MongoDB": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0d950c7a-c333-48b7-816e-fc3af47a8922",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "41d606a1a24293c789026869c85829c359b37aa1d75ba26c221717836b27fec2"
+  },
+  "id": "Hgck1q6cu3yIGPpV",
+  "tags": []
+}

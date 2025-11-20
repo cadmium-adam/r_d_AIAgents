@@ -1,0 +1,64 @@
+{
+  "name": "2.2_HTTP_RAW_OLLAMA_Tools",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6b7048d8-3de4-4ae7-9fa3-8da9d0276dad",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.114:11434/api/chat",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n    \"model\": \"mistral\",\n    \"messages\": [\n        {\"role\": \"system\", \"content\": \"You are an AI assistant.\"},\n        {\"role\": \"user\", \"content\": \"What is the current stock price for MSFT?\"}\n    ],\n    \"tools\": [\n     {\n        \"type\": \"function\",\n        \"function\": {\n            \"name\": \"get_stock_price\",\n            \"description\": \"Use this function to get the current price of a stock.\",\n            \"parameters\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"ticker\": {\n                        \"type\": \"string\",\n                        \"description\": \"The ticker symbol for the stock, e.g. GOOG\"\n                    }\n                },\n                \"required\": [\"ticker\"]\n            }\n        }\n    },\n     {\n        \"type\": \"function\",\n            \"function\": {\n            \"name\": \"get_dividend_date\",\n            \"description\": \"Use this function to get the next dividend payment date of a stock.\",\n            \"parameters\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"ticker\": {\n                        \"type\": \"string\",\n                        \"description\": \"The ticker symbol for the stock, e.g. GOOG\"\n                    }\n                },\n                \"required\": [\"ticker\"]\n            }\n        }\n    }\n],\n    \"tool_choice\": \"auto\"\n}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "2d0f072c-72c8-47da-b027-0d6aad6e9a91",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "cf41da7b-5ebf-4507-854b-5af24c2cb89a",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "jFQja3Dz6K0v4Bn7",
+  "tags": []
+}

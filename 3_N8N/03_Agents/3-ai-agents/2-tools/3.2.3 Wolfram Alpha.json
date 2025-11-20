@@ -1,0 +1,166 @@
+{
+  "name": "3.2.3 Wolfram Alpha",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Wolfram Alpha",
+      "type": "@n8n/n8n-nodes-langchain.toolWolframAlpha",
+      "typeVersion": 1,
+      "position": [
+        880,
+        420
+      ],
+      "id": "d92d2244-af71-4a18-82a9-9dabdc7bf65f",
+      "credentials": {
+        "wolframAlphaApi": {
+          "id": "15i0fNVp5yqGYzFe",
+          "name": "WolframAlphaApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a assistant with access to Wolfram Alpha's computational intelligence engine.",
+          "maxIterations": 5,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        660,
+        200
+      ],
+      "id": "2c1f9e0e-5628-4dfa-bb9f-536e31cc63ea"
+    },
+    {
+      "parameters": {
+        "content": "## Prompts\n\nShow me the periodic table for oxygen.\n\nCompact comparison of GDP for EU, US, and China.",
+        "height": 400,
+        "width": 350,
+        "color": 6
+      },
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        120
+      ],
+      "id": "6998524f-3b3b-4c47-bfec-0415eb673489"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        380,
+        200
+      ],
+      "id": "b5ecd2fa-1d83-43c1-9052-ae419a4cab29",
+      "name": "When chat message received",
+      "webhookId": "f312c2f1-b87c-4137-a960-904526a54145"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        420,
+        420
+      ],
+      "id": "817caff6-6797-40f4-aafc-cdf988858b91",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "mistralai/Mistral-7B-Instruct-v0.3",
+          "mode": "list",
+          "cachedResultName": "mistralai/Mistral-7B-Instruct-v0.3"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        620,
+        420
+      ],
+      "id": "089d5cf9-3445-4866-be1f-be8c2fa49c07",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "duKpgh9SMgoT2Gde",
+          "name": "RUNPOD"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Wolfram Alpha": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e05a4b85-150f-44d7-b08a-739cfc04872a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "5cw4yvUk2xXMGK17",
+  "tags": []
+}

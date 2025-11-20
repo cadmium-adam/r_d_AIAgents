@@ -1,0 +1,79 @@
+{
+  "name": "2_4-Gmail",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-320, -100],
+      "id": "1c53ebdb-474a-46b9-8e31-a99702ffa21f",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "function randomString(length) {\n  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\n  let result = '';\n  for (let i = 0; i < length; i++) {\n    result += chars.charAt(Math.floor(Math.random() * chars.length));\n  }\n  return result;\n}\n\nreturn [{\n  text: randomString(10)\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-100, -100],
+      "id": "25fd99dd-a8a3-45fe-9a91-780818c02c57",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "sendTo": "lukas.kellerstein@outlook.com",
+        "subject": "Hey hey!",
+        "message": "={{ \"Hey, how are you?\" + $json.text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [120, -100],
+      "id": "8c35d985-fa9e-493f-8428-4a33813e41e5",
+      "name": "Gmail",
+      "webhookId": "0b44ac23-d3dd-430d-93dd-00a48a656900",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VRPHFOQiBcLLTygD",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d4237b14-c08e-4a97-9b00-d5fcf1324dc1",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "56f0fb7864fd4715d6b856fb7d15019871e7c74a4c5f5341afe764a8aa7d9adb"
+  },
+  "id": "kViddJMBjsUloNTl",
+  "tags": []
+}

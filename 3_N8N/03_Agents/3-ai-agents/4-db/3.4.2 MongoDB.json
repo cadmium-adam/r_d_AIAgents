@@ -1,0 +1,144 @@
+{
+  "name": "3.4.2 MongoDB",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8bfeda81-87bf-467d-931d-bcfbc0fc53f1",
+      "name": "When chat message received",
+      "webhookId": "fde4d683-09df-4637-844e-a9d7d34d8f3d"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a MongoDB assistant for an e-commerce platform.",
+          "returnIntermediateSteps": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "b16bcbfa-0c6e-41b9-a59d-cefba2ab8fe8",
+      "name": "AI Agent",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Query documents in MongoDB",
+        "collection": "product_reviews",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mongoDbTool",
+      "typeVersion": 1.2,
+      "position": [
+        440,
+        220
+      ],
+      "id": "ec8dda85-5027-4f5f-9fb0-8cc6a3b55b95",
+      "name": "MongoDB",
+      "credentials": {
+        "mongoDb": {
+          "id": "BoTHRGHmE8HOIz5V",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Prompts\n\nGive me some nice product reviews.\n\nWhich one is the biggest shopping cart?",
+        "height": 360,
+        "width": 420
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -580,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "62c92507-9b7a-4a0e-af62-319ab6361218",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        220,
+        220
+      ],
+      "id": "bedd3fc0-d5c1-4f15-9f25-e9a0be671c8d",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "0yEunOn71yargPRc",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MongoDB": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a09a838b-53a7-4c8e-9fa1-96e1ed9fa227",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "8z6cIQJACTwgv7eM",
+  "tags": []
+}

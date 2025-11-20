@@ -1,0 +1,99 @@
+{
+  "name": "2_2-HTTP-HTML",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0],
+      "id": "b1090705-7b98-4cb0-8d67-1e874f9918ce",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "url": "http://www.idnes.cz",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [220, 0],
+      "id": "f74a3985-2826-4d97-8987-d2a1ca17ea1b",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "cssSelector": ".art-link",
+              "returnArray": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [440, 0],
+      "id": "fc8a0db0-f086-40e7-a497-1b4872f5aa2e",
+      "name": "HTML"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log($input.all())\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 0],
+      "id": "124874e9-14ff-45be-8de2-f24f69552756",
+      "name": "Code"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e2aee45d-abef-48b8-872a-9bca77d4c042",
+  "meta": {
+    "instanceId": "56f0fb7864fd4715d6b856fb7d15019871e7c74a4c5f5341afe764a8aa7d9adb"
+  },
+  "id": "SgnXsBDKFR6pd2fB",
+  "tags": []
+}

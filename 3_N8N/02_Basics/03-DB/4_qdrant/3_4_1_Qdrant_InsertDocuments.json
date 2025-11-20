@@ -1,0 +1,212 @@
+{
+  "name": "3_4_1-Qdrant-InsertDocuments",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        -100
+      ],
+      "id": "7a387f6a-72b0-47fa-9478-66b7197b0a5e",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "n8n_test_data",
+          "mode": "list",
+          "cachedResultName": "n8n_test_data"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1,
+      "position": [
+        36,
+        -100
+      ],
+      "id": "17e47d15-0d1c-4bef-894b-38ee1f5419b3",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "P1UehpY0oJbEfaSI",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "all-minilm:l6-v2"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "typeVersion": 1,
+      "position": [
+        20,
+        120
+      ],
+      "id": "4823dd9e-16c1-4987-8267-b252f07b73ab",
+      "name": "Embeddings Ollama",
+      "credentials": {
+        "ollamaApi": {
+          "id": "0h2U0IrdRAL5oEBv",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.content }}",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "id",
+                "value": "={{ $json.metadata.id }}"
+              },
+              {
+                "name": "title",
+                "value": "={{ $json.metadata.title }}"
+              },
+              {
+                "name": "description",
+                "value": "={{ $json.metadata.description }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        140,
+        122.5
+      ],
+      "id": "a7ca2506-ebb1-4823-8ad7-cfcdb7b10c91",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        228,
+        320
+      ],
+      "id": "7caea49c-4a39-4cc5-a332-3ef5418c8aa0",
+      "name": "Recursive Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "jsCode": "const products = [\n    {\n        id: \"1\",\n        title: \"Wireless Bluetooth Headphones\",\n        description: \"Over-ear noise-cancelling headphones with 20h battery life\",\n    },\n    {\n        id: \"2\",\n        title: \"Gaming Laptop\",\n        description: \"High-performance laptop with RTX 3060 GPU and 16GB RAM for gaming and content creation\",\n    },\n    {\n        id: \"3\",\n        title: \"Eco-Friendly Water Bottle\",\n        description: \"Reusable stainless steel bottle made from recycled materials, keeps drinks cold for 24h\",\n    },\n    {\n        id: \"4\",\n        title: \"Fitness Tracker Watch\",\n        description: \"Tracks steps, heart rate, and sleep with 7-day battery and waterproof design\",\n    },\n    {\n        id: \"5\",\n        title: \"Smart Home Security Camera\",\n        description: \"1080p WiFi indoor camera with motion detection and mobile alerts\",\n    },\n    {\n        id: \"6\",\n        title: \"Hiking Backpack\",\n        description: \"Water-resistant backpack with 35L capacity, suitable for mountain trips\",\n    },\n    {\n        id: \"7\",\n        title: \"Mechanical Keyboard\",\n        description: \"RGB backlit mechanical keyboard with tactile switches, perfect for gamers\",\n    },\n    {\n        id: \"8\",\n        title: \"Noise-Isolating Earbuds\",\n        description: \"Compact in-ear headphones with rich bass and passive noise isolation\",\n    },\n    {\n        id: \"9\",\n        title: \"4K Monitor\",\n        description: \"Ultra HD 27-inch monitor with HDR support and slim bezel design\",\n    },\n    {\n        id: \"10\",\n        title: \"Portable Solar Charger\",\n        description: \"Foldable solar charger with USB-C output for phones and tablets on the go\",\n    },\n];\n\n// Convert each product into the n8n format\nreturn products.map(product => ({\n      content: `${product.title}=${product.description}`,\n      metadata: {\n          id: product.id,\n          title: product.title,\n          description: product.description\n      }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        -100
+      ],
+      "id": "a94cd79d-00b8-45a7-9db7-26230c3e56b4",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log($input.all())\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        -100
+      ],
+      "id": "e67aae9d-51a2-4529-b292-48f530cc18bc",
+      "name": "Code1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Ollama": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "44305bb9-e80f-479d-895a-e68e9925bbb5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "41d606a1a24293c789026869c85829c359b37aa1d75ba26c221717836b27fec2"
+  },
+  "id": "JNXWey1qGHMBhQBM",
+  "tags": []
+}

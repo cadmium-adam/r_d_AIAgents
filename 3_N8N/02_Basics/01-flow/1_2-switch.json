@@ -1,0 +1,212 @@
+{
+  "name": "1_2-Switch-Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-780, 260],
+      "id": "66e71fef-51a9-46f7-ac6f-5caa2bd9ed58"
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{$json.status}}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "pending"
+            },
+            {
+              "value2": "processing",
+              "output": 1
+            },
+            {
+              "value2": "shipped",
+              "output": 2
+            },
+            {
+              "value2": "delivered",
+              "output": 3
+            },
+            {
+              "value2": "cancelled",
+              "output": 3
+            }
+          ]
+        }
+      },
+      "name": "Route by Order Status",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [-340, 239],
+      "id": "0775582e-4b8e-4b9a-bf7d-8f711cbaae2a"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "action",
+              "value": "wait_for_payment"
+            },
+            {
+              "name": "message",
+              "value": "Order is pending payment confirmation"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Handle Pending",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [-120, -40],
+      "id": "f5e21d1c-859b-402d-953d-bce6a108aed5"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "action",
+              "value": "prepare_shipment"
+            },
+            {
+              "name": "message",
+              "value": "Order is being processed for shipment"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Handle Processing",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [-120, 160],
+      "id": "ec4e2283-c500-4515-a62f-0bef7399cb9a"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "action",
+              "value": "send_tracking_info"
+            },
+            {
+              "name": "message",
+              "value": "Order has been shipped - tracking info sent to customer"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Handle Shipped",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [-120, 360],
+      "id": "9b99dc38-509f-4141-abc6-c60bccf454e2"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "action",
+              "value": "send_confirmation"
+            },
+            {
+              "name": "message",
+              "value": "Order delivered successfully - sending feedback request"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Handle Delivered",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [-120, 560],
+      "id": "4297d91d-92bc-42df-af84-bdad6a590ae2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the input items\nconst items = [\n  {\n    \"order_id\": \"1001\",\n    \"customer\": \"Alice Smith\",\n    \"order_date\": \"2025-06-21\",\n    \"total\": 153.45,\n    \"status\": \"shipped\",\n    \"products\": [\n      {\"product_id\": \"A1\", \"name\": \"Keyboard\", \"quantity\": 1, \"price\": 49.99},\n      {\"product_id\": \"A2\", \"name\": \"Mouse\", \"quantity\": 2, \"price\": 19.99}\n    ]\n  },\n  {\n    \"order_id\": \"1002\",\n    \"customer\": \"Bob Johnson\",\n    \"order_date\": \"2025-06-20\",\n    \"total\": 299.95,\n    \"status\": \"delivered\",\n    \"products\": [\n      {\"product_id\": \"B1\", \"name\": \"Monitor\", \"quantity\": 1, \"price\": 199.99},\n      {\"product_id\": \"B2\", \"name\": \"HDMI Cable\", \"quantity\": 2, \"price\": 24.98}\n    ]\n  },\n  {\n    \"order_id\": \"1003\",\n    \"customer\": \"Carol White\",\n    \"order_date\": \"2025-06-19\",\n    \"total\": 89.90,\n    \"status\": \"processing\",\n    \"products\": [\n      {\"product_id\": \"C1\", \"name\": \"Wireless Charger\", \"quantity\": 2, \"price\": 29.95},\n      {\"product_id\": \"C2\", \"name\": \"Phone Case\", \"quantity\": 1, \"price\": 29.99}\n    ]\n  },\n  {\n    \"order_id\": \"1004\",\n    \"customer\": \"David Lee\",\n    \"order_date\": \"2025-06-18\",\n    \"total\": 24.99,\n    \"status\": \"cancelled\",\n    \"products\": [\n      {\"product_id\": \"D1\", \"name\": \"USB Flash Drive\", \"quantity\": 1, \"price\": 24.99}\n    ]\n  },\n  {\n    \"order_id\": \"1005\",\n    \"customer\": \"Eva Brown\",\n    \"order_date\": \"2025-06-17\",\n    \"total\": 459.00,\n    \"status\": \"pending\",\n    \"products\": [\n      {\"product_id\": \"E1\", \"name\": \"Tablet\", \"quantity\": 1, \"price\": 399.00},\n      {\"product_id\": \"E2\", \"name\": \"Tablet Cover\", \"quantity\": 1, \"price\": 60.00}\n    ]\n  },\n  {\n    \"order_id\": \"1006\",\n    \"customer\": \"Frank Green\",\n    \"order_date\": \"2025-06-16\",\n    \"total\": 134.95,\n    \"status\": \"shipped\",\n    \"products\": [\n      {\"product_id\": \"F1\", \"name\": \"Bluetooth Speaker\", \"quantity\": 1, \"price\": 59.99},\n      {\"product_id\": \"F2\", \"name\": \"Earbuds\", \"quantity\": 2, \"price\": 37.48}\n    ]\n  },\n  {\n    \"order_id\": \"1007\",\n    \"customer\": \"Grace Kim\",\n    \"order_date\": \"2025-06-15\",\n    \"total\": 55.90,\n    \"status\": \"delivered\",\n    \"products\": [\n      {\"product_id\": \"G1\", \"name\": \"Notebook\", \"quantity\": 2, \"price\": 19.95},\n      {\"product_id\": \"G2\", \"name\": \"Pen Set\", \"quantity\": 1, \"price\": 15.99}\n    ]\n  },\n  {\n    \"order_id\": \"1008\",\n    \"customer\": \"Henry Black\",\n    \"order_date\": \"2025-06-14\",\n    \"total\": 89.98,\n    \"status\": \"processing\",\n    \"products\": [\n      {\"product_id\": \"H1\", \"name\": \"Webcam\", \"quantity\": 2, \"price\": 44.99}\n    ]\n  },\n  {\n    \"order_id\": \"1009\",\n    \"customer\": \"Ivy Wilson\",\n    \"order_date\": \"2025-06-13\",\n    \"total\": 210.49,\n    \"status\": \"shipped\",\n    \"products\": [\n      {\"product_id\": \"I1\", \"name\": \"External Hard Drive\", \"quantity\": 1, \"price\": 99.99},\n      {\"product_id\": \"I2\", \"name\": \"Power Bank\", \"quantity\": 2, \"price\": 55.25}\n    ]\n  },\n  {\n    \"order_id\": \"1010\",\n    \"customer\": \"Jack Miller\",\n    \"order_date\": \"2025-06-12\",\n    \"total\": 19.99,\n    \"status\": \"delivered\",\n    \"products\": [\n      {\"product_id\": \"J1\", \"name\": \"Screen Protector\", \"quantity\": 1, \"price\": 19.99}\n    ]\n  }\n];\n\nreturn items"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-560, 260],
+      "id": "31411e7f-a365-46c8-9010-44ca70fc2de3",
+      "name": "Code"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by Order Status": {
+      "main": [
+        [
+          {
+            "node": "Handle Pending",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Handle Processing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Handle Shipped",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Handle Delivered",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Route by Order Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f2b9d440-e4b1-40c8-8d10-f8ea3503445b",
+  "meta": {
+    "instanceId": "56f0fb7864fd4715d6b856fb7d15019871e7c74a4c5f5341afe764a8aa7d9adb"
+  },
+  "id": "Eexo5OqaabfVxQy1",
+  "tags": []
+}

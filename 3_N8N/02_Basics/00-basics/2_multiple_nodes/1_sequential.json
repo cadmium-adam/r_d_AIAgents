@@ -1,0 +1,180 @@
+{
+  "name": "2_multiple_nodes-1_sequential",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        -48
+      ],
+      "id": "b131a941-2871-4346-a5c2-8e9d873a42a8",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        560,
+        -48
+      ],
+      "id": "69b95a43-7cdc-4d39-90be-7a752e355106",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cd158672-1196-4ee5-8fba-9faf954218b0",
+              "name": "data",
+              "value": "[\"A\"]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -144,
+        -48
+      ],
+      "id": "bb26984e-a72f-4090-ae5e-029f26887dc7",
+      "name": "node_a"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": {{ $('node_a').item.json.data.append(\"B\") }}\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        32,
+        -48
+      ],
+      "id": "562def74-cb3a-4ce1-aeed-bba4ece7a974",
+      "name": "node_b"
+    },
+    {
+      "parameters": {
+        "content": "## Shared state \nAvailable via {{ $vars.xxx }} in Enterprise version of N8N\n\nWorkaround:\n\nA) Use a storage - postgres, redis ... etc.\nB) Hand over the state from one node to another\n\n",
+        "height": 192,
+        "width": 528
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -144,
+        -336
+      ],
+      "id": "6d39fcde-1e86-46e7-bd01-714d137edbc5",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": {{ $json.data.append(\"C\") }}\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        -48
+      ],
+      "id": "5872718a-6ef9-4ae5-964d-710c4cff0400",
+      "name": "node_c"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": {{ $json.data.append(\"D\") }}\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        368,
+        -48
+      ],
+      "id": "d7d5e51f-6066-4684-a801-b984ce9674bc",
+      "name": "node_d"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "node_a",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "node_a": {
+      "main": [
+        [
+          {
+            "node": "node_b",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "node_b": {
+      "main": [
+        [
+          {
+            "node": "node_c",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "node_c": {
+      "main": [
+        [
+          {
+            "node": "node_d",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "node_d": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "bcbab1fe-1fac-4c4a-989f-824a75912112",
+  "meta": {
+    "instanceId": "9d3f08be19beef0f2b29f10643857d67ef13f40ef1d51ceb764aa9cd38213ad9"
+  },
+  "id": "Tojh5jItwN7yh7QF",
+  "tags": []
+}

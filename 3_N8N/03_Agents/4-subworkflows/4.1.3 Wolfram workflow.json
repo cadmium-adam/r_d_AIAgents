@@ -1,0 +1,150 @@
+{
+  "name": "4.1.3 Wolfram workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Wolfram Alpha",
+      "type": "@n8n/n8n-nodes-langchain.toolWolframAlpha",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        300
+      ],
+      "id": "abe0664c-2fb2-4421-bdb6-c438c0e3d407",
+      "credentials": {
+        "wolframAlphaApi": {
+          "id": "15i0fNVp5yqGYzFe",
+          "name": "WolframAlphaApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When Executed by Another Workflow').first().json.query }}",
+        "options": {
+          "systemMessage": "You are a assistant with access to Wolfram Alpha's computational intelligence engine.",
+          "maxIterations": 5,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        800,
+        80
+      ],
+      "id": "0fdea0ea-45b6-4746-a987-a4cc184faf51"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        780,
+        320
+      ],
+      "name": "Ollama Chat Model",
+      "id": "c936eae4-3c26-4835-b1fc-19fe17567bb6",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "mistralai/Mistral-7B-Instruct-v0.3",
+          "mode": "list",
+          "cachedResultName": "mistralai/Mistral-7B-Instruct-v0.3"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        600,
+        320
+      ],
+      "name": "OpenAI Chat Model1",
+      "id": "70eba3dd-e9a7-49ae-863b-fc67f84e1b72",
+      "credentials": {
+        "openAiApi": {
+          "id": "duKpgh9SMgoT2Gde",
+          "name": "RUNPOD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        540,
+        80
+      ],
+      "id": "87bc5a18-00cd-46cd-8e7d-4b82e01f22e5",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Wolfram Alpha": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4ed3de2d-659a-45db-af2a-2ec89d668199",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "I0vinpLahjtd9e8E",
+  "tags": []
+}

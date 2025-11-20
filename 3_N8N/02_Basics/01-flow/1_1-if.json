@@ -1,0 +1,138 @@
+{
+  "name": "1_1-If-Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-600, 100],
+      "id": "b330aa46-faaa-4457-acf0-e81ac3e690dc"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the input items\nconst items = [\n  {\n    \"order_id\": \"1001\",\n    \"customer\": \"Alice Smith\",\n    \"order_date\": \"2025-06-21\",\n    \"total\": 153.45,\n    \"status\": \"shipped\",\n    \"products\": [\n      {\"product_id\": \"A1\", \"name\": \"Keyboard\", \"quantity\": 1, \"price\": 49.99},\n      {\"product_id\": \"A2\", \"name\": \"Mouse\", \"quantity\": 2, \"price\": 19.99}\n    ]\n  },\n  {\n    \"order_id\": \"1002\",\n    \"customer\": \"Bob Johnson\",\n    \"order_date\": \"2025-06-20\",\n    \"total\": 299.95,\n    \"status\": \"delivered\",\n    \"products\": [\n      {\"product_id\": \"B1\", \"name\": \"Monitor\", \"quantity\": 1, \"price\": 199.99},\n      {\"product_id\": \"B2\", \"name\": \"HDMI Cable\", \"quantity\": 2, \"price\": 24.98}\n    ]\n  },\n  {\n    \"order_id\": \"1003\",\n    \"customer\": \"Carol White\",\n    \"order_date\": \"2025-06-19\",\n    \"total\": 89.90,\n    \"status\": \"processing\",\n    \"products\": [\n      {\"product_id\": \"C1\", \"name\": \"Wireless Charger\", \"quantity\": 2, \"price\": 29.95},\n      {\"product_id\": \"C2\", \"name\": \"Phone Case\", \"quantity\": 1, \"price\": 29.99}\n    ]\n  },\n  {\n    \"order_id\": \"1004\",\n    \"customer\": \"David Lee\",\n    \"order_date\": \"2025-06-18\",\n    \"total\": 24.99,\n    \"status\": \"cancelled\",\n    \"products\": [\n      {\"product_id\": \"D1\", \"name\": \"USB Flash Drive\", \"quantity\": 1, \"price\": 24.99}\n    ]\n  },\n  {\n    \"order_id\": \"1005\",\n    \"customer\": \"Eva Brown\",\n    \"order_date\": \"2025-06-17\",\n    \"total\": 459.00,\n    \"status\": \"pending\",\n    \"products\": [\n      {\"product_id\": \"E1\", \"name\": \"Tablet\", \"quantity\": 1, \"price\": 399.00},\n      {\"product_id\": \"E2\", \"name\": \"Tablet Cover\", \"quantity\": 1, \"price\": 60.00}\n    ]\n  },\n  {\n    \"order_id\": \"1006\",\n    \"customer\": \"Frank Green\",\n    \"order_date\": \"2025-06-16\",\n    \"total\": 134.95,\n    \"status\": \"shipped\",\n    \"products\": [\n      {\"product_id\": \"F1\", \"name\": \"Bluetooth Speaker\", \"quantity\": 1, \"price\": 59.99},\n      {\"product_id\": \"F2\", \"name\": \"Earbuds\", \"quantity\": 2, \"price\": 37.48}\n    ]\n  },\n  {\n    \"order_id\": \"1007\",\n    \"customer\": \"Grace Kim\",\n    \"order_date\": \"2025-06-15\",\n    \"total\": 55.90,\n    \"status\": \"delivered\",\n    \"products\": [\n      {\"product_id\": \"G1\", \"name\": \"Notebook\", \"quantity\": 2, \"price\": 19.95},\n      {\"product_id\": \"G2\", \"name\": \"Pen Set\", \"quantity\": 1, \"price\": 15.99}\n    ]\n  },\n  {\n    \"order_id\": \"1008\",\n    \"customer\": \"Henry Black\",\n    \"order_date\": \"2025-06-14\",\n    \"total\": 89.98,\n    \"status\": \"processing\",\n    \"products\": [\n      {\"product_id\": \"H1\", \"name\": \"Webcam\", \"quantity\": 2, \"price\": 44.99}\n    ]\n  },\n  {\n    \"order_id\": \"1009\",\n    \"customer\": \"Ivy Wilson\",\n    \"order_date\": \"2025-06-13\",\n    \"total\": 210.49,\n    \"status\": \"shipped\",\n    \"products\": [\n      {\"product_id\": \"I1\", \"name\": \"External Hard Drive\", \"quantity\": 1, \"price\": 99.99},\n      {\"product_id\": \"I2\", \"name\": \"Power Bank\", \"quantity\": 2, \"price\": 55.25}\n    ]\n  },\n  {\n    \"order_id\": \"1010\",\n    \"customer\": \"Jack Miller\",\n    \"order_date\": \"2025-06-12\",\n    \"total\": 19.99,\n    \"status\": \"delivered\",\n    \"products\": [\n      {\"product_id\": \"J1\", \"name\": \"Screen Protector\", \"quantity\": 1, \"price\": 19.99}\n    ]\n  }\n];\n\nreturn items"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-380, 100],
+      "id": "3917ec32-fcca-4e50-9a16-21009a09f41b",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "status",
+              "value": "adult"
+            },
+            {
+              "name": "message",
+              "value": "Welcome! You are eligible for full access."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Big Order",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [60, 0],
+      "id": "116db6c1-21ac-4e24-8e5b-fd69979c3fde"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "status",
+              "value": "minor"
+            },
+            {
+              "name": "message",
+              "value": "Sorry, you must be 18 or older to access this content."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Small Order",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [60, 200],
+      "id": "942eaf52-2405-4e24-832a-ec2b894e7dfd"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json.total}}",
+              "operation": "largerEqual",
+              "value2": 200
+            }
+          ]
+        }
+      },
+      "name": "Check Total > 200",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [-160, 100],
+      "id": "38e335c9-7a77-4a04-9742-fa842896713a"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Check Total > 200",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Total > 200": {
+      "main": [
+        [
+          {
+            "node": "Big Order",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Small Order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "6edf47a9-72eb-4d2c-b553-345c4f596c71",
+  "meta": {
+    "instanceId": "56f0fb7864fd4715d6b856fb7d15019871e7c74a4c5f5341afe764a8aa7d9adb"
+  },
+  "id": "p338ej22TYcNiUid",
+  "tags": []
+}

@@ -1,0 +1,140 @@
+{
+  "name": "3.1.4 HuggingFace",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        200
+      ],
+      "webhookId": "huggingface-agent-demo",
+      "id": "5b108ac7-42ed-4d51-8104-785d4a66f42d"
+    },
+    {
+      "parameters": {
+        "sessionKey": "sessionId",
+        "contextWindowLength": 10
+      },
+      "name": "Memory Buffer Window",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1,
+      "position": [
+        600,
+        420
+      ],
+      "id": "83846081-0910-49c2-bb0c-cd1a19141931"
+    },
+    {
+      "parameters": {
+        "model": "mistralai/Mistral-7B-Instruct-v0.3",
+        "options": {
+          "frequencyPenalty": 0.1,
+          "maxTokens": 512,
+          "presencePenalty": 0.1,
+          "temperature": 0.7,
+          "topP": 0.9
+        }
+      },
+      "name": "HuggingFace Model",
+      "type": "@n8n/n8n-nodes-langchain.lmOpenHuggingFaceInference",
+      "typeVersion": 1,
+      "position": [
+        480,
+        420
+      ],
+      "id": "ae0bc7a0-e036-420b-8750-e7c213821881"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful AI assistant powered by open-source models from HuggingFace. You have access to chat history and can remember previous parts of our conversation. You represent the power of open-source AI and community-driven model development. Be helpful, informative, and highlight the benefits of open-source AI when relevant.",
+          "maxIterations": 10,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        460,
+        200
+      ],
+      "id": "efec86e3-22e1-4c70-984e-0646a69da769"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log(\"=== HUGGINGFACE AI AGENT - EDUCATIONAL DEMO ===\");\nconsole.log(\"Purpose: Demonstrate HuggingFace open-source AI Agent with persistent chat memory\");\nconsole.log(\"Features: Open-source models, community-driven AI, memory management\");\n\nconst input = $input.first().json;\nconsole.log(\"\\n=== AGENT INPUT ===\");\nconsole.log(\"User message:\", $('Chat Trigger').first().json.chatInput);\nconsole.log(\"HuggingFace response:\", input.output);\n\n// Token usage calculation for HuggingFace Inference API\nconst userMessage = $('Chat Trigger').first().json.chatInput || \"\";\nconst agentResponse = input.output || \"\";\n\n// Rough token estimation (1 token ≈ 4 characters)\nconst inputTokens = Math.ceil(userMessage.length / 4);\nconst outputTokens = Math.ceil(agentResponse.length / 4);\nconst totalTokens = inputTokens + outputTokens;\n\n// HuggingFace Inference API pricing (free tier + paid)\nconst FREE_TIER_LIMIT = 30000; // requests per month\nconst PAID_TIER_COST_PER_1K = 0.002; // $0.002 per 1K tokens (estimate)\n\nconst costPer1K = PAID_TIER_COST_PER_1K;\nconst totalCost = (totalTokens / 1000) * costPer1K;\n\nconsole.log(\"\\n=== COST ANALYSIS ===\");\nconsole.log(`Input tokens: ${inputTokens}`);\nconsole.log(`Output tokens: ${outputTokens}`);\nconsole.log(`Total tokens: ${totalTokens}`);\nconsole.log(`Free tier: ${FREE_TIER_LIMIT} requests/month`);\nconsole.log(`Paid tier estimated cost: $${totalCost.toFixed(6)}`);\nconsole.log(`Monthly cost at 1000 messages: ~$${(totalCost * 1000).toFixed(4)}`);\n\n// Memory management info\nconsole.log(\"\\n=== MEMORY STATUS ===\");\nconsole.log(\"Memory enabled: Chat history persists with buffer window\");\nconsole.log(\"Context window length: 10 messages\");\n\nconsole.log(\"\\n=== EDUCATIONAL NOTES ===\");\nconsole.log(\"1. Open Source Benefits: Community-driven model development\");\nconsole.log(\"2. Model Variety: Thousands of specialized models available\");\nconsole.log(\"3. Customization: Fine-tune models for specific use cases\");\nconsole.log(\"4. Transparency: Model weights and training details often available\");\nconsole.log(\"5. Cost Structure: Free tier + usage-based pricing\");\n\nconsole.log(\"\\n=== HUGGINGFACE ADVANTAGES ===\");\nconsole.log(\"✅ Open-source models - transparency and community development\");\nconsole.log(\"✅ Diverse model ecosystem - specialized models for different tasks\");\nconsole.log(\"✅ Free tier available - good for experimentation\");\nconsole.log(\"✅ Model fine-tuning - customize for specific domains\");\nconsole.log(\"✅ Research-friendly - access to cutting-edge research models\");\n\nconsole.log(\"\\n=== POPULAR MODELS ===\");\nconsole.log(\"🤗 Mistral-7B-Instruct: General conversation and instruction following\");\nconsole.log(\"🤗 CodeLlama: Code generation and programming assistance\");\nconsole.log(\"🤗 Falcon: High-performance general-purpose model\");\nconsole.log(\"🤗 FLAN-T5: Text-to-text transfer transformer\");\nconsole.log(\"🤗 DistilBERT: Lightweight version of BERT for NLU tasks\");\n\nconsole.log(\"\\n=== PROVIDER COMPARISON ===\");\nconsole.log(\"OpenAI GPT-4o-mini: $0.15/$0.60 per 1M tokens - high quality, proprietary\");\nconsole.log(\"Anthropic Claude Haiku: $0.25/$1.25 per 1M tokens - safety-focused, proprietary\");\nconsole.log(\"HuggingFace Inference: ~$0.002 per 1K tokens - open-source, transparent\");\nconsole.log(\"Ollama Local: $0.00 API cost - privacy-first, hardware dependent\");\n\nconsole.log(\"=== HUGGINGFACE AI AGENT DEMO COMPLETE ===\\n\");\n\nreturn {\n  userMessage,\n  agentResponse, \n  tokenUsage: {\n    inputTokens,\n    outputTokens,\n    totalTokens,\n    estimatedCost: totalCost,\n    freeTierLimit: FREE_TIER_LIMIT\n  },\n  memoryStatus: {\n    contextWindowLength: 10,\n    memoryEnabled: true\n  },\n  provider: \"HuggingFace Inference API\",\n  model: \"Mistral-7B-Instruct-v0.3\",\n  workflowType: \"Open-Source AI Agent with Memory\",\n  openSourceBenefits: [\"transparency\", \"customization\", \"community\", \"research\"]\n};"
+      },
+      "name": "Educational Logging & Analysis",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        820,
+        200
+      ],
+      "id": "d48a56fe-7fd0-46b9-a8b6-759e8648ee7a"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory Buffer Window": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HuggingFace Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Educational Logging & Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "c0657cd8-69ce-44aa-b606-79e9c601c1ac",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "LMscXKVzTBRB5fUG",
+  "tags": []
+}

@@ -1,0 +1,138 @@
+{
+  "name": "3.2.1 SerAPI",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "SerpApi (Google Search)",
+      "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
+      "typeVersion": 1,
+      "position": [
+        860,
+        420
+      ],
+      "id": "8c6106b8-6315-41e2-a3c2-a1f89eac0da9",
+      "credentials": {
+        "serpApi": {
+          "id": "QnfVnVKYlHwGCtyj",
+          "name": "SerpAPI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful research assistant with access to Google Search through SerpAPI.",
+          "maxIterations": 5,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        660,
+        200
+      ],
+      "id": "104ac84e-584a-4c71-9a34-92e6d87c7a12"
+    },
+    {
+      "parameters": {
+        "content": "## Prompts\n\n**Current Events & News:**\n• \"What's the latest news about ChatGPT?\"\n• \"Recent developments in renewable energy\"\n• \"Tesla stock news this week\"\n\n**Research & Facts:**\n• \"Best practices for remote work in 2025\"\n\n**Local Information:**\n• \"Best restaurants in New York City opened now\"\n• \"Weather forecast for London for next day\"\n• \"Events happening in San Francisco this week\"\n\n**Market & Business:**\n• \"Top startups in AI space 2024\"\n• \"Crypto market trends today\"\n",
+        "height": 420,
+        "width": 550,
+        "color": 4
+      },
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        40
+      ],
+      "id": "260d2b7b-9fde-497f-8753-7aee537b4a30"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        440,
+        200
+      ],
+      "id": "100309f1-2c69-46b6-af86-8f5ccb894ccb",
+      "name": "When chat message received",
+      "webhookId": "8958a06b-48eb-48ac-9cef-c1b7c0170a0e"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        640,
+        420
+      ],
+      "id": "8e6fb743-ae3d-4259-a3a0-c46d4b10029e",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "SerpApi (Google Search)": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ad0f811e-5655-4245-b6b5-c5fa55e1ba4f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "hA8tmYsYvvFWyPuk",
+  "tags": []
+}

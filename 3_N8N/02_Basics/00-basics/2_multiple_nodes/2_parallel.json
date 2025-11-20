@@ -1,0 +1,187 @@
+{
+  "name": "2_multiple_nodes-2_parallel",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-528, 144],
+      "id": "7154c7f7-8cb0-40d1-b7e9-f5d608a8947e",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [720, 144],
+      "id": "1116013c-4c0f-4ce7-a212-01921bddff5d",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cd158672-1196-4ee5-8fba-9faf954218b0",
+              "name": "data",
+              "value": "A",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [-288, 144],
+      "id": "18fcf9eb-a247-47d7-b296-0a9e7947bb46",
+      "name": "node_a"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"output_b\": \"B\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [64, 16],
+      "id": "6d1f01ba-0cbe-48a8-a674-7b83f29090ca",
+      "name": "node_b"
+    },
+    {
+      "parameters": {
+        "content": "## Shared state \nAvailable via {{ $vars.xxx }} in Enterprise version of N8N\n\nWorkaround:\n\nA) Use a storage - postgres, redis ... etc.\nB) Hand over the state from one node to another\n\n",
+        "height": 192,
+        "width": 528
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-128, -256],
+      "id": "56f1d6ea-050a-41a9-9f23-fd6e2e882036",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"output_c\": \"C\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [64, 256],
+      "id": "ce6e59b8-7a8b-4d68-900b-d1580c0b9935",
+      "name": "node_c"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": [\"{{ $('node_a').item.json.data }}\", \"{{ $('Merge').item.json.output_b }}\", \"{{ $('Merge').item.json.output_c }}\", \"D\"]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [528, 144],
+      "id": "c1f8aac1-95fb-48bd-9e73-89901d27b2e5",
+      "name": "node_d"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [336, 144],
+      "id": "a63b1b74-e8ce-4039-b41e-8b10a5facd4c",
+      "name": "Merge"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "node_a",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "node_a": {
+      "main": [
+        [
+          {
+            "node": "node_b",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "node_c",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "node_b": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "node_c": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "node_d": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "node_d",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a9df82dc-cac6-43a1-bd28-167f64199502",
+  "meta": {
+    "instanceId": "9d3f08be19beef0f2b29f10643857d67ef13f40ef1d51ceb764aa9cd38213ad9"
+  },
+  "id": "bFot5o6XyEWN8Qtv",
+  "tags": []
+}

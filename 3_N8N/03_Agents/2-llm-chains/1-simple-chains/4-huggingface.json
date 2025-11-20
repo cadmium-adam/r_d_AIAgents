@@ -1,0 +1,79 @@
+{
+  "name": "2.1.4 HuggingFace - Chain",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [-400, -20],
+      "id": "eac0ca36-ae52-4992-9d5a-b9499a6a8de8",
+      "name": "When chat message received",
+      "webhookId": "3cc29975-1caf-49d7-bbc4-5f5c3aa7c0e0"
+    },
+    {
+      "parameters": {
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [-180, -20],
+      "id": "277c6001-ff71-4ad4-86c1-d4f012298f1b",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": "mistralai/Mistral-7B-Instruct-v0.3",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmOpenHuggingFaceInference",
+      "typeVersion": 1,
+      "position": [-100, 200],
+      "id": "3a9fcd9f-f2fd-4ea0-9f86-d94ea7df2220",
+      "name": "Hugging Face Inference Model",
+      "credentials": {
+        "huggingFaceApi": {
+          "id": "8OBCIVlD2rL8DR4m",
+          "name": "HuggingFaceApi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hugging Face Inference Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "c087d921-7b35-4e89-8f39-f5155dc6f21d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d53b6031aa1e7c3e4ba36ff85716f7daec0e2b634fd86a63c9d899fb057529bc"
+  },
+  "id": "hOHoFTYtZ7UBa2oU",
+  "tags": []
+}

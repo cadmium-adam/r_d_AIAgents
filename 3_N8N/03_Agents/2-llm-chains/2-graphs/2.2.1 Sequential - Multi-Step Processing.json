@@ -1,0 +1,340 @@
+{
+  "name": "2.2.1 Sequential - Multi-Step Processing",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        260,
+        500
+      ],
+      "webhookId": "basic-llm-chain",
+      "id": "f20be10e-3c32-4729-9a50-6ac0b28e7ec1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// This workflow demonstrates LLM chaining\n// We'll process the input through multiple steps:\n// 1. Analyze the input\n// 2. Enhance/expand the content\n// 3. Summarize the result\n// 4. Generate action items\n\nconsole.log('=== LLM CHAIN DEMO ===');\nconsole.log('Original Input:', $input.first().json.chatInput);\nconsole.log('\\nThis chain will:');\nconsole.log('1. Analyze the input text');\nconsole.log('2. Enhance and expand the content');\nconsole.log('3. Create a summary');\nconsole.log('4. Generate action items');\nconsole.log('====================\\n');\n\nreturn [{\n  json: {\n    originalInput: $input.first().json.chatInput,\n    sessionId: $input.first().json.sessionId,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "name": "Explain Chain Process",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        500
+      ],
+      "id": "5cfa19f2-6207-499c-bfce-cbca1d3720da"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an expert analyst. Analyze the following text and identify:\n1. Main topic/theme\n2. Key points mentioned\n3. Tone and style\n4. Target audience\n\nText to analyze: {{ $json.originalInput }}\n\nProvide a structured analysis:"
+      },
+      "name": "Step 1: Analyze",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        700,
+        500
+      ],
+      "id": "e0254a43-2d9b-4870-ae89-a8b79a4ee20d"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log the analysis result\nconst analysis = $input.first().json.text;\n\nconsole.log('\\n📊 STEP 1 - ANALYSIS COMPLETE:');\nconsole.log(analysis);\nconsole.log('\\n-------------------\\n');\n\n// Pass data to next step\nreturn [{\n  json: {\n    originalInput: $node[\"Explain Chain Process\"].json.originalInput,\n    analysis: analysis,\n    sessionId: $node[\"Explain Chain Process\"].json.sessionId\n  }\n}];"
+      },
+      "name": "Log Analysis",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1060,
+        500
+      ],
+      "id": "7e5f9ded-7d85-417f-acf7-b94c7f279ba4"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Based on this analysis:\n{{ $json.analysis }}\n\nAnd the original text:\n{{ $json.originalInput }}\n\nEnhance and expand the content by:\n1. Adding more context and details\n2. Improving clarity and structure\n3. Including relevant examples\n4. Making it more engaging\n\nEnhanced version:"
+      },
+      "name": "Step 2: Enhance",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1280,
+        500
+      ],
+      "id": "2011efb0-1e7c-42b2-9bf2-eb48493e2657"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log the enhanced content\nconst enhanced = $input.first().json.text;\n\nconsole.log('\\n✨ STEP 2 - ENHANCEMENT COMPLETE:');\nconsole.log(enhanced);\nconsole.log('\\n-------------------\\n');\n\n// Pass all data forward\nreturn [{\n  json: {\n    originalInput: $input.first().json.originalInput,\n    analysis: $input.first().json.analysis,\n    enhanced: enhanced,\n    sessionId: $input.first().json.sessionId\n  }\n}];"
+      },
+      "name": "Log Enhanced",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1640,
+        500
+      ],
+      "id": "f756c74f-7e49-48f0-aaef-1f3415f82f15"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Create a concise summary of this enhanced content:\n{{ $json.enhanced }}\n\nSummary requirements:\n1. Maximum 3-4 sentences\n2. Capture the main points\n3. Be clear and actionable\n4. Professional tone\n\nSummary:"
+      },
+      "name": "Step 3: Summarize",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1860,
+        500
+      ],
+      "id": "d5f35160-0d84-42b2-9b2a-3b78b5e39f20"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log the summary\nconst summary = $input.first().json.text;\n\nconsole.log('\\n📝 STEP 3 - SUMMARY COMPLETE:');\nconsole.log(summary);\nconsole.log('\\n-------------------\\n');\n\n// Pass all data forward\nreturn [{\n  json: {\n    originalInput: $input.first().json.originalInput,\n    analysis: $input.first().json.analysis,\n    enhanced: $input.first().json.enhanced,\n    summary: summary,\n    sessionId: $input.first().json.sessionId\n  }\n}];"
+      },
+      "name": "Log Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2220,
+        500
+      ],
+      "id": "74763350-0549-44d8-ae8f-337d8c86bcb5"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Based on all the previous analysis and the summary:\n{{ $json.summary }}\n\nGenerate 3-5 specific, actionable items that someone could do based on this content.\n\nFormat as a numbered list with clear, concrete actions.\n\nAction items:"
+      },
+      "name": "Step 4: Action Items",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        2440,
+        500
+      ],
+      "id": "c4223199-2300-4043-a1e1-d814afcd03de"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Final processing and output\nconst actionItems = $input.first().json.text;\n\nconsole.log('\\n✅ STEP 4 - ACTION ITEMS COMPLETE:');\nconsole.log(actionItems);\nconsole.log('\\n===================\\n');\n\n// Reconstruct all data from previous nodes\nconst originalInput = $node[\"Explain Chain Process\"].json.originalInput;\nconst analysis = $node[\"Log Analysis\"].json.analysis;\nconst enhanced = $node[\"Log Enhanced\"].json.enhanced;\nconst summary = $node[\"Log Summary\"].json.summary;\n\n// Calculate metrics\nconst totalChars = \n  originalInput.length + \n  analysis.length + \n  enhanced.length + \n  summary.length + \n  actionItems.length;\n\nconst estimatedTokens = Math.ceil(totalChars / 4);\nconst estimatedCost = estimatedTokens * 0.00002;\n\nconsole.log('📊 CHAIN METRICS:');\nconsole.log(`Total characters processed: ${totalChars}`);\nconsole.log(`Estimated tokens: ${estimatedTokens}`);\nconsole.log(`Estimated cost: $${estimatedCost.toFixed(4)}`);\nconsole.log(`Chain steps: 4`);\nconsole.log('\\n=== CHAIN COMPLETE ===\\n');\n\n// Return formatted output\nreturn [{\n  json: {\n    output: `**📝 Summary:**\\n${summary}\\n\\n**✅ Action Items:**\\n${actionItems}`,\n    fullProcess: {\n      original: originalInput,\n      analysis: analysis,\n      enhanced: enhanced,\n      summary: summary,\n      actionItems: actionItems\n    },\n    metrics: {\n      totalChars,\n      estimatedTokens,\n      estimatedCost,\n      chainSteps: 4\n    }\n  }\n}];"
+      },
+      "name": "Final Output",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2800,
+        500
+      ],
+      "id": "36f6f82d-7e08-4cff-9ab1-c8f55b36e081"
+    },
+    {
+      "parameters": {
+        "content": "## 🔗 LLM Chain Demonstration\n\nThis workflow shows how to chain multiple LLM calls together for complex processing.\n\n### Chain Steps:\n1. **Analyze** - Understand the input\n2. **Enhance** - Expand and improve\n3. **Summarize** - Create concise summary\n4. **Action Items** - Generate next steps\n\n### Try These Inputs:\n- \"I want to learn about AI\"\n- \"Our team needs better communication\"\n- \"Planning a new product launch\"\n- Any paragraph of text\n\n### Key Concepts:\n- Sequential processing\n- Context passing between steps\n- Different prompts for each step\n- Accumulated knowledge",
+        "height": 400,
+        "width": 400
+      },
+      "name": "Instructions",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -260,
+        400
+      ],
+      "id": "bc4884a3-841a-4080-ae47-9df0656a21e8"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        880
+      ],
+      "id": "74feb6b4-26d8-4bb1-bd14-c80b3bf2fd58",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        2200,
+        860
+      ],
+      "id": "9261c63e-375c-4a03-9db5-13579fdc99c3",
+      "name": "Ollama Chat Model1",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Explain Chain Process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Explain Chain Process": {
+      "main": [
+        [
+          {
+            "node": "Step 1: Analyze",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Step 1: Analyze": {
+      "main": [
+        [
+          {
+            "node": "Log Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Analysis": {
+      "main": [
+        [
+          {
+            "node": "Step 2: Enhance",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Step 2: Enhance": {
+      "main": [
+        [
+          {
+            "node": "Log Enhanced",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Enhanced": {
+      "main": [
+        [
+          {
+            "node": "Step 3: Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Step 3: Summarize": {
+      "main": [
+        [
+          {
+            "node": "Log Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Summary": {
+      "main": [
+        [
+          {
+            "node": "Step 4: Action Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Step 4: Action Items": {
+      "main": [
+        [
+          {
+            "node": "Final Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Step 1: Analyze",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Step 2: Enhance",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Step 3: Summarize",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Step 4: Action Items",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1a5aab95-ef66-47cd-ab54-b030bd5ee12e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "dGVrLWmyPvFjHdRk",
+  "tags": []
+}

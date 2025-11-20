@@ -1,0 +1,84 @@
+{
+  "name": "2.1.2 Anthropic - Chain",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [-400, -20],
+      "id": "0a872f0d-9cdf-4789-a98c-c04236400451",
+      "name": "When chat message received",
+      "webhookId": "a9e9daf7-f590-4955-8b88-8acdcc2bc6ec"
+    },
+    {
+      "parameters": {
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [-180, -20],
+      "id": "504edc90-d6bf-41c7-9a6d-987cd8eb5e8d",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-sonnet-4-20250514",
+          "cachedResultName": "Claude 4 Sonnet"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [-100, 200],
+      "id": "7deb75d5-45da-4cb0-aff1-a9524160e8fc",
+      "name": "Anthropic Chat Model",
+      "credentials": {
+        "anthropicApi": {
+          "id": "Zla5ZZj1MToHz2hy",
+          "name": "Anthropic account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e36b5391-fe66-4d61-a7df-7e2bd3b65188",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d53b6031aa1e7c3e4ba36ff85716f7daec0e2b634fd86a63c9d899fb057529bc"
+  },
+  "id": "kY7aPDLBp8zppDK1",
+  "tags": []
+}

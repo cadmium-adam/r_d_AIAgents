@@ -1,0 +1,87 @@
+{
+  "name": "1_one_node",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        -48
+      ],
+      "id": "afd7f090-6ca9-4368-95b3-200fa667171d",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        96,
+        -48
+      ],
+      "id": "4dea3204-97d5-4f42-ab30-c3e19d35e53b",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cd158672-1196-4ee5-8fba-9faf954218b0",
+              "name": "data",
+              "value": "[\"A\"]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -112,
+        -48
+      ],
+      "id": "beae46fb-475d-4e97-aa3b-45a74d74df67",
+      "name": "node_a"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "node_a",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "node_a": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "11cb1ac6-ea0f-41a3-bc4c-ae3131dd2611",
+  "meta": {
+    "instanceId": "9d3f08be19beef0f2b29f10643857d67ef13f40ef1d51ceb764aa9cd38213ad9"
+  },
+  "id": "H3WeukpZb0mbfH9B",
+  "tags": []
+}

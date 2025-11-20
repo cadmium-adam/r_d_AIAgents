@@ -1,0 +1,86 @@
+{
+  "name": "3_5_2_Minio_GetFiles",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d11cc3d2-ec84-4d9c-9b47-738852483a48",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "bucketName": "n8n-images",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "61301368-b688-4587-aa0c-032f8203cf3a",
+      "name": "S3",
+      "credentials": {
+        "s3": {
+          "id": "vP4bFKvGE1o7FgCG",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log($input.all())\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "56fa3cba-0c7a-4227-ad9a-7661f603a8ba",
+      "name": "Log"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "S3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "S3": {
+      "main": [
+        [
+          {
+            "node": "Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e575c61e-e124-4dbc-8917-612ef34591b4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "41d606a1a24293c789026869c85829c359b37aa1d75ba26c221717836b27fec2"
+  },
+  "id": "dGmrx3Q35ISvlxMY",
+  "tags": []
+}

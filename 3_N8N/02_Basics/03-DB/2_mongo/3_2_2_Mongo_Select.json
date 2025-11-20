@@ -1,0 +1,85 @@
+{
+  "name": "3_2_2_Mongo_Select",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a8cef769-2994-4e7a-9992-f107dcba17a0",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "collection": "products",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "e321934a-a9ff-406f-9d20-aebda6c06cc0",
+      "name": "MongoDB",
+      "credentials": {
+        "mongoDb": {
+          "id": "EmECjQqKKbzzvAgq",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log($input.all())\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "06ab2919-1a8f-49b6-9b51-5bf67632a1bb",
+      "name": "Code"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "MongoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MongoDB": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e1e79b42-f078-46d0-a5f1-6a3e83f20294",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "41d606a1a24293c789026869c85829c359b37aa1d75ba26c221717836b27fec2"
+  },
+  "id": "w4gxFOo4KlBVBVpe",
+  "tags": []
+}

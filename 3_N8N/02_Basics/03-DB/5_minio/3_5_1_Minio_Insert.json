@@ -1,0 +1,112 @@
+{
+  "name": "3_5_1_Minio_Insert",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -20
+      ],
+      "id": "3ec114ae-3086-4c0e-8fb1-e23311034285",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://images.collectingcars.com/076013/subaru106.jpg",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        -20
+      ],
+      "id": "c04b9d54-a43f-4249-a7fe-e150658ddbec",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "n8n-images",
+        "fileName": "={{ $binary.data.fileName }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        440,
+        -20
+      ],
+      "id": "b7ef8360-d7da-4834-afbd-bc716d5aead8",
+      "name": "S3",
+      "credentials": {
+        "s3": {
+          "id": "vP4bFKvGE1o7FgCG",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log($input.all())\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        -20
+      ],
+      "id": "11e87fe6-f1fd-464f-b9a5-8a4f8c165fc1",
+      "name": "Log"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "S3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "S3": {
+      "main": [
+        [
+          {
+            "node": "Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "c0372bc8-0c2d-492f-ace1-fc97b1492f9b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "41d606a1a24293c789026869c85829c359b37aa1d75ba26c221717836b27fec2"
+  },
+  "id": "ld5iZavdTL8FUv5w",
+  "tags": []
+}

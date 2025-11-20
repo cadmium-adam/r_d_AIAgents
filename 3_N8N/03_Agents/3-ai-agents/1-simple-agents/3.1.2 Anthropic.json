@@ -1,0 +1,142 @@
+{
+  "name": "3.1.2 Anthropic",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        200
+      ],
+      "webhookId": "claude-agent-demo",
+      "id": "74fef4dd-6705-4b1b-96d4-358e36096b79"
+    },
+    {
+      "parameters": {
+        "sessionKey": "sessionId",
+        "contextWindowLength": 10
+      },
+      "name": "Memory Buffer Window",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1,
+      "position": [
+        640,
+        440
+      ],
+      "id": "d8bba4e9-1f7e-409c-9eb4-826a859dda14"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-3-5-haiku-20241022",
+          "mode": "list",
+          "cachedResultName": "Claude 3.5 Haiku"
+        },
+        "options": {
+          "maxTokensToSample": 4096,
+          "temperature": 0.7
+        }
+      },
+      "name": "Anthropic Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        420,
+        440
+      ],
+      "id": "7e5e72e9-1a32-4d53-95d2-44cf080a5237"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are Claude, an AI assistant created by Anthropic. You have access to chat history and can remember previous parts of our conversation. You excel at reasoning, analysis, and providing thoughtful responses. Be helpful, harmless, and honest in all interactions. When users reference our conversation history, you can draw upon previous context to provide more relevant responses.",
+          "maxIterations": 10,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        460,
+        200
+      ],
+      "id": "a2630d14-29f9-4478-ad28-f52f61d654e9"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log(\"=== ANTHROPIC CLAUDE AI AGENT - EDUCATIONAL DEMO ===\");\nconsole.log(\"Purpose: Demonstrate Anthropic Claude AI Agent with persistent chat memory\");\nconsole.log(\"Features: Advanced reasoning, memory management, conversation context\");\n\nconst input = $input.first().json;\nconsole.log(\"\\n=== AGENT INPUT ===\");\nconsole.log(\"User message:\", $('Chat Trigger').first().json.chatInput);\nconsole.log(\"Claude response:\", input.output);\n\n// Token usage calculation for Anthropic Claude 3.5 Haiku\nconst userMessage = $('Chat Trigger').first().json.chatInput || \"\";\nconst agentResponse = input.output || \"\";\n\n// Rough token estimation (1 token ≈ 4 characters for Claude)\nconst inputTokens = Math.ceil(userMessage.length / 4);\nconst outputTokens = Math.ceil(agentResponse.length / 4);\nconst totalTokens = inputTokens + outputTokens;\n\n// Anthropic Claude 3.5 Haiku pricing (as of 2024)\nconst INPUT_COST_PER_1M = 0.25;  // $0.25 per 1M input tokens\nconst OUTPUT_COST_PER_1M = 1.25; // $1.25 per 1M output tokens\n\nconst inputCost = (inputTokens / 1000000) * INPUT_COST_PER_1M;\nconst outputCost = (outputTokens / 1000000) * OUTPUT_COST_PER_1M;\nconst totalCost = inputCost + outputCost;\n\nconsole.log(\"\\n=== COST ANALYSIS ===\");\nconsole.log(`Input tokens: ${inputTokens} (~$${inputCost.toFixed(8)})`);\nconsole.log(`Output tokens: ${outputTokens} (~$${outputCost.toFixed(8)})`);\nconsole.log(`Total tokens: ${totalTokens}`);\nconsole.log(`Estimated cost: $${totalCost.toFixed(8)}`);\nconsole.log(`Monthly cost at 1000 messages: ~$${(totalCost * 1000).toFixed(4)}`);\n\n// Memory management info\nconsole.log(\"\\n=== MEMORY STATUS ===\");\nconsole.log(\"Memory enabled: Chat history persists with buffer window\");\nconsole.log(\"Context window length: 10 messages\");\n\nconsole.log(\"\\n=== EDUCATIONAL NOTES ===\");\nconsole.log(\"1. Claude vs GPT: Anthropic models excel at reasoning and analysis\");\nconsole.log(\"2. Haiku vs Sonnet: Haiku is faster/cheaper, Sonnet is more capable\");\nconsole.log(\"3. Safety Features: Claude has built-in safety and helpfulness guidelines\");\nconsole.log(\"4. Context Window: Claude 3.5 supports large context windows for complex tasks\");\n\nconsole.log(\"\\n=== PROVIDER COMPARISON ===\");\nconsole.log(\"OpenAI GPT-4o-mini: $0.15/$0.60 per 1M tokens (in/out)\");\nconsole.log(\"Anthropic Claude 3.5 Haiku: $0.25/$1.25 per 1M tokens (in/out)\");\nconsole.log(\"Trade-off: Claude typically provides higher quality reasoning for slightly higher cost\");\n\nconsole.log(\"=== ANTHROPIC CLAUDE AGENT DEMO COMPLETE ===\\n\");\n\nreturn {\n  userMessage,\n  agentResponse, \n  tokenUsage: {\n    inputTokens,\n    outputTokens,\n    totalTokens,\n    estimatedCost: totalCost\n  },\n  memoryStatus: {\n    contextWindowLength: 10,\n    memoryEnabled: true\n  },\n  provider: \"Anthropic Claude 3.5 Haiku\",\n  workflowType: \"AI Agent with Memory\",\n  modelStrengths: [\"reasoning\", \"analysis\", \"safety\", \"large-context\"]\n};"
+      },
+      "name": "Educational Logging & Analysis",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        820,
+        200
+      ],
+      "id": "3557e4d1-598f-4299-9f10-dbe03f3986c7"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory Buffer Window": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Educational Logging & Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "56261c71-2f91-4776-85ee-106a857e0c35",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "4vCPUCnHGEyNsYMq",
+  "tags": []
+}

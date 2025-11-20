@@ -1,0 +1,133 @@
+{
+  "name": "3.2.2 Custom Code - Stock Price Tool",
+  "nodes": [
+    {
+      "parameters": {
+        "description": "Get real-time stock price information and historical data for any ticker symbol",
+        "jsCode": "// Stock Price Tool with yahoo-finance2 integration\nconst yahooFinance = require('yahoo-finance2').default;\n\nasync function getStockData(ticker) {\n  try {\n    // Get quote data (current price info)\n    const quote = await yahooFinance.quote(ticker);\n    \n    // Get additional company info  \n    const quoteSummary = await yahooFinance.quoteSummary(ticker, {\n      modules: ['summaryDetail', 'price', 'defaultKeyStatistics', 'assetProfile']\n    });\n    \n    if (!quote || !quote.regularMarketPrice) {\n      return null;\n    }\n    \n    const currentPrice = quote.regularMarketPrice;\n    const previousClose = quote.regularMarketPreviousClose || currentPrice;\n    const priceChange = currentPrice - previousClose;\n    const priceChangePct = (priceChange / previousClose) * 100;\n    \n    // Extract company information\n    const profile = quoteSummary.assetProfile || {};\n    const summaryDetail = quoteSummary.summaryDetail || {};\n    const priceData = quoteSummary.price || {};\n    const keyStats = quoteSummary.defaultKeyStatistics || {};\n    \n    return {\n      currentPrice,\n      priceChange,\n      priceChangePct,\n      open: quote.regularMarketOpen || currentPrice,\n      high: quote.regularMarketDayHigh || currentPrice,\n      low: quote.regularMarketDayLow || currentPrice,\n      volume: quote.regularMarketVolume || 0,\n      companyName: quote.displayName || quote.shortName || `${ticker} Corporation`,\n      sector: profile.sector || 'Technology',\n      industry: profile.industry || 'Software',\n      marketCap: priceData.marketCap || summaryDetail.marketCap,\n      peRatio: summaryDetail.trailingPE || keyStats.trailingPE,\n      fiftyTwoWeekHigh: summaryDetail.fiftyTwoWeekHigh,\n      fiftyTwoWeekLow: summaryDetail.fiftyTwoWeekLow,\n      source: 'Yahoo Finance (Live Data)'\n    };\n  } catch (error) {\n    console.error(`Error fetching data for ${ticker}:`, error.message);\n    return null;\n  }\n}\n\nfunction formatMarketCap(marketCap) {\n  if (!marketCap) return 'N/A';\n  \n  if (marketCap > 1e12) {\n    return `$${(marketCap / 1e12).toFixed(2)}T`;\n  } else if (marketCap > 1e9) {\n    return `$${(marketCap / 1e9).toFixed(2)}B`;\n  } else {\n    return `$${(marketCap / 1e6).toFixed(2)}M`;\n  }\n}\n\nfunction formatNumber(num, decimals = 2) {\n  if (num === null || num === undefined) return 'N/A';\n  return num.toFixed(decimals);\n}\n\nfunction formatVolume(volume) {\n  if (!volume) return 'N/A';\n  return volume.toLocaleString();\n}\n\n// Main execution\ntry {\n  // Extract ticker symbol from query\n  const queryStr = String(query).toUpperCase();\n  const tickerMatch = queryStr.match(/\\b([A-Z]{1,5})\\b/);\n  \n  let ticker;\n  if (tickerMatch) {\n    ticker = tickerMatch[1];\n  } else {\n    // Map company names to tickers\n    const nameMapping = {\n      'apple': 'AAPL',\n      'microsoft': 'MSFT', \n      'google': 'GOOGL',\n      'amazon': 'AMZN',\n      'tesla': 'TSLA',\n      'nvidia': 'NVDA',\n      'meta': 'META',\n      'facebook': 'META'\n    };\n    \n    ticker = 'AAPL'; // Default\n    for (const [name, symbol] of Object.entries(nameMapping)) {\n      if (queryStr.toLowerCase().includes(name)) {\n        ticker = symbol;\n        break;\n      }\n    }\n  }\n  \n  // Get stock data\n  const stockData = await getStockData(ticker);\n  \n  if (!stockData) {\n    return `Error: Could not fetch data for ticker ${ticker}. Please check if it's a valid symbol.`;\n  }\n  \n  // Format response\n  let response = `📈 **${ticker} Stock Information** 📈\\n\\n`;\n  response += `**Current Price:** $${formatNumber(stockData.currentPrice)}\\n`;\n  response += `**Daily Change:** $${stockData.priceChange >= 0 ? '+' : ''}${formatNumber(stockData.priceChange)} (${stockData.priceChangePct >= 0 ? '+' : ''}${formatNumber(stockData.priceChangePct)}%)\\n`;\n  response += `**Open:** $${formatNumber(stockData.open)}\\n`;\n  response += `**High:** $${formatNumber(stockData.high)}\\n`;\n  response += `**Low:** $${formatNumber(stockData.low)}\\n`;\n  response += `**Volume:** ${formatVolume(stockData.volume)}\\n\\n`;\n  \n  response += `**Company:** ${stockData.companyName}\\n`;\n  response += `**Sector:** ${stockData.sector}\\n`;\n  response += `**Industry:** ${stockData.industry}\\n`;\n  \n  if (stockData.marketCap) {\n    response += `**Market Cap:** ${formatMarketCap(stockData.marketCap)}\\n`;\n  }\n  \n  if (stockData.fiftyTwoWeekHigh && stockData.fiftyTwoWeekLow) {\n    response += `**52W Range:** $${formatNumber(stockData.fiftyTwoWeekLow)} - $${formatNumber(stockData.fiftyTwoWeekHigh)}\\n`;\n  }\n  \n  if (stockData.peRatio) {\n    response += `**P/E Ratio:** ${formatNumber(stockData.peRatio)}\\n`;\n  }\n  \n  response += `\\n🕐 **Data as of:** ${new Date().toLocaleString()}\\n`;\n  response += `📍 **Source:** ${stockData.source}`;\n  \n  return response;\n  \n} catch (error) {\n  if (error.message && error.message.includes('yahoo-finance2')) {\n    return `Error: yahoo-finance2 library not installed. Please install with: npm install yahoo-finance2`;\n  }\n  \n  return `Error: ${error.message}\\n\\nSupported queries:\\n- 'AAPL current price'\\n- 'Tesla stock info'\\n- 'Microsoft performance'\\n- 'NVDA market data'\\n\\nNote: Requires yahoo-finance2 library (npm install yahoo-finance2)`;\n}"
+      },
+      "name": "Stock Price Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.3,
+      "position": [
+        860,
+        420
+      ],
+      "id": "a49c31b5-cdfd-4cda-8481-f4c84f8a33da"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a financial assistant with access to real-time stock market data.",
+          "maxIterations": 5,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        660,
+        200
+      ],
+      "id": "d8b489f3-41cb-4316-a609-c3d76edaefde"
+    },
+    {
+      "parameters": {
+        "content": "📈 **EXAMPLE PROMPTS FOR STOCK ANALYSIS**\n\n**Current Stock Prices:**\n• What's the current price of Apple (AAPL)?\n• Get me the latest stock data for Tesla and Microsoft\n• Show me today's performance for NVDA\n\n**Stock Comparisons:**\n• Compare AAPL vs MSFT performance\n• Which is better: Google or Amazon stock?\n• Show me the P/E ratios for tech giants\n\n**Historical Analysis:**\n• How has Tesla performed over the last 6 months?\n• Show me Apple's 1-year price history\n• What was Amazon's performance last quarter?\n\n**Market Insights:**\n• What's the market cap of Microsoft?\n• Show me the 52-week high and low for SPY\n• What's the volume for Bitcoin today?\n\n**Company Information:**\n• Tell me about Meta's business sector\n• What industry is NVIDIA in?\n• Give me company details for Apple\n\n**Portfolio Analysis:**\n• Analyze my portfolio: AAPL, MSFT, GOOGL\n• Compare tech stocks vs SPY performance\n• Show me the best performing stock this month",
+        "height": 660,
+        "width": 350,
+        "color": 7
+      },
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        40
+      ],
+      "id": "cd216e07-a73b-47b6-a8a4-1be0420515f5"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        400,
+        200
+      ],
+      "id": "b2fcae47-2d47-4b72-9376-0d2c7117fc1e",
+      "name": "When chat message received",
+      "webhookId": "a28c93a0-b760-4622-8599-c9410024ecb1"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        640,
+        420
+      ],
+      "id": "bc19affc-ad0a-43a9-a033-1c1c69cfed67",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Stock Price Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5a7c5f16-7f92-4b2f-8593-bb4642bb8b0a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "AyPIY26BfQzvsc4N",
+  "tags": []
+}

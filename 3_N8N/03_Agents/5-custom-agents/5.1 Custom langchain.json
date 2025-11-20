@@ -1,0 +1,114 @@
+{
+  "name": "5.1 Custom langchain",
+  "nodes": [
+    {
+      "parameters": {
+        "code": {
+          "execute": {
+            "code": "// N8N Custom Code Node - Advanced LangChain Content Summarizer\n// This demonstrates raw LangChain usage with custom prompts and chains\n\nconst { PromptTemplate } = require('@langchain/core/prompts');\n\n// Get input data from the webhook\nconst webhookBody = $input.item.json.body || $input.item.json;\nconst contentToSummarize = webhookBody.content || webhookBody.text || webhookBody.article;\nconst summaryType = webhookBody.summaryType || 'general';\nconst maxLength = webhookBody.maxLength || 150;\n\n// Validate input\nif (!contentToSummarize) {\n  throw new Error('No content provided to summarize. Please provide content in \"content\", \"text\", or \"article\" field.');\n}\n\n// Get the LLM connection from n8n (following the working pattern)\nconst llm = await this.getInputConnectionData('ai_languageModel', 0);\n\nif (!llm) {\n  throw new Error('No AI Language Model connected. Please connect an AI Language Model node.');\n}\n\n// Debug: Check the actual LLM object structure\nconsole.log('LLM type:', typeof llm);\nconsole.log('LLM is array:', Array.isArray(llm));\nconsole.log('LLM object:', JSON.stringify(llm, null, 2));\n\n// If it's an array, get the first element\nconst actualLLM = Array.isArray(llm) ? llm[0] : llm;\nconsole.log('Actual LLM object:', actualLLM);\nconsole.log('Has invoke method:', typeof actualLLM?.invoke === 'function');\n\n// Define different prompt templates based on summary type\nconst promptTemplates = {\n  general: `\nYou are an expert content summarizer. Please provide a clear, concise summary of the following content.\n\nRequirements:\n- Maximum {maxLength} words\n- Focus on the main ideas and key points\n- Use simple, accessible language\n- Maintain the original tone when possible\n\nContent to summarize:\n{content}\n\nSummary:`,\n  \n  technical: `\nYou are a technical writer specializing in creating precise technical summaries.\n\nPlease summarize the following technical content:\n- Maximum {maxLength} words\n- Preserve technical terminology and accuracy\n- Include key metrics, processes, or methodologies mentioned\n- Structure the summary logically\n\nContent to summarize:\n{content}\n\nTechnical Summary:`,\n  \n  'bullet-points': `\nCreate a bullet-point summary of the following content.\n\nRequirements:\n- Use 3-7 bullet points maximum\n- Each point should be concise (10-20 words)\n- Cover the most important aspects\n- Use parallel structure\n\nContent to summarize:\n{content}\n\nKey Points:\n•`\n};\n\n// Create the appropriate prompt template\nconst selectedTemplate = promptTemplates[summaryType] || promptTemplates.general;\nconst summaryPrompt = PromptTemplate.fromTemplate(selectedTemplate);\n\ntry {\n  // Use the actual LLM object\n  const actualLLM = Array.isArray(llm) ? llm[0] : llm;\n  \n  // Execute the main summarization using direct invoke\n  const formattedPrompt = await summaryPrompt.format({\n    content: contentToSummarize,\n    maxLength: maxLength\n  });\n  \n  const summaryResult = await actualLLM.invoke(formattedPrompt);\n  \n  // Debug: Check what the LLM actually returns\n  console.log('LLM result type:', typeof summaryResult);\n  console.log('LLM result:', summaryResult);\n  \n  // Extract text from the result - handle different response formats\n  let summaryText;\n  if (typeof summaryResult === 'string') {\n    summaryText = summaryResult;\n  } else if (summaryResult?.content) {\n    summaryText = summaryResult.content;\n  } else if (summaryResult?.text) {\n    summaryText = summaryResult.text;\n  } else if (summaryResult?.response) {\n    summaryText = summaryResult.response;\n  } else {\n    summaryText = String(summaryResult);\n  }\n\n  // Clean up the output and calculate metrics\n  const cleanedSummary = summaryText.trim();\n  const originalWordCount = contentToSummarize.split(/\\s+/).length;\n  const summaryWordCount = cleanedSummary.split(/\\s+/).length;\n  \n  const result = {\n    summary: cleanedSummary,\n    originalLength: originalWordCount,\n    summaryLength: summaryWordCount,\n    compressionRatio: Math.round((summaryWordCount / originalWordCount) * 100),\n    summaryType: summaryType,\n    timestamp: new Date().toISOString()\n  };\n\n  // Add content analysis if requested\n  if (webhookBody.includeAnalysis) {\n    const analysisPrompt = PromptTemplate.fromTemplate(`\nAnalyze the following content and provide insights:\n\nContent: {content}\n\nPlease provide:\n1. Main topic/theme\n2. Tone (formal/informal/technical/conversational)  \n3. Target audience\n4. Key entities mentioned (people, places, organizations)\n\nAnalysis:`);\n\n    try {\n      const formattedAnalysisPrompt = await analysisPrompt.format({ \n        content: contentToSummarize \n      });\n      const analysisResult = await actualLLM.invoke(formattedAnalysisPrompt);\n      \n      // Extract text from analysis result\n      let analysisText;\n      if (typeof analysisResult === 'string') {\n        analysisText = analysisResult;\n      } else if (analysisResult?.content) {\n        analysisText = analysisResult.content;\n      } else if (analysisResult?.text) {\n        analysisText = analysisResult.text;\n      } else if (analysisResult?.response) {\n        analysisText = analysisResult.response;\n      } else {\n        analysisText = String(analysisResult);\n      }\n      \n      result.contentAnalysis = analysisText.trim();\n    } catch (analysisError) {\n      console.log('Analysis error:', analysisError.message);\n      result.contentAnalysis = \"Analysis unavailable due to processing error.\";\n    }\n  }\n\n\n  returnResult = [{\n    json: {\n      success: true,\n      result: result,\n      metadata: {\n        nodeType: 'custom-langchain-summarizer',\n        processingTime: Date.now(),\n        inputFields: Object.keys(webhookBody)\n      }\n    }\n  }];\n\n  console.log(returnResult)\n  // Return the result in n8n format\n  return returnResult;\n\n} catch (error) {\n  // Error handling\n  console.log('Processing error:', error.message);\n  return {\n    json: {\n      success: false,\n      error: error.message,\n      result: null,\n      metadata: {\n        nodeType: 'custom-langchain-summarizer',\n        processingTime: Date.now(),\n        inputFields: Object.keys(webhookBody)\n      }\n    }\n  };\n}\n\n// Example usage in n8n workflow:\n// 1. Connect a webhook trigger node \n// 2. Connect an AI Language Model node (OpenAI, Anthropic, Ollama, etc.)\n// 3. This Code node will process the content and return structured summary data\n\n/* \nExpected input JSON structure via webhook:\n{\n  \"content\": \"Your long article or text content here...\",\n  \"summaryType\": \"general\", // or \"technical\" or \"bullet-points\"\n  \"maxLength\": 150,\n  \"includeAnalysis\": true\n}\n\nExpected output JSON structure:\n{\n  \"success\": true,\n  \"result\": {\n    \"summary\": \"The generated summary text...\",\n    \"originalLength\": 500,\n    \"summaryLength\": 145,\n    \"compressionRatio\": 29,\n    \"summaryType\": \"general\",\n    \"timestamp\": \"2025-07-08T10:30:00.000Z\",\n    \"contentAnalysis\": \"Analysis of the content...\" // if includeAnalysis was true\n  },\n  \"metadata\": {\n    \"nodeType\": \"custom-langchain-summarizer\",\n    \"processingTime\": 1720435800000,\n    \"inputFields\": [\"content\", \"summaryType\", \"maxLength\"]\n  }\n}\n*/"
+          }
+        },
+        "inputs": {
+          "input": [
+            {
+              "type": "main",
+              "required": true
+            },
+            {
+              "type": "ai_languageModel",
+              "required": true
+            }
+          ]
+        },
+        "outputs": {
+          "output": [
+            {
+              "type": "main"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.code",
+      "typeVersion": 1,
+      "position": [
+        240,
+        0
+      ],
+      "id": "f85f39da-321d-48c5-b079-99d888541316",
+      "name": "LangChain Code"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        240,
+        240
+      ],
+      "id": "d82e9726-ae6b-43d3-99de-8c28a13072fa",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "e500dfd5-e6c5-4d58-bf87-11e208f07048",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "631d58ee-c147-42e3-8567-7876a9939669",
+      "name": "Webhook",
+      "webhookId": "e500dfd5-e6c5-4d58-bf87-11e208f07048"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LangChain Code",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "LangChain Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "9faf39e7-bada-4e80-8a9d-682f38ea815e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "IkhTTQdaBafO3uE2",
+  "tags": []
+}

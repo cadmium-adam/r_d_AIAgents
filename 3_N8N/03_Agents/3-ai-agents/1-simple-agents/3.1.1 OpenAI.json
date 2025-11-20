@@ -1,0 +1,139 @@
+{
+  "name": "3.1.1 OpenAI",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        200
+      ],
+      "webhookId": "openai-agent-demo",
+      "id": "12e8af9d-71e5-49c1-a2b7-2c453b296086"
+    },
+    {
+      "parameters": {
+        "sessionKey": "sessionId",
+        "contextWindowLength": 10
+      },
+      "name": "Memory Buffer Window",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1,
+      "position": [
+        620,
+        420
+      ],
+      "id": "7d5a18cf-d0ec-42cd-bed7-4f1e221bc894"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4o Mini"
+        },
+        "options": {}
+      },
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        400,
+        420
+      ],
+      "id": "611ac7d6-7856-45cb-a9de-b1c2eeb95bc1"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful AI assistant with access to chat history. You can remember previous parts of our conversation and provide contextual responses. Be friendly, informative, and helpful. When users ask about our conversation history, you can reference previous messages.",
+          "maxIterations": 10,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        460,
+        200
+      ],
+      "id": "b4718695-b979-45b1-b00a-47422f001bbf"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log(\"=== OPENAI AI AGENT - EDUCATIONAL DEMO ===\");\nconsole.log(\"Purpose: Demonstrate OpenAI AI Agent with persistent chat memory\");\nconsole.log(\"Features: Memory management, conversation context, cost tracking\");\n\nconst input = $input.first().json;\nconsole.log(\"\\n=== AGENT INPUT ===\");\nconsole.log(\"User message:\", $('Chat Trigger').first().json.chatInput);\nconsole.log(\"Agent response:\", input.output);\n\n// Token usage calculation for OpenAI GPT-4o-mini\nconst userMessage = $('Chat Trigger').first().json.chatInput || \"\";\nconst agentResponse = input.output || \"\";\n\n// Rough token estimation (1 token ≈ 4 characters)\nconst inputTokens = Math.ceil(userMessage.length / 4);\nconst outputTokens = Math.ceil(agentResponse.length / 4);\nconst totalTokens = inputTokens + outputTokens;\n\n// OpenAI GPT-4o-mini pricing (as of 2024)\nconst INPUT_COST_PER_1M = 0.15;  // $0.15 per 1M input tokens\nconst OUTPUT_COST_PER_1M = 0.60; // $0.60 per 1M output tokens\n\nconst inputCost = (inputTokens / 1000000) * INPUT_COST_PER_1M;\nconst outputCost = (outputTokens / 1000000) * OUTPUT_COST_PER_1M;\nconst totalCost = inputCost + outputCost;\n\nconsole.log(\"\\n=== COST ANALYSIS ===\");\nconsole.log(`Input tokens: ${inputTokens} (~$${inputCost.toFixed(8)})`);\nconsole.log(`Output tokens: ${outputTokens} (~$${outputCost.toFixed(8)})`);\nconsole.log(`Total tokens: ${totalTokens}`);\nconsole.log(`Estimated cost: $${totalCost.toFixed(8)}`);\nconsole.log(`Monthly cost at 1000 messages: ~$${(totalCost * 1000).toFixed(4)}`);\n\n// Memory management info\nconsole.log(\"\\n=== MEMORY STATUS ===\");\nconsole.log(\"Memory enabled: Chat history persists with buffer window\");\nconsole.log(\"Context window length: 10 messages\");\n\nconsole.log(\"\\n=== EDUCATIONAL NOTES ===\");\nconsole.log(\"1. AI Agent vs LLM Chain: Agents can use tools and have more complex reasoning\");\nconsole.log(\"2. Memory Management: This workflow demonstrates persistent conversation context\");\nconsole.log(\"3. Cost Optimization: GPT-4o-mini provides good performance at lower cost\");\nconsole.log(\"4. Token Management: Monitor usage to control costs in production\");\n\nconsole.log(\"=== OPENAI AI AGENT DEMO COMPLETE ===\\n\");\n\nreturn {\n  userMessage,\n  agentResponse, \n  tokenUsage: {\n    inputTokens,\n    outputTokens,\n    totalTokens,\n    estimatedCost: totalCost\n  },\n  memoryStatus: {\n    contextWindowLength: 10,\n    memoryEnabled: true\n  },\n  provider: \"OpenAI GPT-4o-mini\",\n  workflowType: \"AI Agent with Memory\"\n};"
+      },
+      "name": "Educational Logging & Analysis",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        820,
+        200
+      ],
+      "id": "525e3ed9-9ad7-4050-86da-26a5476ecf77"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory Buffer Window": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Educational Logging & Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b74efafe-c7d0-4d86-a0cd-fd5bfb55f42e",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "XYoiVCyqfvxL0qrQ",
+  "tags": []
+}

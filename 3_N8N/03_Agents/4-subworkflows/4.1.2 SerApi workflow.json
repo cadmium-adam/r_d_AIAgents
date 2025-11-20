@@ -1,0 +1,122 @@
+{
+  "name": "4.1.2 SerApi workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "SerpApi (Google Search)",
+      "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        620
+      ],
+      "id": "968c32b9-b374-4437-b709-6c4737087c38",
+      "credentials": {
+        "serpApi": {
+          "id": "QnfVnVKYlHwGCtyj",
+          "name": "SerpAPI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When Executed by Another Workflow').first().json.query }}",
+        "options": {
+          "systemMessage": "You are a helpful research assistant with access to Google Search through SerpAPI.",
+          "maxIterations": 5,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        400
+      ],
+      "id": "bd5d849f-a710-4f04-8e14-acef93f8536c"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        620
+      ],
+      "name": "Ollama Chat Model",
+      "id": "3c664a4d-8288-4fbb-aa27-8d5fab2e94f8",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        400
+      ],
+      "id": "2a4206fc-57d6-42c4-b63f-285ffaca65b2",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "SerpApi (Google Search)": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b6ff6de9-fea9-4871-94dc-afbc7f833f9e",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "Ie8VT5NEGdg4HiUP",
+  "tags": []
+}

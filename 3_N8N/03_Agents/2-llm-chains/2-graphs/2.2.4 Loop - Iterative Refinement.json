@@ -1,0 +1,329 @@
+{
+  "name": "2.2.4 Loop - Iterative Refinement",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [260, 725],
+      "webhookId": "loop-llm-chain",
+      "id": "443c2906-847b-47e9-88a8-dc19498b995f"
+    },
+    {
+      "parameters": {
+        "jsCode": "// This workflow demonstrates ITERATIVE LLM processing\n// We'll progressively refine content through multiple iterations:\n// 1. Initial draft creation\n// 2. Review and identify improvements\n// 3. Refine based on feedback\n// 4. Repeat until satisfactory (max 3 iterations)\n\nconsole.log('=== ITERATIVE LLM CHAIN DEMO ===');\nconsole.log('Original Input:', $input.first().json.chatInput);\nconsole.log('\\nThis will iteratively refine content through:');\nconsole.log('📝 1. Create initial draft');\nconsole.log('🔍 2. Analyze and review');\nconsole.log('✨ 3. Refine and improve');\nconsole.log('🔄 4. Repeat until optimal (max 3 iterations)');\nconsole.log('=================================\\n');\n\nreturn [{\n  json: {\n    originalInput: $input.first().json.chatInput,\n    currentIteration: 1,\n    maxIterations: 3,\n    sessionId: $input.first().json.sessionId,\n    timestamp: new Date().toISOString(),\n    iterationHistory: []\n  }\n}];"
+      },
+      "name": "Initialize Loop Process",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 725],
+      "id": "1e67c24f-1bc9-4ce6-85d3-19480eb054f5"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Create a response for the following request:\n\n{{ $json.originalInput }}\n\nThis is iteration {{ $json.currentIteration }} of {{ $json.maxIterations }}.\n\n{{ $json.currentIteration === 1 ? 'Create a comprehensive but improvable first draft. Focus on covering all key points with clear structure and accurate information.' : 'Working with refined content from previous iteration. Create an improved version based on the feedback.' }}\n\n{{ $json.currentDraft ? 'Previous refined content:\\n' + $json.currentDraft + '\\n\\n' : '' }}Draft:"
+      },
+      "name": "Create Draft",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [700, 725],
+      "id": "fbe08151-89a4-4c42-9506-e529e9dc5bc9"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4o Mini"
+        },
+        "options": {
+          "maxTokens": 300,
+          "temperature": 0.7
+        }
+      },
+      "name": "OpenAI Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [1500, 1140],
+      "id": "6dd541fa-6bff-42f5-a7fe-28f34ebfd963",
+      "credentials": {
+        "openAiApi": {
+          "id": "1",
+          "name": "OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log current draft and preserve iteration data\nconst currentDraft = $input.first().json.text;\n\nconsole.log('\\n=== DEBUG: LOG DRAFT INPUT ===');\nconsole.log('Input from Create Draft:', JSON.stringify($input.first().json, null, 2));\nconsole.log('Available nodes:', Object.keys($node));\n\n// Get iteration data - check if coming from loop (Prepare Next Iteration) or initial (Initialize Loop Process)\nlet iterationData;\n\ntry {\n  // Check if Prepare Next Iteration node exists (we're in a loop)\n  if ($node[\"Prepare Next Iteration\"] && $node[\"Prepare Next Iteration\"].json) {\n    iterationData = $node[\"Prepare Next Iteration\"].json;\n    console.log('📝 Using iteration data from Prepare Next Iteration node');\n    console.log('Current iteration from loop:', iterationData.currentIteration);\n  } else {\n    // We're in the first iteration, use Initialize Loop Process data\n    iterationData = $node[\"Initialize Loop Process\"].json;\n    console.log('📝 Using initial iteration data from Initialize Loop Process');\n    console.log('Current iteration (initial):', iterationData.currentIteration);\n  }\n} catch (error) {\n  console.log('⚠️ Error accessing iteration data:', error.message);\n  // Fallback to Initialize Loop Process\n  iterationData = $node[\"Initialize Loop Process\"].json;\n}\n\nconsole.log(`📝 ITERATION ${iterationData.currentIteration} - DRAFT CREATED:`);\nconsole.log('Length:', currentDraft.length, 'characters');\nconsole.log('Preview:', currentDraft.substring(0, 150) + '...');\nconsole.log('Current iteration history length:', iterationData.iterationHistory.length);\nconsole.log('\\n-------------------\\n');\n\n// Add current draft to iteration history\nconst updatedHistory = [\n  ...iterationData.iterationHistory,\n  {\n    iteration: iterationData.currentIteration,\n    content: currentDraft,\n    timestamp: new Date().toISOString(),\n    type: 'draft'\n  }\n];\n\nreturn [{\n  json: {\n    originalInput: iterationData.originalInput,\n    currentDraft: currentDraft,\n    currentIteration: iterationData.currentIteration,\n    maxIterations: iterationData.maxIterations,\n    iterationHistory: updatedHistory,\n    sessionId: iterationData.sessionId\n  }\n}];"
+      },
+      "name": "Log Draft",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1060, 650],
+      "id": "8c4291ce-d37d-47ce-ab32-c4a3a25023e3"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Review this content for improvement opportunities:\n\n{{ $json.currentDraft }}\n\nThis is iteration {{ $json.currentIteration }} of {{ $json.maxIterations }} for the original request:\n{{ $json.originalInput }}\n\nAnalyze the content and determine if it needs further refinement. Consider:\n1. Clarity and readability\n2. Completeness and accuracy\n3. Structure and organization\n4. Engagement and impact\n\nRespond with ONLY:\n- true (if content needs improvement and should continue iterating)\n- false (if content is good enough and should stop)\n\nAnswer:"
+      },
+      "name": "Review Content",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [1280, 650],
+      "id": "d38944b5-de08-45e2-a92c-9daeed9d2c7b"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process LLM review decision and apply iteration limits\nconst llmResponse = $input.first().json.text.toLowerCase().trim();\n\n// Get iteration data from the Log Draft node (which has all the context)\nconst iterationData = $node[\"Log Draft\"].json;\n\nconsole.log(`\\n🔍 ITERATION ${iterationData.currentIteration} - REVIEW COMPLETE:`);\nconsole.log('LLM Response:', llmResponse);\nconsole.log('Current iteration history length:', iterationData.iterationHistory.length);\n\n// Parse LLM response - look for true/false\nlet llmDecision = false;\nif (llmResponse.includes('true')) {\n  llmDecision = true;\n} else if (llmResponse.includes('false')) {\n  llmDecision = false;\n} else {\n  // Fallback: if response unclear, continue if it's early iteration\n  llmDecision = iterationData.currentIteration === 1;\n  console.log('⚠️ Unclear LLM response, using fallback logic');\n}\n\n// FINAL DECISION: Respect max iterations limit\n// If we're at or over max iterations, always stop regardless of LLM decision\nconst shouldContinue = iterationData.currentIteration < iterationData.maxIterations && llmDecision;\n\nconsole.log(`LLM wants to continue: ${llmDecision}`);\nconsole.log(`Current iteration: ${iterationData.currentIteration}/${iterationData.maxIterations}`);\nconsole.log(`Final decision - Should continue: ${shouldContinue}`);\n\nif (iterationData.currentIteration >= iterationData.maxIterations) {\n  console.log('🛑 Reached max iterations - stopping regardless of LLM decision');\n} else if (!llmDecision) {\n  console.log('✅ LLM satisfied with content quality - stopping');\n} else {\n  console.log('🔄 LLM requests improvement - continuing to next iteration');\n}\nconsole.log('\\n-------------------\\n');\n\nreturn [{\n  json: {\n    ...iterationData,\n    review: `LLM Decision: ${llmDecision ? 'Continue (needs improvement)' : 'Stop (good quality)'}`,\n    shouldContinue: shouldContinue,\n    llmDecision: llmDecision,\n    reachedMaxIterations: iterationData.currentIteration >= iterationData.maxIterations\n  }\n}];"
+      },
+      "name": "Process Review",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1640, 650],
+      "id": "4f63747f-fb93-4ef9-b91e-1057035638ac"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1",
+              "leftValue": "={{ $json.shouldContinue }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "name": "Continue Iteration?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1860, 650],
+      "id": "2df136df-a236-4182-9488-8df2e80fbadb"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=The LLM reviewer determined this content needs improvement.\n\nRefine and improve this content:\n\n{{ $json.currentDraft }}\n\nThis is iteration {{ $json.currentIteration }} of {{ $json.maxIterations }} for the original request:\n{{ $json.originalInput }}\n\nCreate an improved version by:\n- Enhancing clarity and readability\n- Improving structure and organization\n- Adding more detail where needed\n- Making it more engaging and impactful\n- Ensuring completeness and accuracy\n\nRefined version:"
+      },
+      "name": "Refine Content",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [2080, 400],
+      "id": "2bf22dfb-dfcf-40d2-a48e-28749c85a5fc"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Prepare for next iteration\nconst refinedContent = $input.first().json.text;\n\n// Get the original iteration data from Process Review node\nconst processReviewData = $node[\"Process Review\"].json;\n\nconsole.log(`\\n✨ ITERATION ${processReviewData.currentIteration} - REFINEMENT COMPLETE:`);\nconsole.log('Refined length:', refinedContent.length, 'characters');\nconsole.log('Preview:', refinedContent.substring(0, 150) + '...');\n\n// Increment iteration counter for next iteration\nconst nextIteration = processReviewData.currentIteration + 1;\n\nconsole.log(`\\n🔄 Preparing for iteration ${nextIteration}...`);\nconsole.log(`Previous iteration: ${processReviewData.currentIteration}`);\nconsole.log(`History length before: ${processReviewData.iterationHistory.length}`);\n\n// Add this iteration's review and refined content to history\nconst updatedHistory = [\n  ...processReviewData.iterationHistory,\n  {\n    iteration: processReviewData.currentIteration,\n    review: processReviewData.review,\n    refinedContent: refinedContent,\n    llmDecision: processReviewData.llmDecision,\n    timestamp: new Date().toISOString(),\n    type: 'refinement'\n  }\n];\n\nconsole.log(`History length after: ${updatedHistory.length}`);\nconsole.log('\\n-------------------\\n');\n\n// Return data for the next iteration with incremented counter\nreturn [{\n  json: {\n    originalInput: processReviewData.originalInput,\n    currentIteration: nextIteration,  // This is the key - increment for next iteration\n    maxIterations: processReviewData.maxIterations,\n    sessionId: processReviewData.sessionId,\n    // Set the refined content as the new current draft for next iteration\n    currentDraft: refinedContent,\n    iterationHistory: updatedHistory,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "name": "Prepare Next Iteration",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2440, 725],
+      "id": "f6f10da8-c69e-46de-81d9-587baee5a670"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Final output with complete iteration history\n// Debug input structure first\nconsole.log('\\n=== DEBUG: LOOP FINAL OUTPUT ===');\nconsole.log('Input structure:', JSON.stringify($input.first(), null, 2));\nconsole.log('================================\\n');\n\nconst inputData = $input.first().json || {};\nconst finalData = inputData;\n\n// Safe access to properties\nconst currentIteration = finalData.currentIteration || 1;\nconst currentDraft = finalData.currentDraft || 'No final content available';\nconst originalInput = finalData.originalInput || 'Unknown input';\nconst iterationHistory = finalData.iterationHistory || [];\n\nconsole.log(`\\n🎯 LOOP COMPLETE - ${Math.max(0, currentIteration - 1)} iterations performed`);\nconsole.log('Final content length:', (currentDraft || '').length, 'characters');\n\n// Calculate metrics with safe property access\nconst totalIterations = iterationHistory.length;\nconst finalContent = currentDraft;\n\n// Safe calculation of total characters\nconst originalInputLength = (originalInput || '').length;\nconst iterationChars = iterationHistory.reduce((sum, iter) => {\n  const contentLength = (iter?.content || '').length;\n  const reviewLength = (iter?.review || '').length;\n  const refinedLength = (iter?.refinedContent || '').length;\n  return sum + contentLength + reviewLength + refinedLength;\n}, 0);\n\nconst totalChars = originalInputLength + iterationChars;\nconst estimatedTokens = Math.ceil(totalChars / 4);\nconst estimatedCost = estimatedTokens * 0.00002;\n\nconsole.log('\\n📊 ITERATIVE LOOP METRICS:');\nconsole.log(`Total iterations: ${totalIterations}`);\nconsole.log(`Total characters processed: ${totalChars}`);\nconsole.log(`Estimated tokens: ${estimatedTokens}`);\nconsole.log(`Estimated cost: $${estimatedCost.toFixed(4)}`);\nconsole.log(`Quality improvement: Progressive`);\nconsole.log('\\n=== ITERATIVE CHAIN COMPLETE ===\\n');\n\n// Create iteration summary with safe access\nconst iterationSummary = iterationHistory.map((iter, index) => {\n  const content = (iter?.content || 'No content');\n  const review = (iter?.review || 'No review');\n  return `**Iteration ${iter?.iteration || index + 1}:**\\n- Draft: ${content.substring(0, 100)}...\\n- Review: ${review.substring(0, 100)}...\\n`;\n}).join('\\n');\n\n// Return formatted output\nreturn [{\n  json: {\n    output: `**🔄 Final Refined Content (${totalIterations} iterations):**\\n\\n${finalContent}\\n\\n---\\n*Progressively improved through iterative refinement*`,\n    fullProcess: {\n      original: originalInput,\n      finalContent: finalContent,\n      iterationHistory: iterationHistory,\n      totalIterations: totalIterations\n    },\n    metrics: {\n      totalChars,\n      estimatedTokens,\n      estimatedCost,\n      totalIterations,\n      qualityImprovement: 'Progressive'\n    }\n  }\n}];"
+      },
+      "name": "Final Output with History",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2140, 740],
+      "id": "f9799b91-ce62-46c0-9fea-fac9f383ad0f"
+    },
+    {
+      "parameters": {
+        "content": "## 🔄 Iterative Loop LLM Chain\n\nThis workflow demonstrates iterative refinement through loops. Content is progressively improved through multiple review-and-refine cycles.\n\n### Loop Process:\n1. **Create Draft** → Initial content creation\n2. **Review** → Analyze quality and identify improvements\n3. **Decide** → Continue iterating or finalize?\n4. **Refine** → Improve based on feedback\n5. **Repeat** → Loop back until optimal\n\n### Try These Inputs:\n- \"Write a blog post about AI benefits\"\n- \"Create a product description for smart watch\"\n- \"Explain quantum computing simply\"\n- \"Draft a business proposal for eco-friendly packaging\"\n\n### Loop Benefits:\n- **Quality**: Progressive improvement\n- **Adaptive**: Stops when good enough\n- **Traceable**: Full iteration history\n- **Efficient**: Maximum 3 iterations\n\n*Perfect for content that needs refinement!*",
+        "height": 650,
+        "width": 400,
+        "color": 2
+      },
+      "name": "Iterative Loop Guide",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-280, 520],
+      "id": "66d24c1a-d693-47b8-a041-809c2a6ebfbb"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [1340, 1140],
+      "id": "2e0613bf-fff5-4ded-9d9d-7aee8aacb0fd",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Initialize Loop Process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Initialize Loop Process": {
+      "main": [
+        [
+          {
+            "node": "Create Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Draft": {
+      "main": [
+        [
+          {
+            "node": "Log Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Draft": {
+      "main": [
+        [
+          {
+            "node": "Review Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Review Content": {
+      "main": [
+        [
+          {
+            "node": "Process Review",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Review": {
+      "main": [
+        [
+          {
+            "node": "Continue Iteration?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Continue Iteration?": {
+      "main": [
+        [
+          {
+            "node": "Refine Content",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Final Output with History",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Refine Content": {
+      "main": [
+        [
+          {
+            "node": "Prepare Next Iteration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Next Iteration": {
+      "main": [
+        [
+          {
+            "node": "Create Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model": {
+      "ai_languageModel": [[]]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Create Draft",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Review Content",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Refine Content",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f3b6ec22-e637-4c78-99dd-1ac7caa5e7b0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "igmCiR2LYZnxWXYN",
+  "tags": []
+}

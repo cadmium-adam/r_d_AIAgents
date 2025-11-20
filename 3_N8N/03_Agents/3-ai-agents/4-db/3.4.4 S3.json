@@ -1,0 +1,145 @@
+{
+  "name": "3.4.4 S3",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -380,
+        -20
+      ],
+      "id": "d0b5e045-6eb4-4641-8b84-87badb811e40",
+      "name": "When chat message received",
+      "webhookId": "61be7ffb-18c7-436e-94ca-4f4d702ff6c3"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are an AI agent operating within N8N workflows with access to an S3 database tool. Your primary function is to help users manage, query, and manipulate data stored in S3 buckets efficiently and accurately.\n\n## Your Capabilities\n- **S3 Operations**: Upload, download, list, delete, and organize files/objects in S3 buckets\n- **Data Management**: Handle various file formats (JSON, CSV, XML, images, documents) stored in S3\n- **Query Processing**: Search and filter S3 objects based on metadata, tags, or content\n- **Workflow Integration**: Seamlessly integrate S3 operations into broader N8N automation workflows\n\n## Guidelines\n1. **Safety First**: Always verify bucket names and object keys before performing destructive operations (delete, overwrite)\n2. **Efficiency**: Use appropriate S3 operations (batch operations when possible, proper filtering)\n3. **Error Handling**: Provide clear error messages and suggest solutions when S3 operations fail\n4. **Data Privacy**: Be mindful of sensitive data - never log or expose confidential information\n5. **Cost Awareness**: Optimize operations to minimize S3 costs (avoid unnecessary list operations, use appropriate storage classes)\n\n## Response Format\n- Provide clear, actionable responses\n- Include relevant S3 object details (bucket, key, size, last modified) when applicable\n- Suggest next steps or related operations when helpful\n- Format responses appropriately for N8N workflow context\n\n## Error Scenarios\nIf S3 operations fail:\n- Check permissions and credentials\n- Verify bucket exists and is accessible\n- Confirm object keys are valid\n- Suggest alternative approaches\n\nAlways prioritize data integrity and user intent when working with S3 resources."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        -160,
+        -20
+      ],
+      "id": "ecd3cce5-d9f4-47bd-b151-2cab9d3bc0d1",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "bucketName": "product-images",
+        "limit": 10,
+        "options": {
+          "folderKey": "products/10/"
+        }
+      },
+      "type": "n8n-nodes-base.s3Tool",
+      "typeVersion": 1,
+      "position": [
+        40,
+        220
+      ],
+      "id": "99d80752-8ff3-444b-a95a-5974990341d4",
+      "name": "Get many files in S3",
+      "credentials": {
+        "s3": {
+          "id": "GSvaNYsXG0wN9nhZ",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "mistralai/Mistral-7B-Instruct-v0.3",
+          "mode": "list",
+          "cachedResultName": "mistralai/Mistral-7B-Instruct-v0.3"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -200,
+        220
+      ],
+      "id": "23a165d4-4c0c-49fe-b86b-254359eb0822",
+      "name": "RUNPOD",
+      "credentials": {
+        "openAiApi": {
+          "id": "duKpgh9SMgoT2Gde",
+          "name": "RUNPOD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Prompts\n\nWhat files do we have?\n\nWhat files are stored?",
+        "height": 460,
+        "width": 460
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1080,
+        -120
+      ],
+      "typeVersion": 1,
+      "id": "14bc328b-5a29-453b-9c00-c79cec5162f3",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many files in S3": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RUNPOD": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "354bf9b8-b81b-45ed-a078-f9c299636eb1",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "DYwQWFLdZWueTyL5",
+  "tags": []
+}

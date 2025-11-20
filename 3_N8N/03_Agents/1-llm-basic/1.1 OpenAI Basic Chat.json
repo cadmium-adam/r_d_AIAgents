@@ -1,0 +1,128 @@
+{
+  "name": "1.1 OpenAI Basic Chat",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [260, 300],
+      "webhookId": "openai-validated-chat",
+      "id": "6adf2c4b-83d1-484a-ae6c-a527bce8b723"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Educational logging for OpenAI demo\nconsole.log('=== OPENAI CHAT DEMO ===');\nconsole.log('User input:', $input.first().json.chatInput);\nconsole.log('Session ID:', $input.first().json.sessionId);\nconsole.log('\\nThis demonstrates:');\nconsole.log('- OpenAI GPT integration using LangChain');\nconsole.log('- Modern n8n AI workflow patterns');\nconsole.log('- Token usage tracking');\nconsole.log('- Cost estimation');\nconsole.log('========================\\n');\n\nreturn $input.all();"
+      },
+      "name": "Log Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 300],
+      "id": "8cb2798c-299f-4e9d-876d-4a150d2f4039"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "You are a helpful AI assistant demonstrating OpenAI integration in n8n. Be concise but informative. This is for educational purposes to show students how AI chat works in n8n workflows.",
+              "role": "system"
+            },
+            {
+              "content": "={{ $json.chatInput }}"
+            }
+          ]
+        },
+        "options": {
+          "maxTokens": 500,
+          "temperature": 0.7
+        }
+      },
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [700, 300],
+      "id": "1d565f6d-4893-4a1c-8231-8c9eb3c4d323",
+      "credentials": {
+        "openAiApi": {
+          "id": "openai-credentials",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process OpenAI response with comprehensive debugging\nconsole.log('\\n=== DEBUG: RAW INPUT DATA ===');\nconsole.log('Full input structure:', JSON.stringify($input.all(), null, 2));\nconsole.log('First item:', JSON.stringify($input.first(), null, 2));\nconsole.log('Input.first().json:', JSON.stringify($input.first().json, null, 2));\nconsole.log('================================\\n');\n\nconst response = $input.first().json;\nlet outputText = '';\nlet usage = null;\nlet tokenCount = 0;\n\n// Handle different OpenAI response structures\nconsole.log('\\n=== PROCESSING OPENAI RESPONSE ===');\nconsole.log('Response type:', typeof response);\nconsole.log('Is array:', Array.isArray(response));\n\nif (Array.isArray(response) && response.length > 0) {\n  // Handle array response format: [{\"message\": {\"content\": \"...\"}}, ...]\n  console.log('📥 Processing array response format');\n  const firstItem = response[0];\n  \n  if (firstItem.message && firstItem.message.content) {\n    outputText = firstItem.message.content;\n    console.log('✅ Found content in: response[0].message.content');\n  } else {\n    outputText = 'Error: Could not extract content from array response';\n    console.log('❌ Array format but no message.content found');\n    console.log('First item structure:', JSON.stringify(firstItem, null, 2));\n  }\n} else if (response.output) {\n  // Handle simplified output format\n  console.log('📥 Processing simplified output format');\n  outputText = response.output;\n  usage = response.usage;\n  console.log('✅ Found content in: response.output');\n} else if (response.choices && response.choices[0]) {\n  // Handle full OpenAI API response format\n  console.log('📥 Processing full API response format');\n  outputText = response.choices[0].message.content;\n  usage = response.usage;\n  console.log('✅ Found content in: response.choices[0].message.content');\n} else if (response.message && response.message.content) {\n  // Handle single message format\n  console.log('📥 Processing single message format');\n  outputText = response.message.content;\n  console.log('✅ Found content in: response.message.content');\n} else {\n  // Fallback: try to find content anywhere in the response\n  console.log('📥 Searching for content in response...');\n  outputText = 'Error: Could not extract content from response';\n  console.log('❌ Unknown response format. Full response:');\n  console.log(JSON.stringify(response, null, 2));\n}\n\nconsole.log('\\n=== EXTRACTED DATA ===');\nconsole.log('Output text:', outputText);\nconsole.log('Usage data:', usage);\n\n// Estimate token usage if not provided\nif (!usage && outputText && outputText !== 'Error: Could not extract content from response') {\n  const inputText = $node[\"When chat message received\"].json.chatInput || '';\n  const estimatedInputTokens = Math.ceil(inputText.length / 4);\n  const estimatedOutputTokens = Math.ceil(outputText.length / 4);\n  \n  usage = {\n    prompt_tokens: estimatedInputTokens,\n    completion_tokens: estimatedOutputTokens,\n    total_tokens: estimatedInputTokens + estimatedOutputTokens,\n    estimated: true\n  };\n  \n  console.log('\\n💡 No usage data provided, estimated tokens:');\n  console.log('Input chars:', inputText.length, '→ tokens:', estimatedInputTokens);\n  console.log('Output chars:', outputText.length, '→ tokens:', estimatedOutputTokens);\n}\n\nif (usage) {\n  console.log('\\n=== TOKEN USAGE ===');\n  console.log('Prompt tokens:', usage.prompt_tokens);\n  console.log('Completion tokens:', usage.completion_tokens);\n  console.log('Total tokens:', usage.total_tokens);\n  if (usage.estimated) {\n    console.log('⚠️  Note: Token counts are estimated (not from API)');\n  }\n  \n  // Calculate cost (GPT-4o-mini pricing)\n  const inputCost = usage.prompt_tokens * 0.00000015;  // $0.15 per 1M tokens\n  const outputCost = usage.completion_tokens * 0.0000006; // $0.60 per 1M tokens\n  const totalCost = inputCost + outputCost;\n  \n  console.log('\\n=== COST BREAKDOWN ===');\n  console.log('Input cost: $' + inputCost.toFixed(6));\n  console.log('Output cost: $' + outputCost.toFixed(6));\n  console.log('Total cost: $' + totalCost.toFixed(6));\n  console.log('Model: gpt-4o-mini');\n}\n\nconsole.log('\\n=== PROCESSING COMPLETE ===\\n');\n\n// Return clean response for chat\nreturn [{\n  json: {\n    output: outputText,\n    usage: usage,\n    model: 'gpt-4o-mini',\n    rawResponse: response // Include raw response for debugging\n  }\n}];"
+      },
+      "name": "Process Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1060, 300],
+      "id": "37fffd81-1518-424a-af70-08a55653a69a"
+    },
+    {
+      "parameters": {
+        "content": "## 🎯 OpenAI Demo Workflow\n\n**What this demonstrates:**\n- Modern OpenAI integration via LangChain\n- Proper node types (@n8n/n8n-nodes-langchain)\n- Token usage tracking\n- Cost calculation\n- Educational logging\n\n**Try asking:**\n- \"What is n8n?\"\n- \"Explain AI in simple terms\"\n- \"How do workflows work?\"\n\n**Key Learning Points:**\n- Using the correct node package\n- API key management\n- Request/response structure\n- Cost monitoring\n- Error handling\n\n**Note:** This uses the modern LangChain OpenAI node, not the legacy base node.",
+        "height": 400,
+        "width": 350
+      },
+      "name": "Instructions",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-220, 120],
+      "id": "16d90ede-f852-41fc-9f75-fd73ce7b2022"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Log Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Input": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Process Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f56c18e9-1f96-4118-b887-9e48873e9d46",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "Sfq5kgovbZ14zH2N",
+  "tags": []
+}

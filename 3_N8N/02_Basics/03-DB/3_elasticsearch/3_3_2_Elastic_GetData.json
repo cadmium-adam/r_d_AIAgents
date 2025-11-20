@@ -1,0 +1,86 @@
+{
+  "name": "3_3_2_Elastic_GetData",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3da4b384-e60f-4e71-9ba2-1344b03c4782",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "indexId": "n8n_products",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.elasticsearch",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "eeda0556-689f-4a50-8b78-fd07530d39b3",
+      "name": "Elasticsearch",
+      "credentials": {
+        "elasticsearchApi": {
+          "id": "9MMPeX3XznEqSRYR",
+          "name": "Elasticsearch account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log($input.all())\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "e1107207-d334-41a7-ac56-7fd02ce18c27",
+      "name": "Log"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Elasticsearch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Elasticsearch": {
+      "main": [
+        [
+          {
+            "node": "Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ccda0f7f-b182-407d-9240-788d9a19231f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "41d606a1a24293c789026869c85829c359b37aa1d75ba26c221717836b27fec2"
+  },
+  "id": "iZcQsTn4KRwz0huD",
+  "tags": []
+}

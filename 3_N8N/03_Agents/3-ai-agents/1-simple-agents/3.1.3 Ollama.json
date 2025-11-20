@@ -1,0 +1,140 @@
+{
+  "name": "3.1.3 Ollama",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        200
+      ],
+      "webhookId": "ollama-agent-demo",
+      "id": "243ed234-ce40-469c-b004-e2bef770bb64"
+    },
+    {
+      "parameters": {
+        "sessionKey": "sessionId",
+        "contextWindowLength": 10
+      },
+      "name": "Memory Buffer Window",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1,
+      "position": [
+        640,
+        420
+      ],
+      "id": "64445e82-bbb3-4210-a63c-e0620c324504"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {
+          "temperature": 0.7,
+          "topP": 0.9,
+          "keepAlive": "10m",
+          "numCtx": 4096,
+          "numPredict": 1024
+        }
+      },
+      "name": "Ollama Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        420,
+        420
+      ],
+      "id": "5cd349eb-e0b9-4aaa-969c-b6f1e42bcb8a"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful AI assistant running locally via Ollama. You have access to chat history and can remember previous parts of our conversation. You prioritize privacy and data security since all processing happens locally. Be helpful, informative, and remind users about the privacy benefits of local AI when relevant.",
+          "maxIterations": 10,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        460,
+        200
+      ],
+      "id": "a0d1df08-7f2a-487d-8652-4543c976fa77"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log(\"=== OLLAMA LOCAL AI AGENT - EDUCATIONAL DEMO ===\");\nconsole.log(\"Purpose: Demonstrate Ollama local AI Agent with persistent chat memory\");\nconsole.log(\"Features: 100% local processing, privacy-first, memory management\");\n\nconst input = $input.first().json;\nconsole.log(\"\\n=== AGENT INPUT ===\");\nconsole.log(\"User message:\", $('Chat Trigger').first().json.chatInput);\nconsole.log(\"Ollama response:\", input.output);\n\n// Token usage calculation for Ollama (local - no API costs)\nconst userMessage = $('Chat Trigger').first().json.chatInput || \"\";\nconst agentResponse = input.output || \"\";\n\n// Rough token estimation for analysis (1 token ≈ 4 characters)\nconst inputTokens = Math.ceil(userMessage.length / 4);\nconst outputTokens = Math.ceil(agentResponse.length / 4);\nconst totalTokens = inputTokens + outputTokens;\n\n// Local processing - no API costs!\nconst totalCost = 0; // Local processing is free!\n\nconsole.log(\"\\n=== COST ANALYSIS ===\");\nconsole.log(`Input tokens: ${inputTokens} (FREE - local processing)`);\nconsole.log(`Output tokens: ${outputTokens} (FREE - local processing)`);\nconsole.log(`Total tokens: ${totalTokens}`);\nconsole.log(`API Cost: $0.00 (runs locally!)`);\nconsole.log(`Hardware cost: Only electricity and compute resources`);\n\n// Memory management info\nconsole.log(\"\\n=== MEMORY STATUS ===\");\nconsole.log(\"Memory enabled: Chat history persists with buffer window\");\nconsole.log(\"Context window length: 10 messages\");\nconsole.log(\"Memory storage: Local (no cloud dependency)\");\n\nconsole.log(\"\\n=== EDUCATIONAL NOTES ===\");\nconsole.log(\"1. Privacy Benefits: All data stays on your local machine\");\nconsole.log(\"2. No API Costs: Free to run unlimited conversations\");\nconsole.log(\"3. Offline Capability: Works without internet connection\");\nconsole.log(\"4. Model Customization: Can fine-tune models for specific use cases\");\nconsole.log(\"5. Hardware Requirements: Needs sufficient RAM and ideally GPU\");\n\nconsole.log(\"\\n=== OLLAMA ADVANTAGES ===\");\nconsole.log(\"✅ Complete privacy - no data sent to external APIs\");\nconsole.log(\"✅ Zero ongoing costs - only hardware and electricity\");\nconsole.log(\"✅ Offline operation - no internet dependency\");\nconsole.log(\"✅ Model variety - access to many open-source models\");\nconsole.log(\"✅ Customization - fine-tune models for specific needs\");\n\nconsole.log(\"\\n=== TRADE-OFFS ===\");\nconsole.log(\"⚠️ Hardware requirements - needs good CPU/GPU and RAM\");\nconsole.log(\"⚠️ Model quality - may be lower than latest commercial models\");\nconsole.log(\"⚠️ Setup complexity - requires local installation and configuration\");\nconsole.log(\"⚠️ Limited context - smaller context windows than cloud models\");\n\nconsole.log(\"=== OLLAMA LOCAL AI AGENT DEMO COMPLETE ===\\n\");\n\nreturn {\n  userMessage,\n  agentResponse, \n  tokenUsage: {\n    inputTokens,\n    outputTokens,\n    totalTokens,\n    estimatedCost: 0,\n    costBenefit: \"Free local processing\"\n  },\n  memoryStatus: {\n    contextWindowLength: 10,\n    memoryEnabled: true,\n    storageLocation: \"local\"\n  },\n  provider: \"Ollama (Local)\",\n  model: \"Mistral Latest\",\n  workflowType: \"Local AI Agent with Memory\",\n  privacyLevel: \"Maximum - all local processing\"\n};"
+      },
+      "name": "Educational Logging & Analysis",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        820,
+        200
+      ],
+      "id": "27beabb6-bff6-4767-98d5-8d3736434deb"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory Buffer Window": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Educational Logging & Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "bd464895-6e03-4349-af80-ab2b5e10b0a9",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "NBthx8bpdCM4svUO",
+  "tags": []
+}

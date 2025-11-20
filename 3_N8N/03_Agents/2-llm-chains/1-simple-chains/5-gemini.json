@@ -1,0 +1,88 @@
+{
+  "name": "2.1.5 Gemini - Chain",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -400,
+        -20
+      ],
+      "id": "9fc13466-d340-405f-8ac0-d12ee4a8c1a7",
+      "name": "When chat message received",
+      "webhookId": "dc389be1-53de-4e59-9228-83c71aa0b49f"
+    },
+    {
+      "parameters": {
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -180,
+        -20
+      ],
+      "id": "dcbd12ec-a86d-4d7c-aec6-7aaa4fd878a6",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        200
+      ],
+      "id": "efc08086-938a-4244-903b-cc22907990a7",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "NHaHHsg6vGqJ1PH3",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "9fa3abc3-fbd6-4eee-81c1-b8acc2bafd4e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d53b6031aa1e7c3e4ba36ff85716f7daec0e2b634fd86a63c9d899fb057529bc"
+  },
+  "id": "nHumgJDkSA341oV5",
+  "tags": []
+}

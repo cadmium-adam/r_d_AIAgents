@@ -1,0 +1,109 @@
+{
+  "name": "3_1_1_MSSQL_Insert",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        -80
+      ],
+      "id": "2b7c0158-f04f-427d-ae1c-b5a607209dbf",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "const products = [\n    {\n        id: \"1\",\n        title: \"Wireless Bluetooth Headphones\",\n        description: \"Over-ear noise-cancelling headphones with 20h battery life\"\n    },\n    {\n        id: \"2\",\n        title: \"Gaming Laptop\",\n        description: \"High-performance laptop with RTX 3060 GPU and 16GB RAM for gaming and content creation\"\n    },\n    {\n        id: \"3\",\n        title: \"Eco-Friendly Water Bottle\",\n        description: \"Reusable stainless steel bottle made from recycled materials, keeps drinks cold for 24h\"\n    },\n    {\n        id: \"4\",\n        title: \"Fitness Tracker Watch\",\n        description: \"Tracks steps, heart rate, and sleep with 7-day battery and waterproof design\"\n    },\n    {\n        id: \"5\",\n        title: \"Smart Home Security Camera\",\n        description: \"1080p WiFi indoor camera with motion detection and mobile alerts\"\n    },\n    {\n        id: \"6\",\n        title: \"Hiking Backpack\",\n        description: \"Water-resistant backpack with 35L capacity, suitable for mountain trips\"\n    },\n    {\n        id: \"7\",\n        title: \"Mechanical Keyboard\",\n        description: \"RGB backlit mechanical keyboard with tactile switches, perfect for gamers\"\n    },\n    {\n        id: \"8\",\n        title: \"Noise-Isolating Earbuds\",\n        description: \"Compact in-ear headphones with rich bass and passive noise isolation\"\n    },\n    {\n        id: \"9\",\n        title: \"4K Monitor\",\n        description: \"Ultra HD 27-inch monitor with HDR support and slim bezel design\"\n    },\n    {\n        id: \"10\",\n        title: \"Portable Solar Charger\",\n        description: \"Foldable solar charger with USB-C output for phones and tablets on the go\"\n    }\n];\n\nreturn products"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        -80
+      ],
+      "id": "5974e405-e5d5-426b-a8f2-fc314e0cef1e",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "table": "products",
+        "columns": "id,title,description"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        20,
+        -80
+      ],
+      "id": "6cea58be-0398-4f13-9f33-7778a01b4c3c",
+      "name": "Microsoft SQL",
+      "credentials": {
+        "microsoftSql": {
+          "id": "FTlMFYN7sOsHjhjA",
+          "name": "Microsoft SQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log($input.all())\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        -80
+      ],
+      "id": "db862db8-8cb9-4188-aa1d-4ec07dbf456e",
+      "name": "Code1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "20397cbe-781b-4c69-8032-952f23af1dde",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "41d606a1a24293c789026869c85829c359b37aa1d75ba26c221717836b27fec2"
+  },
+  "id": "p6JQmhiRGy22U4ia",
+  "tags": []
+}

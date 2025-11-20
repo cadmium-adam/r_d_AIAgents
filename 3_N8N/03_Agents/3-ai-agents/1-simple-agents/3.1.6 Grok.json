@@ -1,0 +1,136 @@
+{
+  "name": "3.1.6 Grok",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        200
+      ],
+      "webhookId": "grok-agent-demo",
+      "id": "93e98abb-2130-4b6d-a60a-52af513a3d4a"
+    },
+    {
+      "parameters": {
+        "sessionKey": "sessionId",
+        "contextWindowLength": 10
+      },
+      "name": "Memory Buffer Window",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1,
+      "position": [
+        600,
+        420
+      ],
+      "id": "3bbab714-697a-4d94-8ea6-09abcbe4d609"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.1-8b-instant",
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "name": "grok Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatXAiGrok",
+      "typeVersion": 1,
+      "position": [
+        440,
+        420
+      ],
+      "id": "a0b06cdf-1a5c-42c4-8587-a87cae324ad5"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful AI assistant powered by grok's ultra-fast inference platform. You have access to chat history and can remember previous parts of our conversation. You excel at providing rapid, high-quality responses thanks to grok's optimized hardware. Be helpful, informative, and highlight the speed advantages of grok's inference when relevant.",
+          "maxIterations": 10,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        460,
+        200
+      ],
+      "id": "e6ed92f5-6470-412e-96a0-29557a37c436"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log(\"=== grok AI AGENT - EDUCATIONAL DEMO ===\");\nconsole.log(\"Purpose: Demonstrate grok ultra-fast AI Agent with persistent chat memory\");\nconsole.log(\"Features: Lightning-fast inference, multiple models, memory management\");\n\nconst input = $input.first().json;\nconsole.log(\"\\n=== AGENT INPUT ===\");\nconsole.log(\"User message:\", $('Chat Trigger').first().json.chatInput);\nconsole.log(\"grok response:\", input.output);\n\n// Token usage calculation for grok\nconst userMessage = $('Chat Trigger').first().json.chatInput || \"\";\nconst agentResponse = input.output || \"\";\n\n// Rough token estimation (1 token ≈ 4 characters)\nconst inputTokens = Math.ceil(userMessage.length / 4);\nconst outputTokens = Math.ceil(agentResponse.length / 4);\nconst totalTokens = inputTokens + outputTokens;\n\n// grok pricing (as of 2024) - competitive rates with ultra-fast inference\nconst INPUT_COST_PER_1M = 0.05;  // $0.05 per 1M input tokens (estimate)\nconst OUTPUT_COST_PER_1M = 0.08;  // $0.08 per 1M output tokens (estimate)\n\nconst inputCost = (inputTokens / 1000000) * INPUT_COST_PER_1M;\nconst outputCost = (outputTokens / 1000000) * OUTPUT_COST_PER_1M;\nconst totalCost = inputCost + outputCost;\n\nconsole.log(\"\\n=== COST ANALYSIS ===\");\nconsole.log(`Input tokens: ${inputTokens} (~$${inputCost.toFixed(8)})`);\nconsole.log(`Output tokens: ${outputTokens} (~$${outputCost.toFixed(8)})`);\nconsole.log(`Total tokens: ${totalTokens}`);\nconsole.log(`Estimated cost: $${totalCost.toFixed(8)}`);\nconsole.log(`Monthly cost at 1000 messages: ~$${(totalCost * 1000).toFixed(4)}`);\nconsole.log(`Speed advantage: 10x+ faster than typical cloud inference`);\n\n// Memory management info\nconsole.log(\"\\n=== MEMORY STATUS ===\");\nconsole.log(\"Memory enabled: Chat history persists with buffer window\");\nconsole.log(\"Context window length: 10 messages\");\n\nconsole.log(\"\\n=== EDUCATIONAL NOTES ===\");\nconsole.log(\"1. Speed Optimization: grok's custom LPU architecture for ultra-fast inference\");\nconsole.log(\"2. Model Support: Llama, Mixtral, Gemma, and other open-source models\");\nconsole.log(\"3. Cost Efficiency: Competitive pricing with superior performance\");\nconsole.log(\"4. Real-time Applications: Ideal for low-latency, interactive use cases\");\nconsole.log(\"5. Hardware Innovation: Purpose-built for language model inference\");\n\nconsole.log(\"\\n=== grok ADVANTAGES ===\");\nconsole.log(\"⚡ Ultra-fast inference - 10x+ faster than traditional cloud providers\");\nconsole.log(\"💰 Competitive pricing - cost-effective for high-volume usage\");\nconsole.log(\"🔧 Multiple models - Llama, Mixtral, Gemma support\");\nconsole.log(\"📊 Predictable performance - consistent low latency\");\nconsole.log(\"🚀 Real-time ready - perfect for interactive applications\");\nconsole.log(\"🎯 Developer-friendly - simple API integration\");\n\nconsole.log(\"\\n=== grok MODEL OPTIONS ===\");\nconsole.log(\"🦙 Llama 3.1 8B Instant: Fast general-purpose model\");\nconsole.log(\"🦙 Llama 3.1 70B Versatile: High-capability model\");\nconsole.log(\"🌀 Mixtral 8x7B Instruct: Mixture of experts model\");\nconsole.log(\"💎 Gemma 7B IT: Google's open-source model\");\n\nconsole.log(\"\\n=== SPEED COMPARISON ===\");\nconsole.log(\"Traditional Cloud APIs: 2-10 seconds response time\");\nconsole.log(\"grok LPU: 0.1-0.5 seconds response time\");\nconsole.log(\"Speed improvement: 10-100x faster inference\");\n\nconsole.log(\"\\n=== PROVIDER COMPARISON ===\");\nconsole.log(\"OpenAI GPT-4o-mini: $0.15/$0.60 per 1M tokens - general purpose, moderate speed\");\nconsole.log(\"Anthropic Claude Haiku: $0.25/$1.25 per 1M tokens - safety-focused, moderate speed\");\nconsole.log(\"Google Gemini Flash: $0.075/$0.30 per 1M tokens - multimodal, good speed\");\nconsole.log(\"grok Llama: $0.05/$0.08 per 1M tokens - ultra-fast, competitive pricing\");\nconsole.log(\"HuggingFace: ~$0.002 per 1K tokens - open-source, variable speed\");\nconsole.log(\"Ollama Local: $0.00 API cost - privacy-first, hardware dependent\");\n\nconsole.log(\"=== grok AI AGENT DEMO COMPLETE ===\\n\");\n\nreturn {\n  userMessage,\n  agentResponse, \n  tokenUsage: {\n    inputTokens,\n    outputTokens,\n    totalTokens,\n    estimatedCost: totalCost\n  },\n  memoryStatus: {\n    contextWindowLength: 10,\n    memoryEnabled: true\n  },\n  provider: \"grok\",\n  model: \"Llama 3.1 8B Instant\",\n  workflowType: \"Ultra-Fast AI Agent with Memory\",\n  speedAdvantage: \"10x+ faster than traditional cloud inference\"\n};"
+      },
+      "name": "Educational Logging & Analysis",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        820,
+        200
+      ],
+      "id": "a9f58c2b-0ab2-4b07-985f-a4289bd3e980"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory Buffer Window": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "grok Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Educational Logging & Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b5ffec9b-d303-4bff-8bfa-5ee35a616be3",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "pc9V0PtTVkPPVeOw",
+  "tags": []
+}

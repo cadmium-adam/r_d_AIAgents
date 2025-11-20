@@ -1,0 +1,139 @@
+{
+  "name": "3.1.5 Gemini",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        200
+      ],
+      "webhookId": "gemini-agent-demo",
+      "id": "75c69edd-0924-4b66-9b9a-aff8c244ba26"
+    },
+    {
+      "parameters": {
+        "sessionKey": "sessionId",
+        "contextWindowLength": 10
+      },
+      "name": "Memory Buffer Window",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1,
+      "position": [
+        600,
+        420
+      ],
+      "id": "143a5979-572e-4267-8bf0-ea498b2ab558"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {
+          "maxOutputTokens": 2048,
+          "temperature": 0.7,
+          "topK": 32,
+          "topP": 0.9
+        }
+      },
+      "name": "Google Gemini Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        420,
+        420
+      ],
+      "id": "c48eb9a0-6f0c-436b-8078-e25e8b3b9c57"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful AI assistant powered by Google's Gemini model. You have access to chat history and can remember previous parts of our conversation. You excel at reasoning, analysis, and multimodal understanding. Be helpful, accurate, and highlight Google's AI capabilities when relevant. You can process text, understand context, and provide thoughtful responses.",
+          "maxIterations": 10,
+          "returnIntermediateSteps": false
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        460,
+        200
+      ],
+      "id": "a98058fd-cdc4-445c-b0ab-26a07cf4b7a8"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log(\"=== GOOGLE GEMINI AI AGENT - EDUCATIONAL DEMO ===\");\nconsole.log(\"Purpose: Demonstrate Google Gemini AI Agent with persistent chat memory\");\nconsole.log(\"Features: Multimodal AI, advanced reasoning, memory management\");\n\nconst input = $input.first().json;\nconsole.log(\"\\n=== AGENT INPUT ===\");\nconsole.log(\"User message:\", $('Chat Trigger').first().json.chatInput);\nconsole.log(\"Gemini response:\", input.output);\n\n// Token usage calculation for Google Gemini\nconst userMessage = $('Chat Trigger').first().json.chatInput || \"\";\nconst agentResponse = input.output || \"\";\n\n// Rough token estimation (1 token ≈ 4 characters for Gemini)\nconst inputTokens = Math.ceil(userMessage.length / 4);\nconst outputTokens = Math.ceil(agentResponse.length / 4);\nconst totalTokens = inputTokens + outputTokens;\n\n// Google Gemini pricing (as of 2024)\n// Gemini 1.5 Flash pricing\nconst INPUT_COST_PER_1M = 0.075;  // $0.075 per 1M input tokens\nconst OUTPUT_COST_PER_1M = 0.30;  // $0.30 per 1M output tokens\n\nconst inputCost = (inputTokens / 1000000) * INPUT_COST_PER_1M;\nconst outputCost = (outputTokens / 1000000) * OUTPUT_COST_PER_1M;\nconst totalCost = inputCost + outputCost;\n\nconsole.log(\"\\n=== COST ANALYSIS ===\");\nconsole.log(`Input tokens: ${inputTokens} (~$${inputCost.toFixed(8)})`);\nconsole.log(`Output tokens: ${outputTokens} (~$${outputCost.toFixed(8)})`);\nconsole.log(`Total tokens: ${totalTokens}`);\nconsole.log(`Estimated cost: $${totalCost.toFixed(8)}`);\nconsole.log(`Monthly cost at 1000 messages: ~$${(totalCost * 1000).toFixed(4)}`);\n\n// Memory management info\nconsole.log(\"\\n=== MEMORY STATUS ===\");\nconsole.log(\"Memory enabled: Chat history persists with buffer window\");\nconsole.log(\"Context window length: 10 messages\");\n\nconsole.log(\"\\n=== EDUCATIONAL NOTES ===\");\nconsole.log(\"1. Multimodal Capabilities: Gemini can process text, images, and more\");\nconsole.log(\"2. Large Context Window: Supports very long conversations and documents\");\nconsole.log(\"3. Google Integration: Strong ties to Google's ecosystem and services\");\nconsole.log(\"4. Safety Features: Built-in safety filters and content policies\");\nconsole.log(\"5. Performance Tiers: Flash (fast/cheap) vs Pro (capable/expensive)\");\n\nconsole.log(\"\\n=== GEMINI MODEL VARIANTS ===\");\nconsole.log(\"🔹 Gemini 1.5 Flash: Fast, cost-effective, good for most tasks\");\nconsole.log(\"🔹 Gemini 1.5 Pro: High capability, larger context, more expensive\");\nconsole.log(\"🔹 Gemini 1.0 Pro: Previous generation, still capable\");\nconsole.log(\"🔹 Gemini Vision: Specialized for image understanding\");\n\nconsole.log(\"\\n=== PROVIDER COMPARISON ===\");\nconsole.log(\"OpenAI GPT-4o-mini: $0.15/$0.60 per 1M tokens - general purpose\");\nconsole.log(\"Anthropic Claude Haiku: $0.25/$1.25 per 1M tokens - safety-focused\");\nconsole.log(\"Google Gemini Flash: $0.075/$0.30 per 1M tokens - multimodal, cost-effective\");\nconsole.log(\"HuggingFace Inference: ~$0.002 per 1K tokens - open-source\");\nconsole.log(\"Ollama Local: $0.00 API cost - privacy-first\");\n\nconsole.log(\"\\n=== GEMINI ADVANTAGES ===\");\nconsole.log(\"✅ Multimodal capabilities - text, images, and more\");\nconsole.log(\"✅ Large context windows - handle long conversations\");\nconsole.log(\"✅ Google ecosystem integration - Calendar, Drive, etc.\");\nconsole.log(\"✅ Competitive pricing - especially Flash model\");\nconsole.log(\"✅ Built-in safety features - content filtering\");\nconsole.log(\"✅ Multiple model variants - choose based on needs\");\n\nconsole.log(\"=== GOOGLE GEMINI AI AGENT DEMO COMPLETE ===\\n\");\n\nreturn {\n  userMessage,\n  agentResponse, \n  tokenUsage: {\n    inputTokens,\n    outputTokens,\n    totalTokens,\n    estimatedCost: totalCost\n  },\n  memoryStatus: {\n    contextWindowLength: 10,\n    memoryEnabled: true\n  },\n  provider: \"Google Gemini\",\n  model: \"Gemini 1.5 Flash\",\n  workflowType: \"Multimodal AI Agent with Memory\",\n  capabilities: [\"multimodal\", \"large-context\", \"safety-filtered\", \"google-integrated\"]\n};"
+      },
+      "name": "Educational Logging & Analysis",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        820,
+        200
+      ],
+      "id": "49d51259-5c6c-4e67-8ba1-ab83206fb7d4"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory Buffer Window": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Educational Logging & Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d4b7cdee-845c-4ced-8446-2ec92c1c57ec",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "MvYAksmr16b6WvX7",
+  "tags": []
+}

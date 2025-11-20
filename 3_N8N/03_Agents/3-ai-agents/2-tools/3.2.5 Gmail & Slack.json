@@ -1,0 +1,297 @@
+{
+  "name": "3.2.5  Gmail & Slack",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        580,
+        360
+      ],
+      "webhookId": "ai-agent-intelligent-params",
+      "id": "398117e3-8114-4b94-9854-7da3337a2bf1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "You are a helpful AI assistant that can send emails via Gmail and messages via Slack. ",
+          "returnIntermediateSteps": true
+        }
+      },
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        980,
+        360
+      ],
+      "id": "f34a7122-1ab0-4e3d-ab5a-3e87567d7307"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4o mini"
+        },
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        540,
+        620
+      ],
+      "id": "5736255a-af6d-4458-8005-81a1001e0b04",
+      "credentials": {
+        "openAiApi": {
+          "id": "0yEunOn71yargPRc",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $fromAI(\"recipientEmail\", \"The email address to send to\") }}",
+        "subject": "={{ $fromAI(\"emailSubject\", \"The subject line for the email\") }}",
+        "emailType": "text",
+        "message": "={{ $fromAI(\"emailMessage\", \"The body/content of the email message\") }}",
+        "options": {}
+      },
+      "name": "Gmail Tool",
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        1220,
+        580
+      ],
+      "webhookId": "c7c4c33a-2667-45fb-bce3-926bd613595b",
+      "id": "48d3ff54-9ef1-4a64-8a17-0562152f1c3e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "g8fpqLtmAdV86yRZ",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "#all-team1",
+          "mode": "name"
+        },
+        "text": "={{ $fromAI(\"slackMessage\", \"The message to post to Slack\") }}",
+        "otherOptions": {}
+      },
+      "name": "Slack Tool",
+      "type": "n8n-nodes-base.slackTool",
+      "typeVersion": 2.3,
+      "position": [
+        1360,
+        580
+      ],
+      "webhookId": "af8f1b2b-b367-49fc-bd50-94ba480330c0",
+      "id": "9e243232-b8c1-4686-9c91-474806bc2c30",
+      "credentials": {
+        "slackApi": {
+          "id": "3jPC14Rp5CvJLa81",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Prompt\n\nSend via email message \"Hello, how are you\" to the kellersteinlukas@hotmail.com\n\nCan you send it via slack as well?",
+        "height": 414,
+        "width": 377,
+        "color": 7
+      },
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        340
+      ],
+      "id": "de39d6e0-6183-4f39-aaa2-b06dee8665aa"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Educational logging for tool usage\nconsole.log(\"=== INTELLIGENT TOOL PARAMETERS WORKFLOW ===\\n\");\n\n// Log the conversation context\nconst chatInput = $input.first().json.chatInput;\nconst sessionId = $input.first().json.sessionId;\n\nconsole.log(\"User Input:\", chatInput);\nconsole.log(\"Session ID:\", sessionId);\n\n// Check if this is a follow-up in a conversation\nif ($input.first().json.action === 'sendMessage') {\n  console.log(\"\\nThis is a follow-up message in an ongoing conversation.\");\n  console.log(\"The AI Agent will maintain context from previous messages.\");\n}\n\nconsole.log(\"\\n=== AGENT PROCESSING ===\\n\");\nconsole.log(\"The AI Agent will now:\");\nconsole.log(\"1. Analyze the user's request\");\nconsole.log(\"2. Extract any provided parameters\");\nconsole.log(\"3. Identify missing required information\");\nconsole.log(\"4. Ask for missing details or proceed with tools\");\n\nreturn $input.all();"
+      },
+      "name": "Log Conversation Context",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        780,
+        360
+      ],
+      "id": "a8b1b11a-ca16-4ccd-ab85-cd1192a7d7ca"
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "name": "Simple Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1060,
+        580
+      ],
+      "id": "5dfefc4f-784f-42e3-9ac9-52e4aca6ab99"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        700,
+        620
+      ],
+      "id": "3200ab02-99bb-4c61-b33a-0a7c664fc0a4",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "mistralai/Mistral-7B-Instruct-v0.3",
+          "mode": "list",
+          "cachedResultName": "mistralai/Mistral-7B-Instruct-v0.3"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        900,
+        580
+      ],
+      "id": "717ac420-a245-4e3d-a046-23baa7a213bc",
+      "name": "RUNPOD",
+      "credentials": {
+        "openAiApi": {
+          "id": "duKpgh9SMgoT2Gde",
+          "name": "RUNPOD"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "Log Conversation Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Conversation Context": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        []
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Gmail Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "RUNPOD": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f9afd18f-5d85-45fb-9405-45c467dccc53",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "xaovSrNhlGky3qzK",
+  "tags": []
+}

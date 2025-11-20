@@ -1,0 +1,58 @@
+{
+  "name": "2.1_HTTP_RAW_OLLAMA_Basic",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -20
+      ],
+      "id": "e39601af-181f-47fe-816e-918ca409cd1b",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.114:11434/api/chat",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n    \"model\": \"mistral\",\n    \"messages\": [\n        {\n            \"role\": \"system\",\n            \"content\": \"You are an AI assistant.\"\n        },\n        {\n            \"role\": \"user\",\n            \"content\": \"Tell me a joke.\"\n        }\n    ],\n    \"stream\": false\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -100,
+        -20
+      ],
+      "id": "52d01c0e-e9ad-48e5-a107-29297432264f",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "31a10c33-5b21-4588-8f3c-1135483ff006",
+  "meta": {
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "WvrLdpMnUxvuYxg8",
+  "tags": []
+}

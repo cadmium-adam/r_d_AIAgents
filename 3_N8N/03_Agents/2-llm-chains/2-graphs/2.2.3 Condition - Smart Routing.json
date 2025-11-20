@@ -1,0 +1,448 @@
+{
+  "name": "2.2.3 Condition - Smart Routing",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        260,
+        900
+      ],
+      "webhookId": "condition-llm-chain",
+      "id": "9bfc020f-dd74-4fb7-8222-652df3844a59"
+    },
+    {
+      "parameters": {
+        "jsCode": "// This workflow demonstrates CONDITIONAL LLM routing\n// We use an LLM to intelligently classify the input for proper routing\n\nconsole.log('=== CONDITIONAL LLM CHAIN DEMO ===');\nconsole.log('Original Input:', $input.first().json.chatInput);\nconsole.log('\\nUsing LLM to classify input for intelligent routing...\\n');\n\nreturn [{\n  json: {\n    originalInput: $input.first().json.chatInput,\n    sessionId: $input.first().json.sessionId,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "name": "Prepare for Classification",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        900
+      ],
+      "id": "27702e77-10c1-4fd5-bb38-c9100a20a5b4"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a classification expert. Analyze the user input below and classify it into EXACTLY ONE category.\n\nUser Input: \"{{ $json.originalInput }}\"\n\nClassification Rules:\n1. **technical** - If the input mentions: programming languages (Python, JavaScript, SQL, etc.), coding, debugging, software development, databases, APIs, algorithms, system architecture, DevOps, cloud computing, frameworks, libraries, or any technical implementation questions.\n\n2. **business** - If the input mentions: marketing strategies, sales processes, business growth, revenue optimization, ROI analysis, market research, competitive analysis, business planning, operations, finance, budgeting, or strategic decision making.\n\n3. **creative** - If the input mentions: design concepts, branding, visual identity, content creation, copywriting, creative campaigns, artistic projects, storytelling, user experience design, graphic design, or innovative conceptual work.\n\n4. **general** - Only if the input clearly does not fit any of the above three categories (like cooking, weather, general knowledge, etc.).\n\nIMPORTANT: Be decisive. If there's any technical, business, or creative aspect, choose that category over general.\n\nExamples:\n- \"How do I optimize my database queries?\" → technical\n- \"Debug this Python function\" → technical\n- \"What's the best marketing strategy?\" → business\n- \"How to increase revenue?\" → business\n- \"Design a brand logo concept\" → creative\n- \"Write engaging content\" → creative\n- \"Tell me about climate change\" → general\n\nRespond with ONLY ONE WORD: technical, business, creative, or general\n\nClassification:"
+      },
+      "name": "LLM Classification",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        700,
+        900
+      ],
+      "id": "0256db8b-ba1c-4f12-92d1-572ec8f53ce5"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process LLM classification result with robust parsing\nconst rawClassification = $input.first().json.text.toLowerCase().trim();\nconst originalData = $input.first().json;\n\nconsole.log(`\\n🤖 Raw LLM Response: \"${rawClassification}\"`);\n\n// Robust classification parsing - check for keywords in priority order\nlet routingDecision = 'general'; // default fallback\n\n// Priority order: technical > business > creative > general\nif (rawClassification.includes('technical') || \n    rawClassification.includes('programming') || \n    rawClassification.includes('code') ||\n    rawClassification.includes('database') ||\n    rawClassification.includes('debug')) {\n  routingDecision = 'technical';\n} else if (rawClassification.includes('business') || \n           rawClassification.includes('marketing') || \n           rawClassification.includes('revenue') ||\n           rawClassification.includes('strategy') ||\n           rawClassification.includes('sales')) {\n  routingDecision = 'business';\n} else if (rawClassification.includes('creative') || \n           rawClassification.includes('design') || \n           rawClassification.includes('brand') ||\n           rawClassification.includes('content') ||\n           rawClassification.includes('writing')) {\n  routingDecision = 'creative';\n} else {\n  routingDecision = 'general';\n}\n\nconsole.log(`🎯 Final Routing Decision: ${routingDecision.toUpperCase()}`);\nconsole.log(`📝 Input: \"${originalData.originalInput}\"`);\nconsole.log('===============================\\n');\n\n// Return data with routing decision for the Switch node\nreturn [{\n  json: {\n    originalInput: originalData.originalInput,\n    routingDecision: routingDecision,\n    llmClassification: rawClassification,\n    sessionId: originalData.sessionId,\n    timestamp: originalData.timestamp\n  }\n}];"
+      },
+      "name": "Process Classification",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1060,
+        900
+      ],
+      "id": "1d54bcbb-a387-4964-ad57-3d198c00405e"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.routingDecision }}",
+                    "rightValue": "technical",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Technical"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.routingDecision }}",
+                    "rightValue": "business",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Business"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.routingDecision }}",
+                    "rightValue": "creative",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Creative"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "General"
+        }
+      },
+      "name": "Routing Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1280,
+        880
+      ],
+      "id": "d11cbc8b-aa82-4dd3-9a1f-3dc980feda1d"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a TECHNICAL EXPERT specializing in software development, programming, and technology solutions.\n\nUser Query: {{ $json.originalInput }}\n\nLLM Classification: {{ $json.llmClassification }}\nRouted to: Technical Expert\n\nProvide a detailed technical response covering:\n- Technical implementation details\n- Best practices and patterns\n- Code examples if relevant\n- Performance considerations\n- Tools and technologies recommended\n\nResponse:"
+      },
+      "name": "Technical Expert Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1500,
+        600
+      ],
+      "id": "cb58a638-b79e-46eb-bead-029ab543bbcb"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a BUSINESS ADVISOR specializing in strategy, marketing, and business growth.\n\nUser Query: {{ $json.originalInput }}\n\nLLM Classification: {{ $json.llmClassification }}\nRouted to: Business Advisor\n\nProvide a strategic business response covering:\n- Business implications and opportunities\n- Market analysis and positioning\n- Financial considerations\n- Implementation roadmap\n- Risk assessment and mitigation\n\nResponse:"
+      },
+      "name": "Business Advisor Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1500,
+        800
+      ],
+      "id": "e0ddb532-0b04-4d11-b0b0-a5fdf4cf697c"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a CREATIVE ASSISTANT specializing in design, content creation, and innovative solutions.\n\nUser Query: {{ $json.originalInput }}\n\nLLM Classification: {{ $json.llmClassification }}\nRouted to: Creative Assistant\n\nProvide a creative response covering:\n- Innovative approaches and ideas\n- Design principles and aesthetics\n- Content strategy and messaging\n- User experience considerations\n- Creative inspiration and examples\n\nResponse:"
+      },
+      "name": "Creative Assistant Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1500,
+        1000
+      ],
+      "id": "d027388d-e485-44ca-809e-7397f48de3c6"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a GENERAL ASSISTANT providing helpful, well-rounded responses to various topics.\n\nUser Query: {{ $json.originalInput }}\n\nLLM Classification: {{ $json.llmClassification }}\nRouted to: General Assistant\n\nProvide a comprehensive general response covering:\n- Overview of the topic\n- Key considerations\n- Practical recommendations\n- Additional resources or next steps\n- Balanced perspective\n\nResponse:"
+      },
+      "name": "General Assistant Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1500,
+        1200
+      ],
+      "id": "18df1f8a-b490-4399-b024-16cd70f2c51a"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4o Mini"
+        },
+        "options": {
+          "maxTokens": 400,
+          "temperature": 0.1
+        }
+      },
+      "name": "OpenAI Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        860,
+        1420
+      ],
+      "id": "2cd157ef-e4c7-4068-a999-c28774886a9f",
+      "credentials": {
+        "openAiApi": {
+          "id": "1",
+          "name": "OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process the response based on which route was taken\n// Debug input structure first\nconsole.log('\\n=== DEBUG: FINAL OUTPUT INPUT ===');\nconsole.log('Input structure:', JSON.stringify($input.first(), null, 2));\nconsole.log('Available nodes:', Object.keys($node));\nconsole.log('================================\\n');\n\n// Safely access response data\nconst inputData = $input.first().json || {};\nconst response = inputData.text || 'No response available';\n\n// Safely access routing data\nlet routingData = {};\ntry {\n  routingData = $node[\"Process Classification\"]?.json || {};\n} catch (error) {\n  console.log('⚠️ Could not access Process Classification node:', error.message);\n  // Try alternative access methods\n  routingData = inputData; // Use input data as fallback\n}\n\n// Determine which expert provided the response\nlet expertType = 'Unknown';\n\n// Map routing decision to expert type\nconst routeMapping = {\n  'technical': '👨‍💻 Technical Expert',\n  'business': '💼 Business Advisor', \n  'creative': '🎨 Creative Assistant',\n  'general': '🤖 General Assistant'\n};\n\nconst routingDecision = routingData.routingDecision || 'general';\nexpertType = routeMapping[routingDecision] || '🤖 General Assistant';\n\nconsole.log(`\\n✅ Response from: ${expertType}`);\nconsole.log(`🤖 LLM Classification: \"${routingData.llmClassification || 'unknown'}\"`);\nconsole.log(`🎯 Route taken: ${routingDecision}`);\nconsole.log(`📝 Response preview: ${response.substring(0, 100)}...`);\n\n// Calculate metrics with safe property access\nconst originalInputLength = (routingData.originalInput || '').length;\nconst classificationLength = (routingData.llmClassification || '').length;\nconst responseLength = (response || '').length;\nconst totalChars = originalInputLength + classificationLength + responseLength;\nconst estimatedTokens = Math.ceil(totalChars / 4);\nconst estimatedCost = estimatedTokens * 0.00002;\n\nconsole.log('\\n📊 CONDITIONAL ROUTING METRICS:');\nconsole.log(`Expert consulted: ${expertType}`);\nconsole.log(`Total characters: ${totalChars}`);\nconsole.log(`Estimated tokens: ${estimatedTokens}`);\nconsole.log(`Estimated cost: $${estimatedCost.toFixed(4)}`);\nconsole.log(`Routing method: LLM Classification`);\nconsole.log('\\n=== CONDITIONAL CHAIN COMPLETE ===\\n');\n\n// Return formatted output\nreturn [{\n  json: {\n    output: `**${expertType} Response:**\\n\\n${response}\\n\\n---\\n*Routed via LLM classification: \"${routingData.llmClassification || 'unknown'}\"*`,\n    routing: {\n      expertType: expertType,\n      decision: routingDecision,\n      llmClassification: routingData.llmClassification || 'unknown',\n      original: routingData.originalInput || 'unknown'\n    },\n    response: response,\n    metrics: {\n      totalChars,\n      estimatedTokens,\n      estimatedCost,\n      routingMethod: 'LLM Classification'\n    }\n  }\n}];"
+      },
+      "name": "Final Output with Routing Info",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1860,
+        900
+      ],
+      "id": "1cfcf83e-367f-48e9-b4ea-d136c0f2cd36"
+    },
+    {
+      "parameters": {
+        "content": "## 🎯 Conditional LLM Chain Demonstration\n\nThis workflow demonstrates **LLM-powered intelligent routing**. An LLM analyzes input content and routes to specialized expert chains using a Switch node.\n\n### How It Works:\n1. **LLM Classification** → Analyzes input semantically\n2. **Switch Routing** → Routes based on classification\n3. **Expert Response** → Specialized chain provides answer\n\n### Routing Categories:\n- **Technical** → Programming, code, algorithms\n- **Business** → Strategy, marketing, finance  \n- **Creative** → Design, content, innovation\n- **General** → Everything else (fallback)\n\n### Test These Inputs:\n**Technical:**\n- \"How do I optimize my database queries?\"\n- \"Debug this Python function\"\n\n**Business:**\n- \"What's the best marketing strategy?\"\n- \"How to increase revenue?\"\n\n**Creative:**\n- \"Design a brand logo concept\"\n- \"Write engaging content\"\n\n**General:**\n- \"Tell me about climate change\"\n- \"How to cook pasta?\"\n\n### Advantages:\n- **Smart**: LLM understands context vs keywords\n- **Accurate**: Better classification than rules\n- **Professional**: Uses proper Switch node",
+        "height": 820,
+        "width": 400,
+        "color": 6
+      },
+      "name": "Conditional Routing Guide",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        680
+      ],
+      "id": "87fcb068-1dea-4d8f-a1a7-582fc3ff474e"
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmOllama",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        1420
+      ],
+      "id": "9fc06ced-c704-4e5f-8687-4e73063dbb82",
+      "name": "Ollama Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "BYI7XqprNPPEtr2t",
+          "name": "Ollama account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Prepare for Classification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare for Classification": {
+      "main": [
+        [
+          {
+            "node": "LLM Classification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM Classification": {
+      "main": [
+        [
+          {
+            "node": "Process Classification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Classification": {
+      "main": [
+        [
+          {
+            "node": "Routing Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Routing Switch": {
+      "main": [
+        [
+          {
+            "node": "Technical Expert Chain",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Business Advisor Chain",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Creative Assistant Chain",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "General Assistant Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Technical Expert Chain": {
+      "main": [
+        [
+          {
+            "node": "Final Output with Routing Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Business Advisor Chain": {
+      "main": [
+        [
+          {
+            "node": "Final Output with Routing Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Creative Assistant Chain": {
+      "main": [
+        [
+          {
+            "node": "Final Output with Routing Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "General Assistant Chain": {
+      "main": [
+        [
+          {
+            "node": "Final Output with Routing Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Ollama Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM Classification",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Technical Expert Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Business Advisor Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Creative Assistant Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "General Assistant Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ccc90ead-578c-45a3-a309-6db989929872",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "920cb5ca3de38fa2a2a1592b0c40fadea77e9a36b95dca7b272578056d96629c"
+  },
+  "id": "cRiQXQqFBlutC0ys",
+  "tags": []
+}
