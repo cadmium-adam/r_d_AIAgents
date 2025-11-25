@@ -1,0 +1,1179 @@
+{
+  "data": {
+    "edges": [
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ChatInput",
+            "id": "ChatInput-ffrGJ",
+            "name": "message",
+            "output_types": ["Message"]
+          },
+          "targetHandle": {
+            "fieldName": "input_value",
+            "id": "CustomComponent-eodnC",
+            "inputTypes": ["Message"],
+            "type": "str"
+          }
+        },
+        "id": "xy-edge__ChatInput-ffrGJ{œdataTypeœ:œChatInputœ,œidœ:œChatInput-ffrGJœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-eodnC{œfieldNameœ:œinput_valueœ,œidœ:œCustomComponent-eodnCœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "selected": false,
+        "source": "ChatInput-ffrGJ",
+        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-ffrGJœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "CustomComponent-eodnC",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œCustomComponent-eodnCœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ParallelUppercaseComponent",
+            "id": "CustomComponent-euLpp",
+            "name": "output",
+            "output_types": ["Message"]
+          },
+          "targetHandle": {
+            "fieldName": "branch1_message",
+            "id": "CustomComponent-fmk2E",
+            "inputTypes": ["Message"],
+            "type": "str"
+          }
+        },
+        "id": "xy-edge__CustomComponent-euLpp{œdataTypeœ:œParallelUppercaseComponentœ,œidœ:œCustomComponent-euLppœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-fmk2E{œfieldNameœ:œbranch1_messageœ,œidœ:œCustomComponent-fmk2Eœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "selected": false,
+        "source": "CustomComponent-euLpp",
+        "sourceHandle": "{œdataTypeœ:œParallelUppercaseComponentœ,œidœ:œCustomComponent-euLppœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "CustomComponent-fmk2E",
+        "targetHandle": "{œfieldNameœ:œbranch1_messageœ,œidœ:œCustomComponent-fmk2Eœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ParallelReverseComponent",
+            "id": "CustomComponent-bWSQa",
+            "name": "output",
+            "output_types": ["Message"]
+          },
+          "targetHandle": {
+            "fieldName": "branch2_message",
+            "id": "CustomComponent-fmk2E",
+            "inputTypes": ["Message"],
+            "type": "str"
+          }
+        },
+        "id": "xy-edge__CustomComponent-bWSQa{œdataTypeœ:œParallelReverseComponentœ,œidœ:œCustomComponent-bWSQaœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-fmk2E{œfieldNameœ:œbranch2_messageœ,œidœ:œCustomComponent-fmk2Eœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "selected": false,
+        "source": "CustomComponent-bWSQa",
+        "sourceHandle": "{œdataTypeœ:œParallelReverseComponentœ,œidœ:œCustomComponent-bWSQaœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "CustomComponent-fmk2E",
+        "targetHandle": "{œfieldNameœ:œbranch2_messageœ,œidœ:œCustomComponent-fmk2Eœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ParallelCountComponent",
+            "id": "CustomComponent-nf2QQ",
+            "name": "output",
+            "output_types": ["Message"]
+          },
+          "targetHandle": {
+            "fieldName": "branch3_message",
+            "id": "CustomComponent-fmk2E",
+            "inputTypes": ["Message"],
+            "type": "str"
+          }
+        },
+        "id": "xy-edge__CustomComponent-nf2QQ{œdataTypeœ:œParallelCountComponentœ,œidœ:œCustomComponent-nf2QQœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-fmk2E{œfieldNameœ:œbranch3_messageœ,œidœ:œCustomComponent-fmk2Eœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "selected": false,
+        "source": "CustomComponent-nf2QQ",
+        "sourceHandle": "{œdataTypeœ:œParallelCountComponentœ,œidœ:œCustomComponent-nf2QQœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "CustomComponent-fmk2E",
+        "targetHandle": "{œfieldNameœ:œbranch3_messageœ,œidœ:œCustomComponent-fmk2Eœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ParallelMergerComponent",
+            "id": "CustomComponent-fmk2E",
+            "name": "output",
+            "output_types": ["Message"]
+          },
+          "targetHandle": {
+            "fieldName": "input_value",
+            "id": "ChatOutput-nVtK2",
+            "inputTypes": ["Data", "DataFrame", "Message"],
+            "type": "other"
+          }
+        },
+        "id": "xy-edge__CustomComponent-fmk2E{œdataTypeœ:œParallelMergerComponentœ,œidœ:œCustomComponent-fmk2Eœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-nVtK2{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-nVtK2œ,œinputTypesœ:[œDataœ,œDataFrameœ,œMessageœ],œtypeœ:œotherœ}",
+        "selected": false,
+        "source": "CustomComponent-fmk2E",
+        "sourceHandle": "{œdataTypeœ:œParallelMergerComponentœ,œidœ:œCustomComponent-fmk2Eœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "ChatOutput-nVtK2",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-nVtK2œ,œinputTypesœ:[œDataœ,œDataFrameœ,œMessageœ],œtypeœ:œotherœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ParallelSplitter",
+            "id": "CustomComponent-eodnC",
+            "name": "output",
+            "output_types": ["Message"]
+          },
+          "targetHandle": {
+            "fieldName": "input_message",
+            "id": "CustomComponent-euLpp",
+            "inputTypes": ["Message"],
+            "type": "str"
+          }
+        },
+        "id": "xy-edge__CustomComponent-eodnC{œdataTypeœ:œParallelSplitterœ,œidœ:œCustomComponent-eodnCœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-euLpp{œfieldNameœ:œinput_messageœ,œidœ:œCustomComponent-euLppœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "selected": false,
+        "source": "CustomComponent-eodnC",
+        "sourceHandle": "{œdataTypeœ:œParallelSplitterœ,œidœ:œCustomComponent-eodnCœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "CustomComponent-euLpp",
+        "targetHandle": "{œfieldNameœ:œinput_messageœ,œidœ:œCustomComponent-euLppœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ParallelSplitter",
+            "id": "CustomComponent-eodnC",
+            "name": "output",
+            "output_types": ["Message"]
+          },
+          "targetHandle": {
+            "fieldName": "input_message",
+            "id": "CustomComponent-bWSQa",
+            "inputTypes": ["Message"],
+            "type": "str"
+          }
+        },
+        "id": "xy-edge__CustomComponent-eodnC{œdataTypeœ:œParallelSplitterœ,œidœ:œCustomComponent-eodnCœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-bWSQa{œfieldNameœ:œinput_messageœ,œidœ:œCustomComponent-bWSQaœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "selected": false,
+        "source": "CustomComponent-eodnC",
+        "sourceHandle": "{œdataTypeœ:œParallelSplitterœ,œidœ:œCustomComponent-eodnCœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "CustomComponent-bWSQa",
+        "targetHandle": "{œfieldNameœ:œinput_messageœ,œidœ:œCustomComponent-bWSQaœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+      },
+      {
+        "animated": false,
+        "className": "",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ParallelSplitter",
+            "id": "CustomComponent-eodnC",
+            "name": "output",
+            "output_types": ["Message"]
+          },
+          "targetHandle": {
+            "fieldName": "input_message",
+            "id": "CustomComponent-nf2QQ",
+            "inputTypes": ["Message"],
+            "type": "str"
+          }
+        },
+        "id": "xy-edge__CustomComponent-eodnC{œdataTypeœ:œParallelSplitterœ,œidœ:œCustomComponent-eodnCœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-nf2QQ{œfieldNameœ:œinput_messageœ,œidœ:œCustomComponent-nf2QQœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "selected": false,
+        "source": "CustomComponent-eodnC",
+        "sourceHandle": "{œdataTypeœ:œParallelSplitterœ,œidœ:œCustomComponent-eodnCœ,œnameœ:œoutputœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "CustomComponent-nf2QQ",
+        "targetHandle": "{œfieldNameœ:œinput_messageœ,œidœ:œCustomComponent-nf2QQœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+      }
+    ],
+    "nodes": [
+      {
+        "data": {
+          "id": "ChatInput-ffrGJ",
+          "node": {
+            "base_classes": ["Message"],
+            "beta": false,
+            "conditional_paths": [],
+            "custom_fields": {},
+            "description": "Get chat inputs from the Playground.",
+            "display_name": "Chat Input",
+            "documentation": "https://docs.langflow.org/components-io#chat-input",
+            "edited": false,
+            "field_order": [
+              "input_value",
+              "should_store_message",
+              "sender",
+              "sender_name",
+              "session_id",
+              "files"
+            ],
+            "frozen": false,
+            "icon": "MessagesSquare",
+            "legacy": false,
+            "lf_version": "1.6.5",
+            "metadata": {},
+            "minimized": true,
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Chat Message",
+                "group_outputs": false,
+                "method": "message_response",
+                "name": "message",
+                "selected": "Message",
+                "tool_mode": true,
+                "types": ["Message"],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_type": "Component",
+              "code": {
+                "advanced": true,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "from langflow.base.data.utils import IMG_FILE_TYPES, TEXT_FILE_TYPES\nfrom langflow.base.io.chat import ChatComponent\nfrom langflow.inputs.inputs import BoolInput\nfrom langflow.io import (\n    DropdownInput,\n    FileInput,\n    MessageTextInput,\n    MultilineInput,\n    Output,\n)\nfrom langflow.schema.message import Message\nfrom langflow.utils.constants import (\n    MESSAGE_SENDER_AI,\n    MESSAGE_SENDER_NAME_USER,\n    MESSAGE_SENDER_USER,\n)\n\n\nclass ChatInput(ChatComponent):\n    display_name = \"Chat Input\"\n    description = \"Get chat inputs from the Playground.\"\n    documentation: str = \"https://docs.langflow.org/components-io#chat-input\"\n    icon = \"MessagesSquare\"\n    name = \"ChatInput\"\n    minimized = True\n\n    inputs = [\n        MultilineInput(\n            name=\"input_value\",\n            display_name=\"Input Text\",\n            value=\"\",\n            info=\"Message to be passed as input.\",\n            input_types=[],\n        ),\n        BoolInput(\n            name=\"should_store_message\",\n            display_name=\"Store Messages\",\n            info=\"Store the message in the history.\",\n            value=True,\n            advanced=True,\n        ),\n        DropdownInput(\n            name=\"sender\",\n            display_name=\"Sender Type\",\n            options=[MESSAGE_SENDER_AI, MESSAGE_SENDER_USER],\n            value=MESSAGE_SENDER_USER,\n            info=\"Type of sender.\",\n            advanced=True,\n        ),\n        MessageTextInput(\n            name=\"sender_name\",\n            display_name=\"Sender Name\",\n            info=\"Name of the sender.\",\n            value=MESSAGE_SENDER_NAME_USER,\n            advanced=True,\n        ),\n        MessageTextInput(\n            name=\"session_id\",\n            display_name=\"Session ID\",\n            info=\"The session ID of the chat. If empty, the current session ID parameter will be used.\",\n            advanced=True,\n        ),\n        FileInput(\n            name=\"files\",\n            display_name=\"Files\",\n            file_types=TEXT_FILE_TYPES + IMG_FILE_TYPES,\n            info=\"Files to be sent with the message.\",\n            advanced=True,\n            is_list=True,\n            temp_file=True,\n        ),\n    ]\n    outputs = [\n        Output(display_name=\"Chat Message\", name=\"message\", method=\"message_response\"),\n    ]\n\n    async def message_response(self) -> Message:\n        # Ensure files is a list and filter out empty/None values\n        files = self.files if self.files else []\n        if files and not isinstance(files, list):\n            files = [files]\n        files = [f for f in files if f is not None and f != \"\"]\n\n        message = await Message.create(\n            text=self.input_value,\n            sender=self.sender,\n            sender_name=self.sender_name,\n            session_id=self.session_id,\n            files=files,\n        )\n        if self.session_id and isinstance(message, Message) and self.should_store_message:\n            stored_message = await self.send_message(\n                message,\n            )\n            self.message.value = stored_message\n            message = stored_message\n\n        self.status = message\n        return message\n"
+              },
+              "files": {
+                "_input_type": "FileInput",
+                "advanced": true,
+                "display_name": "Files",
+                "dynamic": false,
+                "fileTypes": [
+                  "csv",
+                  "json",
+                  "pdf",
+                  "txt",
+                  "md",
+                  "mdx",
+                  "yaml",
+                  "yml",
+                  "xml",
+                  "html",
+                  "htm",
+                  "docx",
+                  "py",
+                  "sh",
+                  "sql",
+                  "js",
+                  "ts",
+                  "tsx",
+                  "jpg",
+                  "jpeg",
+                  "png",
+                  "bmp",
+                  "image"
+                ],
+                "file_path": "",
+                "info": "Files to be sent with the message.",
+                "list": true,
+                "list_add_label": "Add More",
+                "name": "files",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "temp_file": true,
+                "title_case": false,
+                "trace_as_metadata": true,
+                "type": "file",
+                "value": ""
+              },
+              "input_value": {
+                "_input_type": "MultilineInput",
+                "advanced": false,
+                "copy_field": false,
+                "display_name": "Input Text",
+                "dynamic": false,
+                "info": "Message to be passed as input.",
+                "input_types": [],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "multiline": true,
+                "name": "input_value",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              },
+              "sender": {
+                "_input_type": "DropdownInput",
+                "advanced": true,
+                "combobox": false,
+                "dialog_inputs": {},
+                "display_name": "Sender Type",
+                "dynamic": false,
+                "external_options": {},
+                "info": "Type of sender.",
+                "name": "sender",
+                "options": ["Machine", "User"],
+                "options_metadata": [],
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "toggle": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": "User"
+              },
+              "sender_name": {
+                "_input_type": "MessageTextInput",
+                "advanced": true,
+                "display_name": "Sender Name",
+                "dynamic": false,
+                "info": "Name of the sender.",
+                "input_types": ["Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "sender_name",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": "User"
+              },
+              "session_id": {
+                "_input_type": "MessageTextInput",
+                "advanced": true,
+                "display_name": "Session ID",
+                "dynamic": false,
+                "info": "The session ID of the chat. If empty, the current session ID parameter will be used.",
+                "input_types": ["Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "session_id",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              },
+              "should_store_message": {
+                "_input_type": "BoolInput",
+                "advanced": true,
+                "display_name": "Store Messages",
+                "dynamic": false,
+                "info": "Store the message in the history.",
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "should_store_message",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "bool",
+                "value": true
+              }
+            },
+            "tool_mode": false
+          },
+          "showNode": false,
+          "type": "ChatInput"
+        },
+        "dragging": false,
+        "id": "ChatInput-ffrGJ",
+        "measured": {
+          "height": 49,
+          "width": 192
+        },
+        "position": {
+          "x": 238,
+          "y": 456
+        },
+        "selected": false,
+        "type": "genericNode"
+      },
+      {
+        "data": {
+          "id": "CustomComponent-euLpp",
+          "node": {
+            "base_classes": ["Message"],
+            "beta": false,
+            "conditional_paths": [],
+            "custom_fields": {},
+            "description": "Branch 1: Converts text to uppercase",
+            "display_name": "Parallel: Uppercase",
+            "documentation": "",
+            "edited": true,
+            "field_order": ["input_message"],
+            "frozen": false,
+            "icon": "arrow-up",
+            "legacy": false,
+            "metadata": {},
+            "minimized": false,
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Output",
+                "group_outputs": false,
+                "hidden": null,
+                "method": "build_output",
+                "name": "output",
+                "options": null,
+                "required_inputs": null,
+                "selected": "Message",
+                "tool_mode": true,
+                "types": ["Message"],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_type": "Component",
+              "code": {
+                "advanced": true,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "from langflow.custom.custom_component.component import Component\r\nfrom langflow.io import MessageInput, Output\r\nfrom langflow.schema.message import Message\r\n\r\n\r\nclass ParallelUppercaseComponent(Component):\r\n    display_name = \"Parallel: Uppercase\"\r\n    description = \"Branch 1: Converts text to uppercase\"\r\n    icon = \"arrow-up\"\r\n    name = \"ParallelUppercaseComponent\"\r\n\r\n    inputs = [\r\n        MessageInput(\r\n            name=\"input_message\",\r\n            display_name=\"Input Message\",\r\n            info=\"Message to process\",\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Output\", name=\"output\", method=\"build_output\"),\r\n    ]\r\n\r\n    def build_output(self) -> Message:\r\n        input_text = self.input_message.text if hasattr(self.input_message, 'text') else str(self.input_message)\r\n        \r\n        # Process: Convert to uppercase\r\n        result = input_text.upper()\r\n        \r\n        # Preserve metadata and add branch info\r\n        metadata = self.input_message.metadata.copy() if hasattr(self.input_message, 'metadata') and self.input_message.metadata else {}\r\n        metadata.update({\r\n            \"branch\": \"uppercase\",\r\n            \"uppercase_result\": result\r\n        })\r\n        \r\n        self.status = f\"✓ Branch 1 (Uppercase): '{input_text}' → '{result}'\"\r\n        \r\n        return Message(\r\n            text=result,\r\n            metadata=metadata\r\n        )"
+              },
+              "input_message": {
+                "_input_type": "MessageInput",
+                "advanced": false,
+                "display_name": "Input Message",
+                "dynamic": false,
+                "info": "Message to process",
+                "input_types": ["Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "input_message",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              }
+            },
+            "tool_mode": false
+          },
+          "showNode": true,
+          "type": "ParallelUppercaseComponent"
+        },
+        "dragging": false,
+        "id": "CustomComponent-euLpp",
+        "measured": {
+          "height": 205,
+          "width": 320
+        },
+        "position": {
+          "x": 1128,
+          "y": 154
+        },
+        "selected": true,
+        "type": "genericNode"
+      },
+      {
+        "data": {
+          "id": "CustomComponent-eodnC",
+          "node": {
+            "base_classes": ["Message"],
+            "beta": false,
+            "conditional_paths": [],
+            "custom_fields": {},
+            "description": "Distributes input to multiple parallel branches",
+            "display_name": "Parallel Splitter",
+            "documentation": "",
+            "edited": true,
+            "field_order": ["input_value"],
+            "frozen": false,
+            "icon": "git-branch",
+            "legacy": false,
+            "lf_version": "1.6.5",
+            "metadata": {},
+            "minimized": false,
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Output",
+                "group_outputs": false,
+                "hidden": null,
+                "method": "build_output",
+                "name": "output",
+                "options": null,
+                "required_inputs": null,
+                "selected": "Message",
+                "tool_mode": true,
+                "types": ["Message"],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_type": "Component",
+              "code": {
+                "advanced": true,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "from langflow.custom.custom_component.component import Component\r\nfrom langflow.io import MessageTextInput, Output\r\nfrom langflow.schema.message import Message\r\n\r\n\r\nclass ParallelSplitter(Component):\r\n    display_name = \"Parallel Splitter\"\r\n    description = \"Distributes input to multiple parallel branches\"\r\n    icon = \"git-branch\"\r\n    name = \"ParallelSplitter\"\r\n\r\n    inputs = [\r\n        MessageTextInput(\r\n            name=\"input_value\",\r\n            display_name=\"Input Text\",\r\n            info=\"Text to distribute to parallel branches\",\r\n            tool_mode=True,\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Output\", name=\"output\", method=\"build_output\"),\r\n    ]\r\n\r\n    def build_output(self) -> Message:\r\n        \"\"\"\r\n        Single output that will be connected to multiple components.\r\n        Langflow automatically duplicates this to all connected branches.\r\n        \"\"\"\r\n        self.status = f\"✓ Distributing '{self.input_value}' to all connected branches\"\r\n        \r\n        # Create message with metadata\r\n        return Message(\r\n            text=self.input_value,\r\n            metadata={\r\n                \"original_input\": self.input_value,\r\n            }\r\n        )"
+              },
+              "input_value": {
+                "_input_type": "MessageTextInput",
+                "advanced": false,
+                "display_name": "Input Text",
+                "dynamic": false,
+                "info": "Text to distribute to parallel branches",
+                "input_types": ["Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "input_value",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": true,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              }
+            },
+            "tool_mode": false
+          },
+          "selected_output": "branch1_output",
+          "showNode": true,
+          "type": "ParallelSplitter"
+        },
+        "dragging": false,
+        "id": "CustomComponent-eodnC",
+        "measured": {
+          "height": 205,
+          "width": 320
+        },
+        "position": {
+          "x": 582,
+          "y": 364
+        },
+        "selected": false,
+        "type": "genericNode"
+      },
+      {
+        "data": {
+          "id": "CustomComponent-bWSQa",
+          "node": {
+            "base_classes": ["Message"],
+            "beta": false,
+            "conditional_paths": [],
+            "custom_fields": {},
+            "description": "Branch 2: Reverses the text",
+            "display_name": "Parallel: Reverse",
+            "documentation": "",
+            "edited": true,
+            "field_order": ["input_message"],
+            "frozen": false,
+            "icon": "rotate-ccw",
+            "legacy": false,
+            "lf_version": "1.6.5",
+            "metadata": {},
+            "minimized": false,
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Output",
+                "group_outputs": false,
+                "hidden": null,
+                "method": "build_output",
+                "name": "output",
+                "options": null,
+                "required_inputs": null,
+                "selected": "Message",
+                "tool_mode": true,
+                "types": ["Message"],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_type": "Component",
+              "code": {
+                "advanced": true,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "from langflow.custom.custom_component.component import Component\r\nfrom langflow.io import MessageInput, Output\r\nfrom langflow.schema.message import Message\r\n\r\n\r\nclass ParallelReverseComponent(Component):\r\n    display_name = \"Parallel: Reverse\"\r\n    description = \"Branch 2: Reverses the text\"\r\n    icon = \"rotate-ccw\"\r\n    name = \"ParallelReverseComponent\"\r\n\r\n    inputs = [\r\n        MessageInput(\r\n            name=\"input_message\",\r\n            display_name=\"Input Message\",\r\n            info=\"Message to process\",\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Output\", name=\"output\", method=\"build_output\"),\r\n    ]\r\n\r\n    def build_output(self) -> Message:\r\n        input_text = self.input_message.text if hasattr(self.input_message, 'text') else str(self.input_message)\r\n        \r\n        # Process: Reverse the text\r\n        result = input_text[::-1]\r\n        \r\n        # Preserve metadata and add branch info\r\n        metadata = self.input_message.metadata.copy() if hasattr(self.input_message, 'metadata') and self.input_message.metadata else {}\r\n        metadata.update({\r\n            \"branch\": \"reverse\",\r\n            \"reverse_result\": result\r\n        })\r\n        \r\n        self.status = f\"✓ Branch 2 (Reverse): '{input_text}' → '{result}'\"\r\n        \r\n        return Message(\r\n            text=result,\r\n            metadata=metadata\r\n        )"
+              },
+              "input_message": {
+                "_input_type": "MessageInput",
+                "advanced": false,
+                "display_name": "Input Message",
+                "dynamic": false,
+                "info": "Message to process",
+                "input_types": ["Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "input_message",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              }
+            },
+            "tool_mode": false
+          },
+          "showNode": true,
+          "type": "ParallelReverseComponent"
+        },
+        "dragging": false,
+        "id": "CustomComponent-bWSQa",
+        "measured": {
+          "height": 205,
+          "width": 320
+        },
+        "position": {
+          "x": 1125,
+          "y": 447
+        },
+        "selected": false,
+        "type": "genericNode"
+      },
+      {
+        "data": {
+          "id": "CustomComponent-nf2QQ",
+          "node": {
+            "base_classes": ["Message"],
+            "beta": false,
+            "conditional_paths": [],
+            "custom_fields": {},
+            "description": "Branch 3: Counts characters and words",
+            "display_name": "Parallel: Count",
+            "documentation": "",
+            "edited": true,
+            "field_order": ["input_message"],
+            "frozen": false,
+            "icon": "hash",
+            "legacy": false,
+            "lf_version": "1.6.5",
+            "metadata": {},
+            "minimized": false,
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Output",
+                "group_outputs": false,
+                "hidden": null,
+                "method": "build_output",
+                "name": "output",
+                "options": null,
+                "required_inputs": null,
+                "selected": "Message",
+                "tool_mode": true,
+                "types": ["Message"],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_type": "Component",
+              "code": {
+                "advanced": true,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "from langflow.custom.custom_component.component import Component\r\nfrom langflow.io import MessageInput, Output\r\nfrom langflow.schema.message import Message\r\n\r\n\r\nclass ParallelCountComponent(Component):\r\n    display_name = \"Parallel: Count\"\r\n    description = \"Branch 3: Counts characters and words\"\r\n    icon = \"hash\"\r\n    name = \"ParallelCountComponent\"\r\n\r\n    inputs = [\r\n        MessageInput(\r\n            name=\"input_message\",\r\n            display_name=\"Input Message\",\r\n            info=\"Message to process\",\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Output\", name=\"output\", method=\"build_output\"),\r\n    ]\r\n\r\n    def build_output(self) -> Message:\r\n        input_text = self.input_message.text if hasattr(self.input_message, 'text') else str(self.input_message)\r\n        \r\n        # Process: Count characters and words\r\n        char_count = len(input_text)\r\n        word_count = len(input_text.split())\r\n        result = f\"Chars: {char_count}, Words: {word_count}\"\r\n        \r\n        # Preserve metadata and add branch info\r\n        metadata = self.input_message.metadata.copy() if hasattr(self.input_message, 'metadata') and self.input_message.metadata else {}\r\n        metadata.update({\r\n            \"branch\": \"count\",\r\n            \"count_result\": result,\r\n            \"char_count\": char_count,\r\n            \"word_count\": word_count\r\n        })\r\n        \r\n        self.status = f\"✓ Branch 3 (Count): '{input_text}' → {result}\"\r\n        \r\n        return Message(\r\n            text=result,\r\n            metadata=metadata\r\n        )"
+              },
+              "input_message": {
+                "_input_type": "MessageInput",
+                "advanced": false,
+                "display_name": "Input Message",
+                "dynamic": false,
+                "info": "Message to process",
+                "input_types": ["Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "input_message",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              }
+            },
+            "tool_mode": false
+          },
+          "showNode": true,
+          "type": "ParallelCountComponent"
+        },
+        "dragging": false,
+        "id": "CustomComponent-nf2QQ",
+        "measured": {
+          "height": 205,
+          "width": 320
+        },
+        "position": {
+          "x": 1117,
+          "y": 791
+        },
+        "selected": false,
+        "type": "genericNode"
+      },
+      {
+        "data": {
+          "id": "CustomComponent-fmk2E",
+          "node": {
+            "base_classes": ["Message"],
+            "beta": false,
+            "conditional_paths": [],
+            "custom_fields": {},
+            "description": "Merges results from all parallel branches",
+            "display_name": "Parallel Merger",
+            "documentation": "",
+            "edited": true,
+            "field_order": [
+              "branch1_message",
+              "branch2_message",
+              "branch3_message"
+            ],
+            "frozen": false,
+            "icon": "git-merge",
+            "legacy": false,
+            "lf_version": "1.6.5",
+            "metadata": {},
+            "minimized": false,
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Merged Output",
+                "group_outputs": false,
+                "hidden": null,
+                "method": "build_output",
+                "name": "output",
+                "options": null,
+                "required_inputs": null,
+                "selected": "Message",
+                "tool_mode": true,
+                "types": ["Message"],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_type": "Component",
+              "branch1_message": {
+                "_input_type": "MessageInput",
+                "advanced": false,
+                "display_name": "Branch 1 (Uppercase)",
+                "dynamic": false,
+                "info": "Result from uppercase branch",
+                "input_types": ["Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "branch1_message",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              },
+              "branch2_message": {
+                "_input_type": "MessageInput",
+                "advanced": false,
+                "display_name": "Branch 2 (Reverse)",
+                "dynamic": false,
+                "info": "Result from reverse branch",
+                "input_types": ["Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "branch2_message",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              },
+              "branch3_message": {
+                "_input_type": "MessageInput",
+                "advanced": false,
+                "display_name": "Branch 3 (Count)",
+                "dynamic": false,
+                "info": "Result from count branch",
+                "input_types": ["Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "branch3_message",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              },
+              "code": {
+                "advanced": true,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "from langflow.custom.custom_component.component import Component\r\nfrom langflow.io import MessageInput, Output\r\nfrom langflow.schema.message import Message\r\n\r\n\r\nclass ParallelMergerComponent(Component):\r\n    display_name = \"Parallel Merger\"\r\n    description = \"Merges results from all parallel branches\"\r\n    icon = \"git-merge\"\r\n    name = \"ParallelMergerComponent\"\r\n\r\n    inputs = [\r\n        MessageInput(\r\n            name=\"branch1_message\",\r\n            display_name=\"Branch 1 (Uppercase)\",\r\n            info=\"Result from uppercase branch\",\r\n        ),\r\n        MessageInput(\r\n            name=\"branch2_message\",\r\n            display_name=\"Branch 2 (Reverse)\",\r\n            info=\"Result from reverse branch\",\r\n        ),\r\n        MessageInput(\r\n            name=\"branch3_message\",\r\n            display_name=\"Branch 3 (Count)\",\r\n            info=\"Result from count branch\",\r\n        ),\r\n    ]\r\n\r\n    outputs = [\r\n        Output(display_name=\"Merged Output\", name=\"output\", method=\"build_output\"),\r\n    ]\r\n\r\n    def build_output(self) -> Message:\r\n        # Extract text and metadata from all branches\r\n        branch1_text = self.branch1_message.text if hasattr(self.branch1_message, 'text') else str(self.branch1_message)\r\n        branch2_text = self.branch2_message.text if hasattr(self.branch2_message, 'text') else str(self.branch2_message)\r\n        branch3_text = self.branch3_message.text if hasattr(self.branch3_message, 'text') else str(self.branch3_message)\r\n        \r\n        # Get metadata from each branch\r\n        meta1 = self.branch1_message.metadata if hasattr(self.branch1_message, 'metadata') and self.branch1_message.metadata else {}\r\n        meta2 = self.branch2_message.metadata if hasattr(self.branch2_message, 'metadata') and self.branch2_message.metadata else {}\r\n        meta3 = self.branch3_message.metadata if hasattr(self.branch3_message, 'metadata') and self.branch3_message.metadata else {}\r\n        \r\n        # Get original input (should be same from all branches)\r\n        original_input = meta1.get(\"original_input\") or meta2.get(\"original_input\") or meta3.get(\"original_input\") or \"unknown\"\r\n        \r\n        # Create comprehensive summary\r\n        summary = \"=\" * 70 + \"\\n\"\r\n        summary += \"PARALLEL WORKFLOW RESULTS\\n\"\r\n        summary += \"=\" * 70 + \"\\n\\n\"\r\n        summary += f\"📝 Original Input: '{original_input}'\\n\\n\"\r\n        summary += \"Parallel Processing Results:\\n\"\r\n        summary += \"-\" * 70 + \"\\n\"\r\n        summary += f\"🔼 Branch 1 (Uppercase): '{branch1_text}'\\n\"\r\n        summary += f\"🔄 Branch 2 (Reverse):   '{branch2_text}'\\n\"\r\n        summary += f\"🔢 Branch 3 (Count):     {branch3_text}\\n\"\r\n        summary += \"-\" * 70 + \"\\n\\n\"\r\n        summary += \"✅ All parallel branches completed successfully!\\n\"\r\n        summary += \"=\" * 70\r\n        \r\n        # Merge all metadata\r\n        merged_metadata = {\r\n            \"original_input\": original_input,\r\n            \"branch1_result\": branch1_text,\r\n            \"branch2_result\": branch2_text,\r\n            \"branch3_result\": branch3_text,\r\n            \"branches_completed\": 3\r\n        }\r\n        merged_metadata.update(meta1)\r\n        merged_metadata.update(meta2)\r\n        merged_metadata.update(meta3)\r\n        \r\n        self.status = \"✓ All 3 parallel branches merged successfully\"\r\n        \r\n        return Message(\r\n            text=summary,\r\n            metadata=merged_metadata\r\n        )"
+              }
+            },
+            "tool_mode": false
+          },
+          "showNode": true,
+          "type": "ParallelMergerComponent"
+        },
+        "dragging": false,
+        "id": "CustomComponent-fmk2E",
+        "measured": {
+          "height": 370,
+          "width": 320
+        },
+        "position": {
+          "x": 1767,
+          "y": 446
+        },
+        "selected": false,
+        "type": "genericNode"
+      },
+      {
+        "data": {
+          "id": "ChatOutput-nVtK2",
+          "node": {
+            "base_classes": ["Message"],
+            "beta": false,
+            "conditional_paths": [],
+            "custom_fields": {},
+            "description": "Display a chat message in the Playground.",
+            "display_name": "Chat Output",
+            "documentation": "https://docs.langflow.org/components-io#chat-output",
+            "edited": false,
+            "field_order": [
+              "input_value",
+              "should_store_message",
+              "sender",
+              "sender_name",
+              "session_id",
+              "data_template"
+            ],
+            "frozen": false,
+            "icon": "MessagesSquare",
+            "legacy": false,
+            "lf_version": "1.6.5",
+            "metadata": {},
+            "minimized": true,
+            "output_types": [],
+            "outputs": [
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Output Message",
+                "group_outputs": false,
+                "method": "message_response",
+                "name": "message",
+                "selected": "Message",
+                "tool_mode": true,
+                "types": ["Message"],
+                "value": "__UNDEFINED__"
+              }
+            ],
+            "pinned": false,
+            "template": {
+              "_type": "Component",
+              "code": {
+                "advanced": true,
+                "dynamic": true,
+                "fileTypes": [],
+                "file_path": "",
+                "info": "",
+                "list": false,
+                "load_from_db": false,
+                "multiline": true,
+                "name": "code",
+                "password": false,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "code",
+                "value": "from collections.abc import Generator\nfrom typing import Any\n\nimport orjson\nfrom fastapi.encoders import jsonable_encoder\n\nfrom langflow.base.io.chat import ChatComponent\nfrom langflow.helpers.data import safe_convert\nfrom langflow.inputs.inputs import BoolInput, DropdownInput, HandleInput, MessageTextInput\nfrom langflow.schema.data import Data\nfrom langflow.schema.dataframe import DataFrame\nfrom langflow.schema.message import Message\nfrom langflow.schema.properties import Source\nfrom langflow.template.field.base import Output\nfrom langflow.utils.constants import (\n    MESSAGE_SENDER_AI,\n    MESSAGE_SENDER_NAME_AI,\n    MESSAGE_SENDER_USER,\n)\n\n\nclass ChatOutput(ChatComponent):\n    display_name = \"Chat Output\"\n    description = \"Display a chat message in the Playground.\"\n    documentation: str = \"https://docs.langflow.org/components-io#chat-output\"\n    icon = \"MessagesSquare\"\n    name = \"ChatOutput\"\n    minimized = True\n\n    inputs = [\n        HandleInput(\n            name=\"input_value\",\n            display_name=\"Inputs\",\n            info=\"Message to be passed as output.\",\n            input_types=[\"Data\", \"DataFrame\", \"Message\"],\n            required=True,\n        ),\n        BoolInput(\n            name=\"should_store_message\",\n            display_name=\"Store Messages\",\n            info=\"Store the message in the history.\",\n            value=True,\n            advanced=True,\n        ),\n        DropdownInput(\n            name=\"sender\",\n            display_name=\"Sender Type\",\n            options=[MESSAGE_SENDER_AI, MESSAGE_SENDER_USER],\n            value=MESSAGE_SENDER_AI,\n            advanced=True,\n            info=\"Type of sender.\",\n        ),\n        MessageTextInput(\n            name=\"sender_name\",\n            display_name=\"Sender Name\",\n            info=\"Name of the sender.\",\n            value=MESSAGE_SENDER_NAME_AI,\n            advanced=True,\n        ),\n        MessageTextInput(\n            name=\"session_id\",\n            display_name=\"Session ID\",\n            info=\"The session ID of the chat. If empty, the current session ID parameter will be used.\",\n            advanced=True,\n        ),\n        MessageTextInput(\n            name=\"data_template\",\n            display_name=\"Data Template\",\n            value=\"{text}\",\n            advanced=True,\n            info=\"Template to convert Data to Text. If left empty, it will be dynamically set to the Data's text key.\",\n        ),\n    ]\n    outputs = [\n        Output(\n            display_name=\"Output Message\",\n            name=\"message\",\n            method=\"message_response\",\n        ),\n    ]\n\n    def _build_source(self, id_: str | None, display_name: str | None, source: str | None) -> Source:\n        source_dict = {}\n        if id_:\n            source_dict[\"id\"] = id_\n        if display_name:\n            source_dict[\"display_name\"] = display_name\n        if source:\n            # Handle case where source is a ChatOpenAI object\n            if hasattr(source, \"model_name\"):\n                source_dict[\"source\"] = source.model_name\n            elif hasattr(source, \"model\"):\n                source_dict[\"source\"] = str(source.model)\n            else:\n                source_dict[\"source\"] = str(source)\n        return Source(**source_dict)\n\n    async def message_response(self) -> Message:\n        # First convert the input to string if needed\n        text = self.convert_to_string()\n\n        # Get source properties\n        source, _icon, display_name, source_id = self.get_properties_from_source_component()\n\n        # Create or use existing Message object\n        if isinstance(self.input_value, Message):\n            message = self.input_value\n            # Update message properties\n            message.text = text\n        else:\n            message = Message(text=text)\n\n        # Set message properties\n        message.sender = self.sender\n        message.sender_name = self.sender_name\n        message.session_id = self.session_id\n        message.flow_id = self.graph.flow_id if hasattr(self, \"graph\") else None\n        message.properties.source = self._build_source(source_id, display_name, source)\n\n        # Store message if needed\n        if self.session_id and self.should_store_message:\n            stored_message = await self.send_message(message)\n            self.message.value = stored_message\n            message = stored_message\n\n        self.status = message\n        return message\n\n    def _serialize_data(self, data: Data) -> str:\n        \"\"\"Serialize Data object to JSON string.\"\"\"\n        # Convert data.data to JSON-serializable format\n        serializable_data = jsonable_encoder(data.data)\n        # Serialize with orjson, enabling pretty printing with indentation\n        json_bytes = orjson.dumps(serializable_data, option=orjson.OPT_INDENT_2)\n        # Convert bytes to string and wrap in Markdown code blocks\n        return \"```json\\n\" + json_bytes.decode(\"utf-8\") + \"\\n```\"\n\n    def _validate_input(self) -> None:\n        \"\"\"Validate the input data and raise ValueError if invalid.\"\"\"\n        if self.input_value is None:\n            msg = \"Input data cannot be None\"\n            raise ValueError(msg)\n        if isinstance(self.input_value, list) and not all(\n            isinstance(item, Message | Data | DataFrame | str) for item in self.input_value\n        ):\n            invalid_types = [\n                type(item).__name__\n                for item in self.input_value\n                if not isinstance(item, Message | Data | DataFrame | str)\n            ]\n            msg = f\"Expected Data or DataFrame or Message or str, got {invalid_types}\"\n            raise TypeError(msg)\n        if not isinstance(\n            self.input_value,\n            Message | Data | DataFrame | str | list | Generator | type(None),\n        ):\n            type_name = type(self.input_value).__name__\n            msg = f\"Expected Data or DataFrame or Message or str, Generator or None, got {type_name}\"\n            raise TypeError(msg)\n\n    def convert_to_string(self) -> str | Generator[Any, None, None]:\n        \"\"\"Convert input data to string with proper error handling.\"\"\"\n        self._validate_input()\n        if isinstance(self.input_value, list):\n            clean_data: bool = getattr(self, \"clean_data\", False)\n            return \"\\n\".join([safe_convert(item, clean_data=clean_data) for item in self.input_value])\n        if isinstance(self.input_value, Generator):\n            return self.input_value\n        return safe_convert(self.input_value)\n"
+              },
+              "data_template": {
+                "_input_type": "MessageTextInput",
+                "advanced": true,
+                "display_name": "Data Template",
+                "dynamic": false,
+                "info": "Template to convert Data to Text. If left empty, it will be dynamically set to the Data's text key.",
+                "input_types": ["Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "data_template",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": "{text}"
+              },
+              "input_value": {
+                "_input_type": "HandleInput",
+                "advanced": false,
+                "display_name": "Inputs",
+                "dynamic": false,
+                "info": "Message to be passed as output.",
+                "input_types": ["Data", "DataFrame", "Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "input_value",
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "trace_as_metadata": true,
+                "type": "other",
+                "value": ""
+              },
+              "sender": {
+                "_input_type": "DropdownInput",
+                "advanced": true,
+                "combobox": false,
+                "dialog_inputs": {},
+                "display_name": "Sender Type",
+                "dynamic": false,
+                "external_options": {},
+                "info": "Type of sender.",
+                "name": "sender",
+                "options": ["Machine", "User"],
+                "options_metadata": [],
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "toggle": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": "Machine"
+              },
+              "sender_name": {
+                "_input_type": "MessageTextInput",
+                "advanced": true,
+                "display_name": "Sender Name",
+                "dynamic": false,
+                "info": "Name of the sender.",
+                "input_types": ["Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "sender_name",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": "AI"
+              },
+              "session_id": {
+                "_input_type": "MessageTextInput",
+                "advanced": true,
+                "display_name": "Session ID",
+                "dynamic": false,
+                "info": "The session ID of the chat. If empty, the current session ID parameter will be used.",
+                "input_types": ["Message"],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "session_id",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              },
+              "should_store_message": {
+                "_input_type": "BoolInput",
+                "advanced": true,
+                "display_name": "Store Messages",
+                "dynamic": false,
+                "info": "Store the message in the history.",
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "should_store_message",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "bool",
+                "value": true
+              }
+            },
+            "tool_mode": false
+          },
+          "showNode": false,
+          "type": "ChatOutput"
+        },
+        "id": "ChatOutput-nVtK2",
+        "measured": {
+          "height": 49,
+          "width": 192
+        },
+        "position": {
+          "x": 2271,
+          "y": 606
+        },
+        "selected": false,
+        "type": "genericNode"
+      }
+    ],
+    "viewport": {
+      "x": 44.08131394875454,
+      "y": 197.20309391717524,
+      "zoom": 0.8312378961427875
+    }
+  },
+  "description": "2_multiple_nodes > 2_parallel",
+  "endpoint_name": null,
+  "id": "f44ada92-a442-48fd-98f4-7310f07684e6",
+  "is_component": false,
+  "last_tested_version": "1.6.5",
+  "name": "2_parallel",
+  "tags": []
+}
