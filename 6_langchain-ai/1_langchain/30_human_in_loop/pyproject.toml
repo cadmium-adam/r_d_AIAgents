@@ -1,0 +1,11 @@
+[project]
+name = "30-human-in-loop"
+version = "0.1.0"
+description = "Human-in-the-loop example with LangChain agent middleware"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain[openai]>=1.0.2",
+    "langgraph>=1.0.2",
+    "python-dotenv>=1.1.0",
+]

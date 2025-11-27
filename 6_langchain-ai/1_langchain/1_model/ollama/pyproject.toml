@@ -1,0 +1,11 @@
+[project]
+name = "2-model"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain>=1.0.2",
+    "langchain-ollama>=1.0.0",
+    "ollama>=0.5.1",
+]
