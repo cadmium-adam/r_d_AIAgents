@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # stdio version (original)
+  mcp-stdio:
+    build:
+      context: ./stdio
+      dockerfile: Dockerfile
+    image: lukaskellerstein/mcp-python-executor:stdio
+    container_name: mcp-python-executor-stdio
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PIP_NO_CACHE_DIR=1
+      - PYTHONDONTWRITEBYTECODE=1
+    profiles:
+      - stdio
+
+  # HTTP streaming version (new)
+  mcp-http:
+    build:
+      context: ./http
+      dockerfile: Dockerfile
+    image: lukaskellerstein/mcp-python-executor:http
+    container_name: mcp-python-executor-http
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PIP_NO_CACHE_DIR=1
+      - PYTHONDONTWRITEBYTECODE=1
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    profiles:
+      - http

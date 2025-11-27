@@ -1,0 +1,12 @@
+[project]
+name = "mcp-local-python-executor-stdio"
+version = "1.0.0"
+description = "MCP Local Python Code Interpreter (STDIO transport)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=1.3.1",
+]
+
+[tool.uv]
+dev-dependencies = []
