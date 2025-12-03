@@ -1,6 +1,7 @@
 import os
 import json
 import math
+import urllib.request
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -26,6 +27,18 @@ tools = [
                 "required": ["expression"]
             }
         }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_current_time",
+            "description": "Get the current UTC time from the internet",
+            "parameters": {
+                "type": "object",
+                "properties": {},
+                "required": []
+            }
+        }
     }
 ]
 
@@ -38,8 +51,18 @@ def calculate(expression: str) -> str:
     except Exception as e:
         return f"Error: {e}"
 
+def get_current_time() -> str:
+    try:
+        response = urllib.request.urlopen('https://timeapi.io/api/time/current/zone?timeZone=UTC')
+        data = json.loads(response.read())
+        return f"{data['date']} {data['time']} UTC"
+    except Exception as e:
+        # Fallback to local system UTC time
+        from datetime import datetime, timezone
+        return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+
 # Step 1: Get user input and send with tool definition
-user_input = input("Enter your math question: ")
+user_input = input("Enter your question: ")
 messages = [{"role": "user", "content": user_input}]
 
 response = client.chat.completions.create(
@@ -58,7 +81,12 @@ if assistant_message.tool_calls:
 
     for tool_call in assistant_message.tool_calls:
         args = json.loads(tool_call.function.arguments)
-        result = calculate(args["expression"])
+        if tool_call.function.name == "calculate":
+            result = calculate(args["expression"])
+        elif tool_call.function.name == "get_current_time":
+            result = get_current_time()
+        else:
+            result = "Unknown tool"
         print(f"\n--- Tool executed: {tool_call.function.name}({args}) = {result} ---")
 
         # Step 3: Send tool result back to LLM
